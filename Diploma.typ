@@ -82,10 +82,20 @@
 #set par(
   first-line-indent: (amount: 1.25cm, all: true),
   leading: 1.5em,
+  spacing: 1.5em,
   justify: true
 )
 
-#set heading()
+#show heading: it => [
+  #set text(
+    size: 14pt
+  )
+
+  #block[
+    #it
+    #v(1em)
+  ]
+]
 
 #show heading.where(level: 1): set align(center)
 
