@@ -298,6 +298,8 @@ backend-части системы.
 
 = #upper[Теоретические основы backend разработки клиент-серверных приложений]
 
+@ASP.NET
+
 // Текст
 
 #pagebreak()
@@ -321,6 +323,7 @@ backend-части системы.
 #bibliography(
   "bibliography.yaml",
   title: upper[Библиографический список],
+  style: "gost-r-705-2008-numeric"
 )
 
 #pagebreak()

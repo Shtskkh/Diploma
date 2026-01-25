@@ -1,7 +1,6 @@
-harry:
-    type: Book
-    title: Harry Potter and the Order of the Phoenix
-    author: Rowling, J. K.
-    volume: 5
-    page-total: 768
-    date: 2003-06-21
+ASP.NET:
+    type: web
+    title: ASP.NET
+    url:
+        value: https://dotnet.microsoft.com/ru-ru/apps/aspnet, 
+        date: 2025-12-1 
