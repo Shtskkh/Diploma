@@ -1,6 +1,89 @@
+Clean-Architecture:
+    type: web
+    title: The Clean Architecture
+    url:
+        value: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+        date: 2026-1-12
+
+DDD-Quickly:
+    type: web
+    title: Domain Driven Design Quickly
+    url:
+        value: https://www.infoq.com/minibooks/domain-driven-design-quickly/
+        date: 2026-1-12
+
+Refactoring-Guru:
+    type: web
+    title: Refactoring.Guru
+    url:
+        value: https://refactoring.guru/
+        date: 2026-1-12
+
 ASP.NET:
     type: web
     title: ASP.NET
     url:
         value: https://dotnet.microsoft.com/ru-ru/apps/aspnet, 
-        date: 2025-12-1 
+        date: 2026-1-12
+
+FastAPI:
+    type: web
+    title: FastAPI
+    url:
+        value: https://fastapi.tiangolo.com/
+        date: 2026-1-12
+
+Go:
+    type: web
+    title: Go
+    url:
+        value: https://go.dev/
+        date: 2026-1-12
+
+PostgreSQL:
+    type: web
+    title: PostgreSQL
+    url:
+        value: https://www.postgresql.org/
+        date: 2026-1-12
+
+MySQL:
+    type: web
+    title: MySQL
+    url:
+        value: https://www.mysql.com/
+        date: 2026-1-12
+
+Redis:
+    type: web
+    title: Redis
+    url:
+        value: https://redis.io/
+        date: 2026-1-12
+
+MinIO:
+    type: web
+    title: MinIO
+    url:
+        value: https://www.min.io/
+        date: 2026-1-12
+HTTPS:
+    type: web
+    title: HTTPS
+    url:
+        value: https://ru.wikipedia.org/wiki/HTTPS
+        date: 2026-1-12
+
+nginx:
+    type: web
+    title: nginx
+    url:
+        value: https://nginx.org/
+        date: 2026-1-12
+
+apache:
+    type: web
+    title: Apache HTTP Server Project
+    url:
+        value: https://httpd.apache.org/
+        date: 2026-1-12
