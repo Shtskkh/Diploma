@@ -1,7 +1,97 @@
-harry:
-    type: Book
-    title: Harry Potter and the Order of the Phoenix
-    author: Rowling, J. K.
-    volume: 5
-    page-total: 768
-    date: 2003-06-21
+Mobil:
+  type: web
+  title: Мобильные приложения и их роль в современном мире. Типы мобильных приложений. Операционные системы мобильных устройств
+  url:
+    value: https://science.kuzstu.ru/wp-content/Events/Conference/RM/2021/RM21/pages/Articles/031434.pdf
+    date: 2026-02-05
+
+Digital:
+  type: web
+  title: Digital 2025, Global Overview Report
+  url:
+    value: https://www.vennapps.com/blog/mobile-app-download-and-usage-statistics-2025
+    date: 2026-02-05
+
+kotlin-docs:
+  type: web
+  title: Kotlin docs
+  url:
+    value: https://kotlinlang.org/docs/home.html
+    date: 2026-01-26
+
+reactnative-docs:
+  type: web
+  title: Документация React Native
+  url:
+    value: https://reactnative.dev/docs/getting-started
+    date: 2026-01-27
+
+flutter-docs:
+  type: web
+  title: Документация Flutter
+  url:
+    value: https://flutter.dev/
+    date: 2026-01-27
+
+android-docs:
+  type: web
+  title: Документация Android
+  url:
+    value: https://developer.android.com/get-started/overview
+    date: 2026-01-27
+
+material-design-3-docs:
+  type: web
+  title: Документация Material Design 3
+  url:
+    value: https://m3.material.io/
+    date: 2026-01-27
+
+hilt-docs:
+  type: web
+  title: Документация Hilt
+  url:
+    value: https://dagger.dev/hilt/
+    date: 2026-01-27
+
+agile-methodology:
+  type: web
+  title: Методология Agile
+  url:
+    value: https://practicum.yandex.ru/blog/metodology-agile/
+    date: 2026-01-27
+
+recommendation-systems:
+  type: web
+  title: Рекомендательные системы
+  url:
+    value: https://simulative.ru/blog/rekomendatelnie-sistemi-kak-ml-inzheneri-sozdayut
+    date: 2026-01-27
+
+tfidf-recommendation:
+  type: web
+  title: Рекомендательная система через TF-IDF
+  url:
+    value: https://habr.com/ru/companies/otus/articles/755772/
+    date: 2026-01-27
+
+microservices-architecture:
+  type: web
+  title: Микросервисная архитектура
+  url:
+    value: https://habr.com/ru/companies/raiffeisenbank/articles/346380/
+    date: 2026-01-27
+
+sklearn-tfidf:
+  type: web
+  title: Сама функция TF-IDF в Sklearn
+  url:
+    value: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+    date: 2026-01-27
+
+fastapi-docs:
+  type: web
+  title: FastAPI
+  url:
+    value: https://fastapi.tiangolo.com/
+    date: 2026-01-27
