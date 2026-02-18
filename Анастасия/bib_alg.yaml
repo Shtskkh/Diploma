@@ -1,0 +1,20 @@
+StemmingLemmatization:
+  type: web
+  title: Stemming, Lemmatization - Which One is Worth Going For?
+  url:
+    value: https://towardsdatascience.com/stemming-lemmatization-which-one-is-worth-going-for-77e6ec01ad9c/
+    date: 2026-2-18
+
+SiteSearch360:
+  type: web
+  title: What we learned from 10 million website search tool enquiries
+  url:
+    value: https://www.sitesearch360.com/blog/what-we-learned-from-10-million-website-search-tool-enquiries/
+    date: 2026-2-18
+
+TF-IDF:
+  type: web
+  title: A Quick Introduction to Bag of Words and TF-IDF
+  url:
+    value: https://towardsdatascience.com/a-quick-introduction-to-bag-of-words-and-tf-idf-fbd3ab84ecbf/
+    date: 2026-2-18
