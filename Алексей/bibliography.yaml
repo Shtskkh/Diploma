@@ -4,6 +4,12 @@ TDD:
     url:
         value: https://doka.guide/tools/tdd/
         date: 2026-2-15
+Refactoring:
+    type: web
+    title: Рефакторинг
+    url:
+        value: https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%84%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3
+        date: 2026-2-15
 
 DDD-Quickly:
     type: web
@@ -19,12 +25,40 @@ BDD:
         value: https://habr.com/ru/companies/auriga/articles/808527/
         date: 2026-2-15
 
-Refactoring:
+Cucumber:
     type: web
-    title: Рефакторинг
+    title: Cucumber
     url:
-        value: https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%84%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3
+        value: https://cucumber.io/
         date: 2026-2-15
+
+SpecFlow:
+    type: web
+    title: SpecFlow
+    url:
+        value: https://www.specflow.com/
+        date: 2026-2-15
+Behave:
+    type: web
+    title: Behave
+    url:
+        value: https://github.com/behave/behave
+        date: 2026-2-15
+
+SDD:
+    type: web
+    title: "Inside Spec-Driven Development: What GitHub’s Spec Kit Makes Possible For AI-assisted Engineering"
+    url:
+        value: https://www.epam.com/insights/ai/blogs/inside-spec-driven-development-what-githubspec-kit-makes-possible-for-ai-engineering
+        date: 2026-2-18
+
+AI-Agents:
+    type: web
+    title: "AI-агенты: как они устроены и что умеют"
+    url:
+        value: https://cloud.ru/blog/kak-ustroyeny-i-chto-umeyut-ai-agenty
+        date: 2026-2-18
+
 Clean-Architecture:
     type: web
     title: The Clean Architecture
