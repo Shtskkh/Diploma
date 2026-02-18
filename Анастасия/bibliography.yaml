@@ -1,4 +1,68 @@
-Mobil:
+Mobill:
+  type: web
+  title: Кашапов М.Н. Разработка дизайна приложения, Казань, 2019. – 43 с.
+  url:
+    value: https://kpfu.ru/student_diplom/10.160.178.20_2627777_Kashapov_M.N._razrabotka_dizajna_prilozheniya.pdf
+    date: 2026-02-09
+
+Kotlin:
+  type: web
+  title:  Петросян Л. Э., Гусев К.В. Разработка мобильных приложений на языке Kotlin, Учебное пособие для вузов. Издательство "Лань". 2025. – 104 с.
+  url:
+    value: https://e.lanbook.com/book/448577
+    date: 2026-02-09
+Kotlinn:
+  type: web
+  title: Эгов Е.Н., Кянжин С.О. Проектирование мобильного приложения для IT-компаний для бронирования переговорных на платформе Android с использованием языка Kotlin, 2023. – 176 с.
+  url:
+    value: https://elibrary.ru/item.asp?id=54328731
+    date: 2026-02-09
+
+Kotliny:
+  type: web
+  title: Степанов П. В., Приходько Н. А., Запорожских А. И. Разработка мобильных приложений под Android на языке Kotlin, учебное пособие. МИРЭА - Российский технологический университет. 2025. – 889 с.
+  url:
+    value: https://e.lanbook.com/book/504855
+    date: 2026-02-10
+Kotlinyv:
+  type: web
+  title: Орлов А.В. Современная разработка Android-приложений и язык программирования Kotlin. 2023. – 73 с.
+  url:
+    value: https://www.elibrary.ru/item.asp?id=50177358
+    date: 2026-02-10
+Kotlinyvb:
+  type: web
+  title: Грузин Н.А. Сравнение шаблонов проектирования архитектуры приложения MVC, MVP и MVVM.
+  url:
+    value: https://www.elibrary.ru/item.asp?id=44555466
+    date: 2026-02-10
+Kotl:
+  type: web
+  title: Артеменко А.В., Бабушкина Н.Е. Ролевая архитектура web-приложений MVC, MVVM и их влияние на код.
+  url:
+    value: https://www.elibrary.ru/item.asp?id=60274200
+    date: 2026-02-10
+Kot:
+  type: web
+  title: Турушев Т.К. Архитектурные паттерны проектирования системы MVC, MVP, MVVM.
+  url:
+    value: https://www.elibrary.ru/item.asp?id=47149990
+    date: 2026-02-10
+
+Kotlinyn:
+  type: web
+  title: К вопросу выбора оптимального языка программирования для разработки мобильного приложения.
+  url:
+    value: https://elibrary.ru/download/elibrary_50024700_66439187.pdf
+    date: 2026-02-10
+Kotli:
+  type: web
+  title: Приходько Н.А., Сивченко В.А. Причины выбора Kotlin как основного языка мобильной разработки на Android.
+  url:
+    value: https://www.elibrary.ru/item.asp?id=56114037
+    date: 2026-02-10
+
+Mob:
   type: web
   title: Мобильные приложения и их роль в современном мире. Типы мобильных приложений. Операционные системы мобильных устройств
   url:
@@ -7,91 +71,104 @@ Mobil:
 
 Digital:
   type: web
-  title: Digital 2025, Global Overview Report
+  title: Digital 2025, Global Overview Report.
   url:
     value: https://www.vennapps.com/blog/mobile-app-download-and-usage-statistics-2025
     date: 2026-02-05
 
 kotlin-docs:
   type: web
-  title: Kotlin docs
+  title: Kotlin docs.
   url:
     value: https://kotlinlang.org/docs/home.html
     date: 2026-01-26
 
 reactnative-docs:
   type: web
-  title: Документация React Native
+  title: Документация React Native.
   url:
     value: https://reactnative.dev/docs/getting-started
     date: 2026-01-27
 
 flutter-docs:
   type: web
-  title: Документация Flutter
+  title: Документация Flutter.
   url:
     value: https://flutter.dev/
     date: 2026-01-27
 
 android-docs:
   type: web
-  title: Документация Android
+  title: Документация Android.
   url:
     value: https://developer.android.com/get-started/overview
     date: 2026-01-27
 
 material-design-3-docs:
   type: web
-  title: Документация Material Design 3
+  title: Документация Material Design.
   url:
     value: https://m3.material.io/
     date: 2026-01-27
 
 hilt-docs:
   type: web
-  title: Документация Hilt
+  title: Документация Hilt.
   url:
     value: https://dagger.dev/hilt/
     date: 2026-01-27
 
 agile-methodology:
   type: web
-  title: Методология Agile
+  title: Методология Agile.
   url:
     value: https://practicum.yandex.ru/blog/metodology-agile/
     date: 2026-01-27
 
 recommendation-systems:
   type: web
-  title: Рекомендательные системы
+  title: Рекомендательные системы.
   url:
     value: https://simulative.ru/blog/rekomendatelnie-sistemi-kak-ml-inzheneri-sozdayut
     date: 2026-01-27
 
 tfidf-recommendation:
   type: web
-  title: Рекомендательная система через TF-IDF
+  title: Рекомендательная система через TF-IDF.
   url:
     value: https://habr.com/ru/companies/otus/articles/755772/
     date: 2026-01-27
 
 microservices-architecture:
   type: web
-  title: Микросервисная архитектура
+  title: Микросервисная архитектура.
   url:
     value: https://habr.com/ru/companies/raiffeisenbank/articles/346380/
     date: 2026-01-27
 
 sklearn-tfidf:
   type: web
-  title: Сама функция TF-IDF в Sklearn
+  title: Сама функция TF-IDF в Sklearn.
   url:
     value: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
     date: 2026-01-27
 
 fastapi-docs:
   type: web
-  title: FastAPI
+  title: FastAPI.
   url:
     value: https://fastapi.tiangolo.com/
     date: 2026-01-27
+
+fastapi-doc:
+  type: web
+  title: "Россия молодая: сборник материалов XIII Всероссийской научно-практической конференции молодых ученых с международным участием"
+  url:
+    value: https://www.elibrary.ru/download/elibrary_47123249_74986550.pdf
+    date: 2026-02-11
+fastapi-do:
+  type: web
+  title: "Первун О.Е., Скрипка В.К. Операционная система Android: история и перспективы"
+  url:
+    value: https://elibrary.ru/item.asp?id=36605581
+    date: 2026-02-12
