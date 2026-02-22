@@ -1,174 +1,219 @@
-Mobill:
-  type: web
-  title: Кашапов М.Н. Разработка дизайна приложения, Казань, 2019. – 43 с.
-  url:
-    value: https://kpfu.ru/student_diplom/10.160.178.20_2627777_Kashapov_M.N._razrabotka_dizajna_prilozheniya.pdf
-    date: 2026-02-09
+Artemenko:
+  type: article
+  title: "Ролевая архитектура web-приложений: MVC, MVVM и их влияние на код"
+  author: ["Артеменко А.В.", "Бабушкина Н.Е."]
+  parent:
+    type: periodical
+    title: Сборник трудов конференции EURASIASCIENCE, 2023. – №1. – C. 82-85.
+  url: https://www.elibrary.ru/item.asp?id=60274200
+  date-accessed: 2026-02-10
 
-Kotlin:
-  type: web
-  title:  Петросян Л. Э., Гусев К.В. Разработка мобильных приложений на языке Kotlin, Учебное пособие для вузов. Издательство "Лань". 2025. – 104 с.
-  url:
-    value: https://e.lanbook.com/book/448577
-    date: 2026-02-09
-Kotlinn:
-  type: web
-  title: Эгов Е.Н., Кянжин С.О. Проектирование мобильного приложения для IT-компаний для бронирования переговорных на платформе Android с использованием языка Kotlin, 2023. – 176 с.
-  url:
-    value: https://elibrary.ru/item.asp?id=54328731
-    date: 2026-02-09
+Myasoedova:
+  type: article
+  title: К вопросу выбора оптимального языка программирования для разработки мобильного приложения
+  author: Мясоедова В.А.
+  parent:
+    type: periodical
+    title: E-SCIO, 2022. – № 11 (74). – С. 119-124.
+  url: https://elibrary.ru/download/elibrary_50024700_66439187.pdf
+  date-accessed: 2026-02-10
 
-Kotliny:
-  type: web
-  title: Степанов П. В., Приходько Н. А., Запорожских А. И. Разработка мобильных приложений под Android на языке Kotlin, учебное пособие. МИРЭА - Российский технологический университет. 2025. – 889 с.
-  url:
-    value: https://e.lanbook.com/book/504855
-    date: 2026-02-10
-Kotlinyv:
-  type: web
-  title: Орлов А.В. Современная разработка Android-приложений и язык программирования Kotlin. 2023. – 73 с.
-  url:
-    value: https://www.elibrary.ru/item.asp?id=50177358
-    date: 2026-02-10
-Kotlinyvb:
-  type: web
-  title: Грузин Н.А. Сравнение шаблонов проектирования архитектуры приложения MVC, MVP и MVVM.
-  url:
-    value: https://www.elibrary.ru/item.asp?id=44555466
-    date: 2026-02-10
-Kotl:
-  type: web
-  title: Артеменко А.В., Бабушкина Н.Е. Ролевая архитектура web-приложений MVC, MVVM и их влияние на код.
-  url:
-    value: https://www.elibrary.ru/item.asp?id=60274200
-    date: 2026-02-10
-Kot:
-  type: web
-  title: Турушев Т.К. Архитектурные паттерны проектирования системы MVC, MVP, MVVM.
-  url:
-    value: https://www.elibrary.ru/item.asp?id=47149990
-    date: 2026-02-10
-
-Kotlinyn:
-  type: web
-  title: К вопросу выбора оптимального языка программирования для разработки мобильного приложения.
-  url:
-    value: https://elibrary.ru/download/elibrary_50024700_66439187.pdf
-    date: 2026-02-10
-Kotli:
-  type: web
-  title: Приходько Н.А., Сивченко В.А. Причины выбора Kotlin как основного языка мобильной разработки на Android.
-  url:
-    value: https://www.elibrary.ru/item.asp?id=56114037
-    date: 2026-02-10
-
-Mob:
-  type: web
+Kuzmin:
+  type: article
   title: Мобильные приложения и их роль в современном мире. Типы мобильных приложений. Операционные системы мобильных устройств
-  url:
-    value: https://science.kuzstu.ru/wp-content/Events/Conference/RM/2021/RM21/pages/Articles/031434.pdf
-    date: 2026-02-05
+  author: Кузьмин А.В.
+  parent:
+    type: periodical
+    title: Россия молодая, сборник материалов XIII Всероссийской научно-практической конференции молодых ученых с международным участием. – Кемерово, 2021. – С. 31434.1-31434.3.
+  url: https://science.kuzstu.ru/wp-content/Events/Conference/RM/2021/RM21/pages/Articles/031434.pdf
+  date-accessed: 2026-02-05
 
-Digital:
-  type: web
-  title: Digital 2025, Global Overview Report.
-  url:
-    value: https://www.vennapps.com/blog/mobile-app-download-and-usage-statistics-2025
-    date: 2026-02-05
+Orlov:
+  type: article
+  title: Современная разработка Android-приложений и язык программирования Kotlin
+  author: Орлов А.В.
+  parent:
+    type: periodical
+    title: Молодежная наука – первый шаг в науку большую, сборник статей III Международной студенческой научно-практической конференции. – Петрозаводск, 2023. – С. 69-73.
+  url: https://www.elibrary.ru/item.asp?id=50177358
+  date-accessed: 2026-02-10
 
-kotlin-docs:
-  type: web
-  title: Kotlin docs.
-  url:
-    value: https://kotlinlang.org/docs/home.html
-    date: 2026-01-26
+Petrosyan:
+  type: book
+  title: "Разработка мобильных приложений на языке Kotlin: Учебное пособие для вузов"
+  author: ["Петросян Л.Э.", "Гусев К.В."]
+  publisher: Лань
+  edition: 2
+  date: 2025
+  page-total: 104
+  isbn: 978-5-507-52328-3
+  url: https://e.lanbook.com/book/448577
+  date-accessed: 2026-02-09
 
-reactnative-docs:
-  type: web
-  title: Документация React Native.
-  url:
-    value: https://reactnative.dev/docs/getting-started
-    date: 2026-01-27
+Prikhodko:
+  type: article
+  title: Причины выбора Kotlin как основного языка мобильной разработки на Android
+  author: ["Приходько Н.А.", "Сивченко В.А."]
+  parent:
+    type: periodical
+    title: Международный журнал гуманитарных и естественных наук, 2023. – № 11-4 (86). – С. 104-107.
+  url: https://www.elibrary.ru/item.asp?id=56114037
+  date-accessed: 2026-02-10
 
-flutter-docs:
-  type: web
-  title: Документация Flutter.
-  url:
-    value: https://flutter.dev/
-    date: 2026-01-27
+Pervun:
+  type: article
+  title: "Операционная система Android: история и перспективы"
+  author: ["Первун О.Е.", "Скрипка В.К."]
+  parent:
+    type: periodical
+    title: Информационно-компьютерные технологии в экономике, образовании и социальной сфере, 2018. – № 3 (21). – С. 80-87.
+  url: https://elibrary.ru/item.asp?id=36605581
+  date-accessed: 2026-02-12
 
-android-docs:
-  type: web
-  title: Документация Android.
-  url:
-    value: https://developer.android.com/get-started/overview
-    date: 2026-01-27
+Somon:
+  type: book
+  title: "Сомон., П.И. Волшебство Kotlin : руководство / П. И. Сомон. ; перевод с английского А.Н. Киселева.. – Москва : ДМК Пресс, 2020. – 536 с."
+  url: https://ftp.zhirov.kz/books/IT/Kotlin/Волшебство%20Kotlin%20%28Пьер-Ив%20Сомон%29.pdf
+  date-accessed: 2026-02-12
 
-material-design-3-docs:
-  type: web
-  title: Документация Material Design.
-  url:
-    value: https://m3.material.io/
-    date: 2026-01-27
-
-hilt-docs:
-  type: web
-  title: Документация Hilt.
-  url:
-    value: https://dagger.dev/hilt/
-    date: 2026-01-27
-
-agile-methodology:
-  type: web
-  title: Методология Agile.
-  url:
-    value: https://practicum.yandex.ru/blog/metodology-agile/
-    date: 2026-01-27
-
-recommendation-systems:
-  type: web
-  title: Рекомендательные системы.
-  url:
-    value: https://simulative.ru/blog/rekomendatelnie-sistemi-kak-ml-inzheneri-sozdayut
-    date: 2026-01-27
-
-tfidf-recommendation:
-  type: web
-  title: Рекомендательная система через TF-IDF.
-  url:
-    value: https://habr.com/ru/companies/otus/articles/755772/
-    date: 2026-01-27
-
-microservices-architecture:
+MicroservicesArchitecture:
   type: web
   title: Микросервисная архитектура.
   url:
     value: https://habr.com/ru/companies/raiffeisenbank/articles/346380/
     date: 2026-01-27
 
-sklearn-tfidf:
+Apptoday:
   type: web
-  title: Сама функция TF-IDF в Sklearn.
+  title: Мобильные операционные системы – обзор ОС | Apptoday
+  url:
+    value: https://apptoday.ru/publication/reiting-mobilnykh-operatsionnykh-sistem
+    date: 2026-01-27
+
+Digital2025:
+  type: web
+  title: Digital 2025, Global Overview Report.
+  url:
+    value: https://www.vennapps.com/blog/mobile-app-download-and-usage-statistics-2025
+    date: 2026-02-05
+
+AndroidDocs:
+  type: web
+  title: Документация Android.
+  url:
+    value: https://developer.android.com/get-started/overview
+    date: 2026-01-27
+
+FlutterDocs:
+  type: web
+  title: Документация Flutter.
+  url:
+    value: https://flutter.dev/
+    date: 2026-01-27
+
+HiltDocs:
+  type: web
+  title: Документация Hilt.
+  url:
+    value: https://dagger.dev/hilt/
+    date: 2026-01-27
+
+KotlinDocs:
+  type: web
+  title: Документация Kotlin.
+  url:
+    value: https://kotlinlang.org/docs/home.html
+    date: 2026-01-26
+
+MaterialDesignDocs:
+  type: web
+  title: Документация Material Design.
+  url:
+    value: https://m3.material.io/
+    date: 2026-01-27
+
+ReactNativeDocs:
+  type: web
+  title: Документация React Native.
+  url:
+    value: https://reactnative.dev/docs/getting-started
+    date: 2026-01-27
+AgilMethodology:
+  type: web
+  title: Методология Agile.
+  url:
+    value: https://practicum.yandex.ru/blog/metodology-agile/
+    date: 2026-01-27
+
+RecommendationSystemTFIDF:
+  type: web
+  title: Рекомендательная система через TF-IDF.
+  url:
+    value: https://habr.com/ru/companies/otus/articles/755772/
+    date: 2026-01-27
+
+RecommendationSystems:
+  type: web
+  title: Рекомендательные системы.
+  url:
+    value: https://simulative.ru/blog/rekomendatelnie-sistemi-kak-ml-inzheneri-sozdayut
+    date: 2026-01-27
+
+SklearnTFIDF:
+  type: web
+  title: Функция TF-IDF в Sklearn.
   url:
     value: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
     date: 2026-01-27
 
-fastapi-docs:
+Stepanov:
+  type: book
+  title: "Степанов П.В., Приходько Н.А., Запорожских А.И. Разработка мобильных приложений под Android на языке Kotlin : учебное пособие – Москва : МИРЭА - Российский технологический университет, 2025. – 889 с."
+  url:
+    value: https://e.lanbook.com/book/504855
+    date: 2026-02-10
+
+Stemming:
+  type: web
+  title: Stemming, Lemmatization - Which One is Worth Going For?
+  url:
+    value: https://towardsdatascience.com/stemming-lemmatization-which-one-is-worth-going-for-77e6ec01ad9c/
+    date: 2026-02-18
+
+Turushev:
+  type: article
+  title: Архитектурные паттерны проектирования системы - MVC, MVP, MVVM
+  author: Турушев Т.К.
+  parent:
+    type: periodical
+    title: Инновационный потенциал развития науки в современном мире, достижения и инновации, сборник научных статей по материалам VI Международной научно-практической конференции. – Уфа, 2021. – С. 16-21.
+  url: https://www.elibrary.ru/item.asp?id=47149990
+  date-accessed: 2026-02-10
+
+FastAPI:
   type: web
   title: FastAPI.
   url:
     value: https://fastapi.tiangolo.com/
     date: 2026-01-27
 
-fastapi-doc:
+TFIDFIntroduction:
   type: web
-  title: "Россия молодая: сборник материалов XIII Всероссийской научно-практической конференции молодых ученых с международным участием"
+  title: A Quick Introduction to Bag of Words and TF-IDF.
   url:
-    value: https://www.elibrary.ru/download/elibrary_47123249_74986550.pdf
-    date: 2026-02-11
-fastapi-do:
+    value: https://towardsdatascience.com/a-quick-introduction-to-bag-of-words-and-tf-idf-fbd3ab84ecbf/
+    date: 2026-02-18
+
+SiteSearch360:
   type: web
-  title: "Первун О.Е., Скрипка В.К. Операционная система Android: история и перспективы"
+  title: What we learned from 10 million website search tool enquiries.
   url:
-    value: https://elibrary.ru/item.asp?id=36605581
-    date: 2026-02-12
+    value: https://www.sitesearch360.com/blog/what-we-learned-from-10-million-website-search-tool-enquiries/
+    date: 2026-02-18
+
+Java:
+  type: web
+  title: The Destination for Java Developers
+  url:
+    value: https://dev.java/
+    date: 2026-02-21
