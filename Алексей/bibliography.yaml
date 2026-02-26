@@ -53,6 +53,13 @@ AI-Agents:
         value: https://cloud.ru/blog/kak-ustroyeny-i-chto-umeyut-ai-agenty
         date: 2026-2-18
 
+MonolithMicroservice:
+    type: web
+    title: "Monolith vs Microservice Architecture: A Comparison"
+    url:
+        value: https://camunda.com/blog/2023/08/monolith-vs-microservice-architecture-comparison/
+        date: 2026-2-26
+
 Clean-Architecture:
     type: web
     title: The Clean Architecture
