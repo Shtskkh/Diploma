@@ -137,6 +137,14 @@ T-Bank:
         value: https://www.tbank.ru/career/it/about/
         date: 2026-2-27
 
+ModuleMonolith:
+    type: web
+    author: Денис Цветцих
+    title: Модульный монолит вместо микросервисов
+    url:
+        value: https://www.youtube.com/watch?v=4UKjtzeQ_uc
+        date: 2026-2-27
+
 Clean-Architecture:
     type: web
     title: The Clean Architecture
