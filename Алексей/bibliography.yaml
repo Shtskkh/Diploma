@@ -60,6 +60,83 @@ MonolithMicroservice:
         value: https://camunda.com/blog/2023/08/monolith-vs-microservice-architecture-comparison/
         date: 2026-2-26
 
+Microfrontend:
+    type: web
+    title: Что такое микрофронтенд
+    url:
+        value: https://thecode.media/chto-takoe-mikrofrontend/
+        date: 2026-2-27
+
+Kafka:
+    type: web
+    title: Официальная документация Apache Kafka
+    url:
+        value: https://kafka.apache.org/
+        date: 2026-2-27
+
+RabbitMQ:
+    type: web
+    title: Официальная документация RabbitMQ
+    url:
+        value: https://www.rabbitmq.com/
+        date: 2026-2-27
+
+nginx:
+    type: web
+    title: nginx
+    url:
+        value: https://nginx.org/
+        date: 2026-2-27
+
+apache:
+    type: web
+    title: Apache HTTP Server Project
+    url:
+        value: https://httpd.apache.org/
+        date: 2026-2-27
+
+YandexAPIGateway:
+    type: web
+    title: Официальная документация Yandex API Gateway
+    url:
+        value: https://yandex.cloud/ru/services/api-gateway
+        date: 2026-2-27
+
+KrakenD:
+    type: web
+    title: Официальная документация KrakenD
+    url:
+        value: https://www.krakend.io/
+        date: 2026-2-27
+
+OzonTech:
+    type: web
+    title: Ozon Tech
+    url:
+        value: https://ozon.tech/
+        date: 2026-2-27
+
+WildberriesTech:
+    type: web
+    title: WBTECH
+    url:
+        value: https://wbtech.wildberries.ru/
+        date: 2026-2-27
+
+Alfa-Digital:
+    type: web
+    title: Alfa-Digital
+    url:
+        value: https://digital.alfabank.ru/techradar/
+        date: 2026-2-27
+
+T-Bank:
+    type: web
+    title: Т-Банк
+    url:
+        value: https://www.tbank.ru/career/it/about/
+        date: 2026-2-27
+
 Clean-Architecture:
     type: web
     title: The Clean Architecture
@@ -127,18 +204,4 @@ HTTPS:
     title: HTTPS
     url:
         value: https://ru.wikipedia.org/wiki/HTTPS
-        date: 2026-1-12
-
-nginx:
-    type: web
-    title: nginx
-    url:
-        value: https://nginx.org/
-        date: 2026-1-12
-
-apache:
-    type: web
-    title: Apache HTTP Server Project
-    url:
-        value: https://httpd.apache.org/
         date: 2026-1-12
