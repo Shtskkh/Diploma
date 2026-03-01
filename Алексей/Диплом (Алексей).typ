@@ -8,7 +8,7 @@
 #let clr-arrow     = rgb("#455A64")   // стрелки
 #let node-r        = 2pt              // скругление углов
 #let node-w        = 48mm
-#let node-h        = 16mm
+#let node-h        = 12mm
 #let node-stroke   = 0.6pt + clr-border
 #let lbl-size      = 14pt
 
@@ -375,7 +375,8 @@
 #figure(
   image(
     "files/chapter-1/ddd/ddd-entities.svg",
-    format: "svg"
+    format: "svg",
+    width: 75%
   ),
   caption: "Пример использования сущностей и объектов-значений"
 )
@@ -388,7 +389,8 @@
 #figure(
   image(
     "files/chapter-1/ddd/ddd-aggregates.svg",
-    format: "svg"
+    format: "svg",
+    width: 75%
   ),
   caption: "Пример агрегата Customer"
 )
@@ -399,7 +401,8 @@
 #figure(
   image(
     "files/chapter-1/ddd/ddd-factories.svg",
-    format: "svg"
+    format: "svg",
+    width: 75%
   ),
   caption: "Пример фабрики Route"
 )
