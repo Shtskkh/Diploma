@@ -1,3 +1,30 @@
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge, shapes
+
+// ─── Общие стилевые константы ───────────────────────────────────────────────
+#let clr-ui        = rgb("#D0E8FF")   // слой UI / клиент
+#let clr-service   = rgb("#C8E6C9")   // сервисы / модули / бизнес-логика
+#let clr-data      = rgb("#FFF9C4")   // данные
+#let clr-border    = rgb("#455A64")   // обводка
+#let clr-arrow     = rgb("#455A64")   // стрелки
+#let node-r        = 2pt              // скругление углов
+#let node-w        = 48mm
+#let node-h        = 16mm
+#let node-stroke   = 0.6pt + clr-border
+#let lbl-size      = 14pt
+
+#let svc-node(pos, lbl, fill: clr-service, name: none) = node(
+  pos,
+  text(size: lbl-size, lbl),
+  width: node-w,
+  height: node-h,
+  corner-radius: node-r,
+  stroke: node-stroke,
+  fill: fill,
+  name: name,
+)
+
+#let arr(a, b) = edge(a, b, "-|>", stroke: 1pt + clr-arrow)
+
 #set document(
   title: "Выпускная квалификационная работа",
   author: "Шацких Алексей Евгеньевич",
@@ -345,18 +372,51 @@
 не допуская прямого изменения полей объекта класса.
 Также рекомендуется, чтобы сущности ссылались на объекты-значения и другие сущности посредством объектов классов.
 
+#figure(
+  image(
+    "files/chapter-1/ddd/ddd-entities.svg",
+    format: "svg"
+  ),
+  caption: "Пример использования сущностей и объектов-значений"
+)
+
 Вторым правилом, которое предлагает DDD, является выделение связанных между собой сущностей и объектов-значений в отдельные кластеры,
 называемые агрегатами. В каждом агрегате предлагается выделить главенствующую сущность, называемую корнем агрегата (aggregate root),
 которая будет отвечать за управление связанными сущностями и объектами-значениями.
 Рекомендуется, чтобы корень агрегата ссылался на другие корни агрегатов через идентификаторы.
 
-Третьим правилом, которое предлагает DDD, является привнесение в доменную область репозиториев (repositories) -- объектов,
+#figure(
+  image(
+    "files/chapter-1/ddd/ddd-aggregates.svg",
+    format: "svg"
+  ),
+  caption: "Пример агрегата Customer"
+)
+
+Третьим правилом, которое предлагает DDD, является выделение логики создания связанных сущностей в отдельные фабрики,
+что позволяет решить проблему разграничения зон ответственности сущностей.
+
+#figure(
+  image(
+    "files/chapter-1/ddd/ddd-factories.svg",
+    format: "svg"
+  ),
+  caption: "Пример фабрики Route"
+)
+
+Четвёртым правилом, которое предлагает DDD, является привнесение в доменную область репозиториев (repositories) -- объектов,
 которые отвечают за сохранение сущности в программном обеспечении. 
 Как правило, в доменной области определяется только интерфейс репозитория,
 а непосредственно реализация этого интерфейса происходит в инфраструктурном слое приложения.
 
-Четвёртым правилом, которое предлагает DDD, является выделение логики создания связанных сущностей в отдельные фабрики,
-что позволяет решить проблему разграничения зон ответственности сущностей.
+#figure(
+  image(
+    "files/chapter-1/ddd/ddd-repositories.svg",
+    format: "svg",
+    width: 100%
+  ),
+  caption: "Пример логики работы с репозиторием Customer"
+)
 
 К достоинствам данного подхода относится инкапсуляция бизнес-логики в рамках единой доменной модели,
 что упрощает её повторное использование и перенос в между проектами,
@@ -455,6 +515,39 @@ mvc mvp mvvm.
 В контексте клиент-серверных приложений монолитная архитектура предполагает размещение
 клиентского и серверного кода в рамках единого проекта, при этом клиентская часть неотделима от серверной.
 
+#figure(
+  diagram(
+    spacing: 8mm,
+    node-outset: 1mm,
+
+    // Клиент
+    svc-node((0,0), [Клиент], fill: clr-ui, name: <cli>),
+
+    // Монолит — охватывающий узел
+    node(
+      enclose: (<pres>, <biz>, <pers>),
+      corner-radius: node-r,
+      stroke: node-stroke,
+      fill: rgb("#F5F5F5"),
+      name: <mono>,
+    ),
+
+    svc-node((0,1), [Слой представления], fill: clr-ui, name: <pres>),
+    svc-node((0,2), [Бизнес-логика], fill: clr-service, name: <biz>),
+    svc-node((0,3), [Доступ к данным], fill: clr-service, name: <pers>),
+
+    // БД
+    svc-node((0,4), [База данных], fill: clr-data, name: <db>),
+
+    arr(<cli>,  <pres>),
+    arr(<pres>, <biz>),
+    arr(<biz>,  <pers>),
+    arr(<pers>, <db>),
+  ),
+  kind: image,
+  caption: "Монолитная архитектура",
+)
+
 К достоинствам монолитной архитектуры относятся простота и скорость разработки,
 обусловленные сосредоточением всей кодовой базы в одном месте,
 высокая производительность за счёт выполнения всех операций в рамках единого процесса,
@@ -478,6 +571,38 @@ mvc mvp mvvm.
 отделение клиентской части от серверной, разделение клиентской части на микрофронтенды @Microfrontend,
 а серверной -- на микросервисы.
 
+#figure(
+  diagram(
+    spacing: 8mm,
+    node-outset: 1mm,
+
+    // Клиент
+    svc-node((1, 0), [Клиент], fill: clr-ui, name: <ms-cli>),
+
+    // API Gateway
+    svc-node((1, 1), [API Gateway], fill: clr-ui, name: <gw>),
+
+    // Три сервиса
+    svc-node((0, 2), [Сервис A], fill: clr-service, name: <sA>),
+    svc-node((1, 2), [Сервис B], fill: clr-service, name: <sB>),
+    svc-node((2, 2), [Сервис C], fill: clr-service, name: <sC>),
+
+    // БД каждого сервиса
+    svc-node((0, 3), [БД A], fill: clr-data, name: <dbA>),
+    svc-node((1, 3), [БД B], fill: clr-data, name: <dbB>),
+    svc-node((2, 3), [БД C], fill: clr-data, name: <dbC>),
+
+    arr(<ms-cli>, <gw>),
+    arr(<gw>, <sA>),
+    arr(<gw>, <sB>),
+    arr(<gw>, <sC>),
+    arr(<sA>, <dbA>),
+    arr(<sB>, <dbB>),
+    arr(<sC>, <dbC>),
+  ),
+  caption: "Микросервисная архитектура",
+)
+
 Достоинства микросервисной архитектуры непосредственно обусловлены её основополагающим принципом --
 разделением программного кода на автономные модули, что обеспечивает гибкость, масштабируемость,
 технологическое разнообразие и расширяемость системы.
@@ -498,12 +623,49 @@ mvc mvp mvvm.
 в частности, для банков, таких как Альфа-Банк @Alfa-Digital или Т-Банк @T-Bank,
 а также маркетплейсов, например, Ozon @OzonTech или Wildberries @WildberriesTech.
 
-*Модульный монолит* @ModuleMonolith -- это подход к разработке программного обеспечения,
+*Модульно-монолитная архитектура* @ModuleMonolith -- это подход к разработке программного обеспечения,
 призванный сохранить достоинства монолитной архитектуры, такие как простота разработки
 и согласованность данных, дополнив их преимуществами микросервисной архитектуры:
 изоляцией модулей и технологическим разнообразием.
 Основополагающим принципом данного подхода является логическое разграничение модулей,
 в отличии от микросервисной архитектуры, где применяется физическое разграничение модулей.
+
+#figure(
+  diagram(
+    spacing: 8mm,
+    node-outset: 1mm,
+
+    // Клиент
+    svc-node((1, 0), [Клиент], fill: clr-ui, name: <mm-cli>),
+
+    // Слой представления
+    svc-node((1, 1), [Слой представления], fill: clr-ui, name: <mm-pres>),
+
+    // Охватывающий узел — модульный монолит
+    node(
+      enclose: (<mA>, <mB>, <mC>),
+      corner-radius: node-r,
+      stroke: node-stroke,
+      fill: rgb("#F5F5F5"),
+    ),
+
+    svc-node((0, 2), [Модуль A], fill: clr-service, name: <mA>),
+    svc-node((1, 2), [Модуль B], fill: clr-service, name: <mB>),
+    svc-node((2, 2), [Модуль C], fill: clr-service, name: <mC>),
+
+    // Общая БД
+    svc-node((1, 3.2), [Общая база данных], fill: clr-data, name: <mm-db>),
+
+    arr(<mm-cli>,  <mm-pres>),
+    arr(<mm-pres>, <mA>),
+    arr(<mm-pres>, <mB>),
+    arr(<mm-pres>, <mC>),
+    arr(<mA>, <mm-db>),
+    arr(<mB>, <mm-db>),
+    arr(<mC>, <mm-db>),
+  ),
+  caption: "Модульно-монолитная архитектура",
+)
 
 Помимо достоинств, унаследованных от монолитной и микросервисной архитектур,
 модульный монолит обеспечивает возможность постепенного перехода от монолитной к микросервисной архитектуре
@@ -539,7 +701,8 @@ mvc mvp mvvm.
 
 #figure(
   image(
-    "files/layered-architecture/Software_Architecture_Patterns.pdf-image-009.png",
+    "files/chapter-1/layered-architecture/Software_Architecture_Patterns.pdf-image-009.png",
+    width: 70%
   ),
   kind: image,
   caption: "Слоистая архитектура"
@@ -552,7 +715,8 @@ mvc mvp mvvm.
 
 #figure(
   image(
-    "files/layered-architecture/Software_Architecture_Patterns.pdf-image-010.png",
+    "files/chapter-1/layered-architecture/Software_Architecture_Patterns.pdf-image-010.png",
+    width: 70%
   ),
   kind: image,
   caption: "Концепция закрытых слоёв в слоистой архитектуре"
