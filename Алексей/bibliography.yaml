@@ -145,6 +145,13 @@ ModuleMonolith:
         value: https://www.youtube.com/watch?v=4UKjtzeQ_uc
         date: 2026-2-27
 
+Layered-Architecture:
+    type: book
+    author: Mark Richards
+    title: Software Architecture Patterns Second Edition
+    date: 2022
+    publisher: O’Reilly Media, Inc.
+
 Clean-Architecture:
     type: web
     title: The Clean Architecture
