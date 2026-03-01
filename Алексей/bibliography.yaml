@@ -1,6 +1,7 @@
 TDD:
     type: web
     title: Разработка через тестирование (TDD)
+    author: Саша Беспоясов
     url:
         value: https://doka.guide/tools/tdd/
         date: 2026-2-15
@@ -42,6 +43,8 @@ Behave:
 SDD:
     type: web
     title: "Inside Spec-Driven Development: What GitHub’s Spec Kit Makes Possible For AI-assisted Engineering"
+    author: ["Stanislau Shandrokha", "Pavel Golub", "Kanstantsin Yatskevich", "Avya Chaudhary"]
+    date: 2026
     url:
         value: https://www.epam.com/insights/ai/blogs/inside-spec-driven-development-what-githubspec-kit-makes-possible-for-ai-engineering
         date: 2026-2-18
@@ -49,6 +52,7 @@ SDD:
 AI-Agents:
     type: web
     title: "AI-агенты: как они устроены и что умеют"
+    author: Марина Суворова
     url:
         value: https://cloud.ru/blog/kak-ustroyeny-i-chto-umeyut-ai-agenty
         date: 2026-2-18
@@ -56,6 +60,7 @@ AI-Agents:
 MonolithMicroservice:
     type: web
     title: "Monolith vs Microservice Architecture: A Comparison"
+    author: Fernando Doglio
     url:
         value: https://camunda.com/blog/2023/08/monolith-vs-microservice-architecture-comparison/
         date: 2026-2-26
@@ -63,6 +68,7 @@ MonolithMicroservice:
 Microfrontend:
     type: web
     title: Что такое микрофронтенд
+    author: Кристина Тульцева
     url:
         value: https://thecode.media/chto-takoe-mikrofrontend/
         date: 2026-2-27
@@ -83,14 +89,14 @@ RabbitMQ:
 
 nginx:
     type: web
-    title: nginx
+    title: Официальная документация nginx
     url:
         value: https://nginx.org/
         date: 2026-2-27
 
 apache:
     type: web
-    title: Apache HTTP Server Project
+    title: Официальная документация Apache HTTP Server Project
     url:
         value: https://httpd.apache.org/
         date: 2026-2-27
@@ -152,9 +158,18 @@ Layered-Architecture:
     date: 2022
     publisher: O’Reilly Media, Inc.
 
+Onion-Architecture:
+    type: web
+    title: Onion Architecture
+    author: Jeffrey Palermo
+    url:
+        value: https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
+        date: 2026-3-1
+
 Clean-Architecture:
     type: web
     title: The Clean Architecture
+    author: Robert C. Martin
     url:
         value: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
         date: 2026-1-12
