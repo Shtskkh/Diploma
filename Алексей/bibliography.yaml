@@ -172,35 +172,84 @@ Clean-Architecture:
     author: Robert C. Martin
     url:
         value: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
-        date: 2026-1-12
+        date: 2026-3-1
 
-Refactoring-Guru:
+Python:
     type: web
-    title: Refactoring.Guru
+    title: Официальная документация языка Python
     url:
-        value: https://refactoring.guru/
-        date: 2026-1-12
+        value: https://www.python.org/
+        date: 2026-3-2
 
-ASP.NET:
+Django:
     type: web
-    title: ASP.NET
+    title: Официальная документация фреймворка Django
     url:
-        value: https://dotnet.microsoft.com/ru-ru/apps/aspnet, 
-        date: 2026-1-12
+        value: https://www.djangoproject.com/
+        date: 2026-3-2
+
+Flask:
+    type: web
+    title: Официальная документация фреймворка Flask
+    url:
+        value: https://flask.palletsprojects.com/en/stable/
+        date: 2026-3-2
 
 FastAPI:
     type: web
-    title: FastAPI
+    title: Официальная документация фреймворка FastAPI
     url:
         value: https://fastapi.tiangolo.com/
-        date: 2026-1-12
+        date: 2026-3-2
+
+Java:
+    type: web
+    title: Официальная документация языка Java
+    url:
+        value: https://www.java.com/ru/
+        date: 2026-3-2
+
+SpringBoot:
+    type: web
+    title: Официальная документация фреймворка Spring Boot
+    url:
+        value: https://spring.io/projects/spring-boot/
+        date: 2026-3-2
+
+CSharp:
+    type: web
+    title: Официальная документация языка C#
+    url:
+        value: https://learn.microsoft.com/en-us/dotnet/csharp/
+        date: 2026-3-2
+
+ASP.NET:
+    type: web
+    title: Официальная документация ASP.NET Core
+    url:
+        value: https://dotnet.microsoft.com/ru-ru/apps/aspnet/
+        date: 2026-3-2
 
 Go:
     type: web
-    title: Go
+    title: Официальная документация языка Go
     url:
         value: https://go.dev/
-        date: 2026-1-12
+        date: 2026-3-2
+
+Gin:
+    type: web
+    title: Официальная документация фреймворка Gin
+    url:
+        value: https://gin-gonic.com/
+        date: 2026-3-2
+
+Echo:
+    type: web
+    title: Официальная документация фреймворка Echo
+    url:
+        value: https://echo.labstack.com/
+        date: 2026-3-2
 
 PostgreSQL:
     type: web
