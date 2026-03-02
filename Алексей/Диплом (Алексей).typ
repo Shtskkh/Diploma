@@ -331,6 +331,14 @@
 заключается в разработке программного обеспечения через тестирование.
 Процесс разработки по данной методологии происходит через небольшие итерации, проходящие в три этапа.
 
+#figure(
+  image(
+    "files/chapter-1/tdd/tdd.png",
+    width: 75%
+  ),
+  caption: "Test-Driven Development"
+)
+
 Первым этапом, именуемым "красной зоной", является написание тестов для ещё не существующего функционала,
 которые будут выдавать ошибку до того момента, пока не будет написана реализация.
 
@@ -374,9 +382,7 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-entities.svg",
-    format: "svg",
-    width: 75%
+    "files/chapter-1/ddd/ddd-entities.svg"
   ),
   caption: "Пример использования сущностей и объектов-значений"
 )
@@ -388,9 +394,7 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-aggregates.svg",
-    format: "svg",
-    width: 75%
+    "files/chapter-1/ddd/ddd-aggregates.svg"
   ),
   caption: "Пример агрегата Customer"
 )
@@ -400,9 +404,7 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-factories.svg",
-    format: "svg",
-    width: 75%
+    "files/chapter-1/ddd/ddd-factories.svg"
   ),
   caption: "Пример фабрики Route"
 )
@@ -415,8 +417,7 @@
 #figure(
   image(
     "files/chapter-1/ddd/ddd-repositories.svg",
-    format: "svg",
-    width: 100%
+    width: 95%
   ),
   caption: "Пример логики работы с репозиторием Customer"
 )
@@ -432,7 +433,7 @@
 По этим причинам DDD подходит проектам со сложной и долгоживущей бизнес-логикой, тогда как для небольших и краткосрочных
 проектов затраты на применение подхода, как правило, не окупаются.
 
-*Behaviour-Driven Development (BDD)* @BDD -- подход к разработке программного обеспечения,
+*Behavior-Driven Development (BDD)* @BDD -- подход к разработке программного обеспечения,
 являющийся эволюцией метода Test-Driven Development.
 Основной принцип подхода состоит в том, что до написания какой-либо реализации
 специалисты предметной области совместно с разработчиками и тестировщиками
@@ -444,6 +445,13 @@
 Полученные сценарии преобразуются в автоматические тесты с помощью специализированных инструментов,
 таких как Cucumber @Cucumber, SpecFlow @SpecFlow или Behave @Behave, и служат одновременно исполняемой спецификацией
 и приёмочными критериями.
+
+#figure(
+  image(
+    "files/chapter-1/bdd/BDD_Operation_39de9dd9ff.png",
+  ),
+  caption: "Behavior-Driven Development"
+)
 
 Подход решает ключевое ограничение TDD, при котором тесты остаются артефактом, понятным только разработчикам.
 В BDD сценарии становятся общим языком между заказчиком, аналитиком, тестировщиком и разработчиком,
@@ -793,7 +801,7 @@ REST API, подписку на очередь сообщений и т.п.
 #figure(
   image(
     "files/chapter-1/clean-architecture/CleanArchitecture.jpg",
-    format: "jpg"
+    width: 95%
   ),
   caption: "Чистая архитектура"
 )
