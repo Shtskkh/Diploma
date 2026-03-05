@@ -251,36 +251,52 @@ Echo:
         value: https://echo.labstack.com/
         date: 2026-3-2
 
+EFCore:
+    type: web
+    title: Официальная документация Entity Framework Core
+    url:
+        value: https://learn.microsoft.com/en-us/ef/core/
+        date: 2026-3-5
+
 PostgreSQL:
     type: web
-    title: PostgreSQL
+    title: Официальная документация PostgreSQL
     url:
         value: https://www.postgresql.org/
-        date: 2026-1-12
+        date: 2026-3-5
+
+ACID:
+    type: web
+    author: Robert Sheldon
+    title: https://www.techtarget.com/searchdatamanagement/definition/ACID
+    url:
+        value: https://www.techtarget.com/searchdatamanagement/definition/ACID
+        date: 2026-3-5
 
 MySQL:
     type: web
-    title: MySQL
+    title: Официальная документация MySQL
     url:
         value: https://www.mysql.com/
-        date: 2026-1-12
+        date: 2026-3-5
 
 Redis:
     type: web
-    title: Redis
+    title: Официальная документация Redis
     url:
         value: https://redis.io/
-        date: 2026-1-12
+        date: 2026-3-5
 
 MinIO:
     type: web
-    title: MinIO
+    title: Официальная документация MinIO
     url:
         value: https://www.min.io/
-        date: 2026-1-12
-HTTPS:
+        date: 2026-3-5
+
+RustFS:
     type: web
-    title: HTTPS
+    title: Официальная документация RustFS
     url:
-        value: https://ru.wikipedia.org/wiki/HTTPS
-        date: 2026-1-12
+        value: https://rustfs.com/
+        date: 2026-3-5
