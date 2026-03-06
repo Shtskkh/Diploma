@@ -1,7 +1,7 @@
 TDD:
     type: web
     title: Разработка через тестирование (TDD)
-    author: Саша Беспоясов
+    author: Беспоясов С.
     url:
         value: https://doka.guide/tools/tdd/
         date: 2026-2-15
@@ -9,14 +9,14 @@ TDD:
 DDD-Quickly:
     type: book
     title: Domain Driven Design Quickly
-    author: [Abel Avram, Floyd Marinescu]
+    author: [Avram A., Marinescu F.]
     date: 2006
     publisher: C4Media
 
 BDD:
     type: book
     title: BDD в действии
-    author: [Смарт Джон Фергюсон, Молак Ян]
+    author: [Фергюсон С. Д., Молак Я.]
     date: 2023
     publisher: ДМК-Пресс
 
@@ -43,7 +43,7 @@ Behave:
 SDD:
     type: web
     title: "Inside Spec-Driven Development: What GitHub’s Spec Kit Makes Possible For AI-assisted Engineering"
-    author: ["Stanislau Shandrokha", "Pavel Golub", "Kanstantsin Yatskevich", "Avya Chaudhary"]
+    author: [Shandrokha S., Golub P., Yatskevich K., Avya Chaudhary A.]
     date: 2026
     url:
         value: https://www.epam.com/insights/ai/blogs/inside-spec-driven-development-what-githubspec-kit-makes-possible-for-ai-engineering
@@ -52,7 +52,7 @@ SDD:
 AI-Agents:
     type: web
     title: "AI-агенты: как они устроены и что умеют"
-    author: Марина Суворова
+    author: Суворова М.
     url:
         value: https://cloud.ru/blog/kak-ustroyeny-i-chto-umeyut-ai-agenty
         date: 2026-2-18
@@ -60,7 +60,7 @@ AI-Agents:
 MonolithMicroservice:
     type: web
     title: "Monolith vs Microservice Architecture: A Comparison"
-    author: Fernando Doglio
+    author: Doglio F.
     url:
         value: https://camunda.com/blog/2023/08/monolith-vs-microservice-architecture-comparison/
         date: 2026-2-26
@@ -68,7 +68,7 @@ MonolithMicroservice:
 Microfrontend:
     type: web
     title: Что такое микрофронтенд
-    author: Кристина Тульцева
+    author: Тульцева К.
     url:
         value: https://thecode.media/chto-takoe-mikrofrontend/
         date: 2026-2-27
@@ -117,35 +117,35 @@ KrakenD:
 
 OzonTech:
     type: web
-    title: Ozon Tech
+    title: Ozon Tech. Технологический стек
     url:
         value: https://ozon.tech/
         date: 2026-2-27
 
 WildberriesTech:
     type: web
-    title: WBTECH
+    title: WBTECH. Технологический фундамент Wildberries
     url:
         value: https://wbtech.wildberries.ru/
         date: 2026-2-27
 
 Alfa-Digital:
     type: web
-    title: Alfa-Digital
+    title: Альфа-Банк. Технологический радар
     url:
         value: https://digital.alfabank.ru/techradar/
         date: 2026-2-27
 
 T-Bank:
     type: web
-    title: Т-Банк
+    title: Т-Банк. Работа в ИТ
     url:
         value: https://www.tbank.ru/career/it/about/
         date: 2026-2-27
 
 ModuleMonolith:
     type: web
-    author: Денис Цветцих
+    author: Цветцих Д.
     title: Модульный монолит вместо микросервисов
     url:
         value: https://www.youtube.com/watch?v=4UKjtzeQ_uc
@@ -153,7 +153,7 @@ ModuleMonolith:
 
 Layered-Architecture:
     type: book
-    author: Mark Richards
+    author: Richards M.
     title: Software Architecture Patterns Second Edition
     date: 2022
     publisher: O’Reilly Media, Inc.
@@ -161,7 +161,7 @@ Layered-Architecture:
 Onion-Architecture:
     type: web
     title: Onion Architecture
-    author: Jeffrey Palermo
+    author: Palermo J.
     url:
         value: https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
         date: 2026-3-1
@@ -169,7 +169,7 @@ Onion-Architecture:
 Clean-Architecture:
     type: web
     title: The Clean Architecture
-    author: Robert C. Martin
+    author: Martin R. C.
     url:
         value: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
         date: 2026-3-1
@@ -267,7 +267,7 @@ PostgreSQL:
 
 ACID:
     type: web
-    author: Robert Sheldon
+    author: Sheldon R.
     title: https://www.techtarget.com/searchdatamanagement/definition/ACID
     url:
         value: https://www.techtarget.com/searchdatamanagement/definition/ACID
@@ -300,3 +300,17 @@ RustFS:
     url:
         value: https://rustfs.com/
         date: 2026-3-5
+
+Docker:
+    type: web
+    title: Официальная документация Docker
+    url:
+        value: https://www.docker.com/
+        date: 2026-3-6
+
+DockerCompose:
+    type: web
+    title: Официальная документация Docker Compose
+    url:
+        value: https://docs.docker.com/compose/
+        date: 2026-3-6
