@@ -1292,7 +1292,275 @@ TF-IDF по всему корпусу пользователя.
 
 == Разработка доменного слоя
 
-// Текст
+В рамках разработки доменного слоя по принципам DDD были определены два основных абстрактных класса -- для сущностей и объектов-значений.
+
+Для класса сущности было реализовано поле идентификатора, по которому осуществляется сравнение экземпляров,
+обеспечена поддержка различных типов данных для идентификаторов (например, int, Guid или пользовательский класс),
+переопределены механизмы сравнения двух сущностей.
+
+```cs
+  /// <summary>
+  ///     Абстрактный класс сущности.
+  /// </summary>
+  /// <typeparam name="TKey">Тип первичного ключа.</typeparam>
+  public abstract class Entity<TKey> : IEquatable<Entity<TKey>>
+      where TKey : IEquatable<TKey>
+  {
+      /// <summary>
+      ///     Для EF Core.
+      /// </summary>
+      protected Entity()
+      {
+      }
+
+      /// <summary>
+      ///     Конструктор сущности.
+      /// </summary>
+      /// <param name="id">Идентификатор сущности.</param>
+      protected Entity(TKey id)
+      {
+          Id = id;
+      }
+
+      /// <summary>
+      ///     Идентификатор сущности.
+      /// </summary>
+      public TKey Id { get; }
+
+      public bool Equals(Entity<TKey>? other)
+      {
+          if (other is null)
+              return false;
+
+          if (ReferenceEquals(this, other))
+              return true;
+
+          if (GetType() != other.GetType())
+              return false;
+
+          if (IsTransient() || other.IsTransient())
+              return false;
+
+          return Id.Equals(other.Id);
+      }
+
+      /// <inheritdoc />
+      public override bool Equals(object? obj)
+      {
+          return obj is Entity<TKey> entity && Equals(entity);
+      }
+
+      /// <inheritdoc />
+      public override int GetHashCode()
+      {
+          if (IsTransient())
+              return base.GetHashCode();
+
+          return Id.GetHashCode();
+      }
+
+      /// <summary>
+      ///     Оператор проверки равенства сущностей.
+      /// </summary>
+      /// <param name="left">Левый операнд.</param>
+      /// <param name="right">Правый операнд.</param>
+      /// <returns>
+      ///     True, если сущности равны, false иначе.
+      /// </returns>
+      public static bool operator ==(Entity<TKey>? left, Entity<TKey>? right)
+      {
+          return left?.Equals(right) ?? right is null;
+      }
+
+      /// <summary>
+      ///     Оператор проверки неравенства сущностей.
+      /// </summary>
+      /// <param name="left">Левый операнд.</param>
+      /// <param name="right">Правый операнд.</param>
+      /// <returns>
+      ///     True, если сущности неравны, false иначе.
+      /// </returns>
+      public static bool operator !=(Entity<TKey>? left, Entity<TKey>? right)
+      {
+          return !(left == right);
+      }
+
+      /// <summary>
+      ///     Проверка на присвоение ID.
+      /// </summary>
+      /// <returns>True, если ID не присвоен (равен значению по умолчанию), false если ID присвоен.</returns>
+      public bool IsTransient()
+      {
+          return EqualityComparer<TKey>.Default.Equals(Id, default);
+      }
+  }
+```
+
+Для класса объекта-значения был реализован механизм сравнения на основе абстрактного метода GetEqualityComponents, возвращающего набор полей через yield.
+Каждый наследующий класс обязан переопределить данный метод, указав поля, участвующие в сравнении.
+Хэш-код объекта также вычисляется на основе этих компонентов с использованием HashCode.
+
+```cs
+  /// <summary>
+  ///     Абстрактный класс объекта-значения.
+  /// </summary>
+  public abstract class ValueObject : IEquatable<ValueObject>
+  {
+      /// <inheritdoc />
+      public bool Equals(ValueObject? other)
+      {
+          if (other is null)
+              return false;
+
+          if (ReferenceEquals(this, other))
+              return true;
+
+          if (GetType() != other.GetType())
+              return false;
+
+          return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+      }
+
+      /// <summary>
+      ///     Метод получения параметров для сравнения.
+      /// </summary>
+      /// <returns>
+      ///     Объекты для сравнения через yield.
+      /// </returns>
+      protected abstract IEnumerable<object?> GetEqualityComponents();
+
+      /// <inheritdoc />
+      public override bool Equals(object? obj)
+      {
+          return obj is ValueObject valueObject && Equals(valueObject);
+      }
+
+      /// <inheritdoc />
+      public override int GetHashCode()
+      {
+          var hash = new HashCode();
+
+          foreach (var component in GetEqualityComponents())
+              hash.Add(component);
+
+          return hash.ToHashCode();
+      }
+
+      /// <summary>
+      ///     Оператор проверки равенства объектов.
+      /// </summary>
+      /// <param name="left">Левый операнд.</param>
+      /// <param name="right">Правый операнд.</param>
+      /// <returns>
+      ///     True, если объекты равны, false иначе.
+      /// </returns>
+      public static bool operator ==(ValueObject? left, ValueObject? right)
+      {
+          return left?.Equals(right) ?? right is null;
+      }
+
+      /// <summary>
+      ///     Оператор проверки неравенства объектов.
+      /// </summary>
+      /// <param name="left">Левый операнд.</param>
+      /// <param name="right">Правый операнд.</param>
+      /// <returns>
+      ///     True, если объекты неравны, false иначе.
+      /// </returns>
+      public static bool operator !=(ValueObject? left, ValueObject? right)
+      {
+          return !(left == right);
+      }
+  }
+```
+
+Оба класса реализуют интерфейс IEquatable, что обеспечивает возможность использования в качестве типа идентификатора сущности как простых типов,
+так и пользовательских классов.
+Важным отличием проверки идентичности сущностей от объектов-значений является то,
+что для сущности выполняется сравнение только идентификаторов, тогда как для объектов-значений необходимо сравнение всех полей.
+
+Предложенная реализация обеспечивает гибкость при описании сущностей и объектов-значений в рамках доменной модели.
+
+Поскольку объекты-значения являются составными блоками сущностей,
+в качестве примера рассмотрим реализацию класса для текстовых полей.
+
+```cs
+  /// <summary>
+  ///     Базовый класс для текстовых полей.
+  /// </summary>
+  public class TextField : ValueObject
+  {
+      /// <summary>
+      ///     Для EF Core.
+      /// </summary>
+      private TextField()
+      {
+      }
+
+      public TextField(
+          string value,
+          int maxLength,
+          int minLength = 1,
+          Error? nullError = null,
+          Error? tooShortError = null,
+          Error? tooLongError = null)
+      {
+          if (string.IsNullOrWhiteSpace(value))
+              throw new DomainException(nullError ?? TextFieldErrors.ValueIsNull);
+
+          var trimmed = value.Trim();
+
+          if (trimmed.Length < minLength)
+              throw new DomainException(tooShortError ?? TextFieldErrors.ValueTooShort(minLength));
+
+          if (trimmed.Length > maxLength)
+              throw new DomainException(tooLongError ?? TextFieldErrors.ValueTooLong(maxLength));
+
+          Value = trimmed;
+      }
+
+      /// <summary>
+      ///     Значение текстового поля.
+      /// </summary>
+      public string Value { get; } = null!;
+
+      protected override IEnumerable<object?> GetEqualityComponents()
+      {
+          yield return Value;
+      }
+  }
+```
+
+Класс TextField наследуется от ValueObject и переопределяет метод GetEqualityComponents, возвращая единственное поле Value.
+Конструктор класса принимает строку и параметры для валидации -- максимальную и минимальную длину,
+а также необязательные объекты ошибок для различных случаев некорректного значения.
+При создании экземпляра TextField выполняется проверка на null или пустую строку, 
+а также на соответствие заданным ограничениям по длине, что обеспечивает инвариант класса и гарантирует корректность данных.
+Класс TextField может использоваться в качестве типа для текстовых полей сущностей,
+обеспечивая при этом встроенную валидацию и поддержку сравнения на основе значения.
+
+Пример использования TextField в качестве базового класса для названия мероприятия представлен ниже.
+
+```cs
+  /// <summary>
+  ///     Название мероприятия.
+  /// </summary>
+  public class Title : TextField
+  {
+      public const int MaxLength = 128;
+
+      public Title(string value) : base(
+          value,
+          MaxLength,
+          nullError: EventTitleErrors.NullOrWhitespace,
+          tooLongError: EventTitleErrors.GreaterThanMaxLength)
+      {
+      }
+  }
+```
+
+Наследование от класса TextField позволяет инкапсулировать в наследниках только необходимую логику,исключая дублирование базовых проверок.
+Это позволяет сущностям, составленным из подобных полей, быть сфокусированными на оркестрации бизнес-правил, а не на валидации данных.
 
 #linebreak()
 
