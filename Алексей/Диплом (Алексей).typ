@@ -1299,101 +1299,101 @@ TF-IDF по всему корпусу пользователя.
 переопределены механизмы сравнения двух сущностей.
 
 ```cs
-  /// <summary>
-  ///     Абстрактный класс сущности.
-  /// </summary>
-  /// <typeparam name="TKey">Тип первичного ключа.</typeparam>
-  public abstract class Entity<TKey> : IEquatable<Entity<TKey>>
-      where TKey : IEquatable<TKey>
-  {
-      /// <summary>
-      ///     Для EF Core.
-      /// </summary>
-      protected Entity()
-      {
-      }
+/// <summary>
+///     Абстрактный класс сущности.
+/// </summary>
+/// <typeparam name="TKey">Тип первичного ключа.</typeparam>
+public abstract class Entity<TKey> : IEquatable<Entity<TKey>>
+    where TKey : IEquatable<TKey>
+{
+    /// <summary>
+    ///     Для EF Core.
+    /// </summary>
+    protected Entity()
+    {
+    }
 
-      /// <summary>
-      ///     Конструктор сущности.
-      /// </summary>
-      /// <param name="id">Идентификатор сущности.</param>
-      protected Entity(TKey id)
-      {
-          Id = id;
-      }
+    /// <summary>
+    ///     Конструктор сущности.
+    /// </summary>
+    /// <param name="id">Идентификатор сущности.</param>
+    protected Entity(TKey id)
+    {
+        Id = id;
+    }
 
-      /// <summary>
-      ///     Идентификатор сущности.
-      /// </summary>
-      public TKey Id { get; }
+    /// <summary>
+    ///     Идентификатор сущности.
+    /// </summary>
+    public TKey Id { get; }
 
-      public bool Equals(Entity<TKey>? other)
-      {
-          if (other is null)
-              return false;
+    public bool Equals(Entity<TKey>? other)
+    {
+        if (other is null)
+            return false;
 
-          if (ReferenceEquals(this, other))
-              return true;
+        if (ReferenceEquals(this, other))
+            return true;
 
-          if (GetType() != other.GetType())
-              return false;
+        if (GetType() != other.GetType())
+            return false;
 
-          if (IsTransient() || other.IsTransient())
-              return false;
+        if (IsTransient() || other.IsTransient())
+            return false;
 
-          return Id.Equals(other.Id);
-      }
+        return Id.Equals(other.Id);
+    }
 
-      /// <inheritdoc />
-      public override bool Equals(object? obj)
-      {
-          return obj is Entity<TKey> entity && Equals(entity);
-      }
+    /// <inheritdoc />
+    public override bool Equals(object? obj)
+    {
+        return obj is Entity<TKey> entity && Equals(entity);
+    }
 
-      /// <inheritdoc />
-      public override int GetHashCode()
-      {
-          if (IsTransient())
-              return base.GetHashCode();
+    /// <inheritdoc />
+    public override int GetHashCode()
+    {
+        if (IsTransient())
+            return base.GetHashCode();
 
-          return Id.GetHashCode();
-      }
+        return Id.GetHashCode();
+    }
 
-      /// <summary>
-      ///     Оператор проверки равенства сущностей.
-      /// </summary>
-      /// <param name="left">Левый операнд.</param>
-      /// <param name="right">Правый операнд.</param>
-      /// <returns>
-      ///     True, если сущности равны, false иначе.
-      /// </returns>
-      public static bool operator ==(Entity<TKey>? left, Entity<TKey>? right)
-      {
-          return left?.Equals(right) ?? right is null;
-      }
+    /// <summary>
+    ///     Оператор проверки равенства сущностей.
+    /// </summary>
+    /// <param name="left">Левый операнд.</param>
+    /// <param name="right">Правый операнд.</param>
+    /// <returns>
+    ///     True, если сущности равны, false иначе.
+    /// </returns>
+    public static bool operator ==(Entity<TKey>? left, Entity<TKey>? right)
+    {
+        return left?.Equals(right) ?? right is null;
+    }
 
-      /// <summary>
-      ///     Оператор проверки неравенства сущностей.
-      /// </summary>
-      /// <param name="left">Левый операнд.</param>
-      /// <param name="right">Правый операнд.</param>
-      /// <returns>
-      ///     True, если сущности неравны, false иначе.
-      /// </returns>
-      public static bool operator !=(Entity<TKey>? left, Entity<TKey>? right)
-      {
-          return !(left == right);
-      }
+    /// <summary>
+    ///     Оператор проверки неравенства сущностей.
+    /// </summary>
+    /// <param name="left">Левый операнд.</param>
+    /// <param name="right">Правый операнд.</param>
+    /// <returns>
+    ///     True, если сущности неравны, false иначе.
+    /// </returns>
+    public static bool operator !=(Entity<TKey>? left, Entity<TKey>? right)
+    {
+        return !(left == right);
+    }
 
-      /// <summary>
-      ///     Проверка на присвоение ID.
-      /// </summary>
-      /// <returns>True, если ID не присвоен (равен значению по умолчанию), false если ID присвоен.</returns>
-      public bool IsTransient()
-      {
-          return EqualityComparer<TKey>.Default.Equals(Id, default);
-      }
-  }
+    /// <summary>
+    ///     Проверка на присвоение ID.
+    /// </summary>
+    /// <returns>True, если ID не присвоен (равен значению по умолчанию), false если ID присвоен.</returns>
+    public bool IsTransient()
+    {
+        return EqualityComparer<TKey>.Default.Equals(Id, default);
+    }
+}
 ```
 
 Для класса объекта-значения был реализован механизм сравнения на основе абстрактного метода GetEqualityComponents, возвращающего набор полей через yield.
@@ -1401,77 +1401,77 @@ TF-IDF по всему корпусу пользователя.
 Хэш-код объекта также вычисляется на основе этих компонентов с использованием HashCode.
 
 ```cs
-  /// <summary>
-  ///     Абстрактный класс объекта-значения.
-  /// </summary>
-  public abstract class ValueObject : IEquatable<ValueObject>
-  {
-      /// <inheritdoc />
-      public bool Equals(ValueObject? other)
-      {
-          if (other is null)
-              return false;
+/// <summary>
+///     Абстрактный класс объекта-значения.
+/// </summary>
+public abstract class ValueObject : IEquatable<ValueObject>
+{
+    /// <inheritdoc />
+    public bool Equals(ValueObject? other)
+    {
+        if (other is null)
+            return false;
 
-          if (ReferenceEquals(this, other))
-              return true;
+        if (ReferenceEquals(this, other))
+            return true;
 
-          if (GetType() != other.GetType())
-              return false;
+        if (GetType() != other.GetType())
+            return false;
 
-          return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
-      }
+        return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+    }
 
-      /// <summary>
-      ///     Метод получения параметров для сравнения.
-      /// </summary>
-      /// <returns>
-      ///     Объекты для сравнения через yield.
-      /// </returns>
-      protected abstract IEnumerable<object?> GetEqualityComponents();
+    /// <summary>
+    ///     Метод получения параметров для сравнения.
+    /// </summary>
+    /// <returns>
+    ///     Объекты для сравнения через yield.
+    /// </returns>
+    protected abstract IEnumerable<object?> GetEqualityComponents();
 
-      /// <inheritdoc />
-      public override bool Equals(object? obj)
-      {
-          return obj is ValueObject valueObject && Equals(valueObject);
-      }
+    /// <inheritdoc />
+    public override bool Equals(object? obj)
+    {
+        return obj is ValueObject valueObject && Equals(valueObject);
+    }
 
-      /// <inheritdoc />
-      public override int GetHashCode()
-      {
-          var hash = new HashCode();
+    /// <inheritdoc />
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
 
-          foreach (var component in GetEqualityComponents())
-              hash.Add(component);
+        foreach (var component in GetEqualityComponents())
+            hash.Add(component);
 
-          return hash.ToHashCode();
-      }
+        return hash.ToHashCode();
+    }
 
-      /// <summary>
-      ///     Оператор проверки равенства объектов.
-      /// </summary>
-      /// <param name="left">Левый операнд.</param>
-      /// <param name="right">Правый операнд.</param>
-      /// <returns>
-      ///     True, если объекты равны, false иначе.
-      /// </returns>
-      public static bool operator ==(ValueObject? left, ValueObject? right)
-      {
-          return left?.Equals(right) ?? right is null;
-      }
+    /// <summary>
+    ///     Оператор проверки равенства объектов.
+    /// </summary>
+    /// <param name="left">Левый операнд.</param>
+    /// <param name="right">Правый операнд.</param>
+    /// <returns>
+    ///     True, если объекты равны, false иначе.
+    /// </returns>
+    public static bool operator ==(ValueObject? left, ValueObject? right)
+    {
+        return left?.Equals(right) ?? right is null;
+    }
 
-      /// <summary>
-      ///     Оператор проверки неравенства объектов.
-      /// </summary>
-      /// <param name="left">Левый операнд.</param>
-      /// <param name="right">Правый операнд.</param>
-      /// <returns>
-      ///     True, если объекты неравны, false иначе.
-      /// </returns>
-      public static bool operator !=(ValueObject? left, ValueObject? right)
-      {
-          return !(left == right);
-      }
-  }
+    /// <summary>
+    ///     Оператор проверки неравенства объектов.
+    /// </summary>
+    /// <param name="left">Левый операнд.</param>
+    /// <param name="right">Правый операнд.</param>
+    /// <returns>
+    ///     True, если объекты неравны, false иначе.
+    /// </returns>
+    public static bool operator !=(ValueObject? left, ValueObject? right)
+    {
+        return !(left == right);
+    }
+}
 ```
 
 Оба класса реализуют интерфейс IEquatable, что обеспечивает возможность использования в качестве типа идентификатора сущности как простых типов,
@@ -1485,50 +1485,50 @@ TF-IDF по всему корпусу пользователя.
 в качестве примера рассмотрим реализацию класса для текстовых полей.
 
 ```cs
-  /// <summary>
-  ///     Базовый класс для текстовых полей.
-  /// </summary>
-  public class TextField : ValueObject
-  {
-      /// <summary>
-      ///     Для EF Core.
-      /// </summary>
-      private TextField()
-      {
-      }
+/// <summary>
+///     Базовый класс для текстовых полей.
+/// </summary>
+public class TextField : ValueObject
+{
+    /// <summary>
+    ///     Для EF Core.
+    /// </summary>
+    private TextField()
+    {
+    }
 
-      public TextField(
-          string value,
-          int maxLength,
-          int minLength = 1,
-          Error? nullError = null,
-          Error? tooShortError = null,
-          Error? tooLongError = null)
-      {
-          if (string.IsNullOrWhiteSpace(value))
-              throw new DomainException(nullError ?? TextFieldErrors.ValueIsNull);
+    public TextField(
+        string value,
+        int maxLength,
+        int minLength = 1,
+        Error? nullError = null,
+        Error? tooShortError = null,
+        Error? tooLongError = null)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            throw new DomainException(nullError ?? TextFieldErrors.ValueIsNull);
 
-          var trimmed = value.Trim();
+        var trimmed = value.Trim();
 
-          if (trimmed.Length < minLength)
-              throw new DomainException(tooShortError ?? TextFieldErrors.ValueTooShort(minLength));
+        if (trimmed.Length < minLength)
+            throw new DomainException(tooShortError ?? TextFieldErrors.ValueTooShort(minLength));
 
-          if (trimmed.Length > maxLength)
-              throw new DomainException(tooLongError ?? TextFieldErrors.ValueTooLong(maxLength));
+        if (trimmed.Length > maxLength)
+            throw new DomainException(tooLongError ?? TextFieldErrors.ValueTooLong(maxLength));
 
-          Value = trimmed;
-      }
+        Value = trimmed;
+    }
 
-      /// <summary>
-      ///     Значение текстового поля.
-      /// </summary>
-      public string Value { get; } = null!;
+    /// <summary>
+    ///     Значение текстового поля.
+    /// </summary>
+    public string Value { get; } = null!;
 
-      protected override IEnumerable<object?> GetEqualityComponents()
-      {
-          yield return Value;
-      }
-  }
+    protected override IEnumerable<object?> GetEqualityComponents()
+    {
+        yield return Value;
+    }
+}
 ```
 
 Класс TextField наследуется от ValueObject и переопределяет метод GetEqualityComponents, возвращая единственное поле Value.
@@ -1542,25 +1542,535 @@ TF-IDF по всему корпусу пользователя.
 Пример использования TextField в качестве базового класса для названия мероприятия представлен ниже.
 
 ```cs
-  /// <summary>
-  ///     Название мероприятия.
-  /// </summary>
-  public class Title : TextField
-  {
-      public const int MaxLength = 128;
+/// <summary>
+///     Название мероприятия.
+/// </summary>
+public class Title : TextField
+{
+    public const int MaxLength = 128;
 
-      public Title(string value) : base(
-          value,
-          MaxLength,
-          nullError: EventTitleErrors.NullOrWhitespace,
-          tooLongError: EventTitleErrors.GreaterThanMaxLength)
-      {
-      }
-  }
+    public Title(string value) : base(
+        value,
+        MaxLength,
+        nullError: EventTitleErrors.NullOrWhitespace,
+        tooLongError: EventTitleErrors.GreaterThanMaxLength)
+    {
+    }
+}
 ```
 
-Наследование от класса TextField позволяет инкапсулировать в наследниках только необходимую логику,исключая дублирование базовых проверок.
+Наследование от класса TextField позволяет инкапсулировать в наследниках только необходимую логику, исключая дублирование базовых проверок.
 Это позволяет сущностям, составленным из подобных полей, быть сфокусированными на оркестрации бизнес-правил, а не на валидации данных.
+
+Примером реализации сущности, составленной из объектов-значений, является класс мероприятия, представленный ниже.
+
+```cs
+/// <summary>
+///     Сущность мероприятия.
+/// </summary>
+public sealed class Event : Entity<Guid>, IAuditable, IAggregateRoot
+{
+    /// <summary>
+    ///     Участники.
+    /// </summary>
+    private readonly List<Participant> _participants = [];
+
+    /// <summary>
+    ///     Тэги.
+    /// </summary>
+    private readonly List<Tag> _tags = [];
+
+    /// <summary>
+    ///     Для EF Core.
+    /// </summary>
+    private Event()
+    {
+    }
+
+    /// <summary>
+    ///     Конструктор мероприятия.
+    /// </summary>
+    /// <param name="id">Идентификатор мероприятия.</param>
+    /// <param name="title">Название мероприятия.</param>
+    /// <param name="announcement">Анонс (краткое описание) мероприятия.</param>
+    /// <param name="description">Описание мероприятия.</param>
+    /// <param name="dateTimeRange">Диапазон дат проведения мероприятия.</param>
+    /// <param name="eventType">Тип мероприятия.</param>
+    /// <param name="eventFormat">Формат мероприятия.</param>
+    /// <param name="userId">ID пользователя.</param>
+    /// <param name="needsRegistration">Флаг необходимости регистрации.</param>
+    public Event(Guid id, Title title, Announcement announcement, Description description,
+        DateTimeRange dateTimeRange, EventType eventType, EventFormat eventFormat,
+        Guid userId, bool needsRegistration) : base(id)
+    {
+        Title = title;
+        Announcement = announcement;
+        Description = description;
+        DateTimeRange = dateTimeRange;
+        Type = eventType;
+        Format = eventFormat;
+        NeedsRegistration = needsRegistration;
+        UserId = userId;
+        CreatedAt = DateTimeOffset.UtcNow;
+        UpdatedAt = DateTimeOffset.UtcNow;
+    }
+
+    /// <summary>
+    ///     Название мероприятия.
+    /// </summary>
+    public Title Title { get; private set; } = null!;
+
+    /// <summary>
+    ///     Анонс (краткое описание) мероприятия.
+    /// </summary>
+    public Announcement Announcement { get; private set; } = null!;
+
+    /// <summary>
+    ///     Описание мероприятия.
+    /// </summary>
+    public Description Description { get; private set; } = null!;
+
+    /// <summary>
+    ///     Диапазон дат проведения мероприятия.
+    /// </summary>
+    public DateTimeRange DateTimeRange { get; private set; } = null!;
+
+    /// <summary>
+    ///     Тип мероприятия.
+    /// </summary>
+    public EventType Type { get; private set; } = null!;
+
+    /// <summary>
+    ///     Формат мероприятия.
+    /// </summary>
+    public EventFormat Format { get; } = null!;
+
+    /// <summary>
+    ///     ID пользователя, создавшего мероприятие.
+    /// </summary>
+    public Guid UserId { get; }
+
+    /// <summary>
+    ///     Флаг необходимости регистрации на мероприятие.
+    /// </summary>
+    public bool NeedsRegistration { get; private set; }
+
+    /// <summary>
+    ///     Максимальное число участников.
+    /// </summary>
+    public int? MaxParticipants { get; private set; }
+
+    /// <summary>
+    ///     Пришедшее количество участников.
+    /// </summary>
+    public int? FinalParticipantsCount { get; private set; }
+
+    /// <summary>
+    ///     Информация о бронировании.
+    /// </summary>
+    public Booking? Booking { get; private set; }
+
+    /// <summary>
+    ///     Название файла превью.
+    /// </summary>
+    public string? PreviewFilename { get; private set; }
+
+    /// <summary>
+    ///     Название файла плейсхолдера превью.
+    /// </summary>
+    public string? PlaceholderFilename { get; private set; }
+
+    /// <summary>
+    ///     Участники мероприятия.
+    /// </summary>
+    public IReadOnlyCollection<Participant> Participants => _participants.AsReadOnly();
+
+    /// <summary>
+    ///     Тэги.
+    /// </summary>
+    public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();
+
+    /// <inheritdoc />
+    public DateTimeOffset CreatedAt { get; }
+
+    /// <inheritdoc />
+    public DateTimeOffset UpdatedAt { get; }
+
+    /// <summary>
+    ///     Метод изменения названия мероприятия.
+    /// </summary>
+    /// <param name="title">Новое название.</param>
+    public void ChangeTitle(string title)
+    {
+        Title = new Title(title);
+    }
+
+    /// <summary>
+    ///     Метод изменения анонса мероприятия.
+    /// </summary>
+    /// <param name="announcement">Новый анонс.</param>
+    public void ChangeAnnouncement(string announcement)
+    {
+        Announcement = new Announcement(announcement);
+    }
+
+    /// <summary>
+    ///     Метод изменения описания мероприятия.
+    /// </summary>
+    /// <param name="description">Новое описание.</param>
+    public void ChangeDescription(string description)
+    {
+        Description = new Description(description);
+    }
+
+    /// <summary>
+    ///     Изменить диапазон дат мероприятия.
+    /// </summary>
+    /// <param name="newStart">Новая дата и время начала.</param>
+    /// <param name="newEnd">Новая дата и время окончания.</param>
+    public void ChangeDateTimeRange(DateTimeOffset newStart, DateTimeOffset newEnd)
+    {
+        DateTimeRange = new DateTimeRange(newStart, newEnd);
+    }
+
+    /// <summary>
+    ///     Изменить дату начала мероприятия.
+    /// </summary>
+    /// <param name="newStart">Новая дата и время начала.</param>
+    public void ChangeStartDateTime(DateTimeOffset newStart)
+    {
+        DateTimeRange = DateTimeRange.WithStart(newStart);
+    }
+
+    /// <summary>
+    ///     Изменить дату окончания мероприятия.
+    /// </summary>
+    /// <param name="newEnd">Новая дата и время окончания.</param>
+    public void ChangeEndDateTime(DateTimeOffset newEnd)
+    {
+        DateTimeRange = DateTimeRange.WithEnd(newEnd);
+    }
+
+    /// <summary>
+    ///     Изменить тип мероприятия.
+    /// </summary>
+    /// <param name="eventType">Новый тип мероприятия.</param>
+    public void ChangeEventType(EventType eventType)
+    {
+        Type = eventType;
+    }
+
+    /// <summary>
+    ///     Изменить флаг необходимости регистрации.
+    /// </summary>
+    /// <param name="needsRegistration">Флаг необходимости регистрации.</param>
+    public void ChangeNeedsRegistration(bool needsRegistration)
+    {
+        NeedsRegistration = needsRegistration;
+    }
+
+    /// <summary>
+    ///     Изменить название файла превью.
+    /// </summary>
+    /// <param name="previewFileName">Название нового файла.</param>
+    public void ChangePreview(string previewFileName)
+    {
+        PreviewFilename = previewFileName;
+    }
+
+    /// <summary>
+    ///     Изменить плейсхолдер.
+    /// </summary>
+    /// <param name="placeholderFilename">Название файла плейсхолдера.</param>
+    public void ChangePlaceHolder(string placeholderFilename)
+    {
+        PlaceholderFilename = placeholderFilename;
+    }
+
+    /// <summary>
+    ///     Изменить максимальное количество участников.
+    /// </summary>
+    /// <param name="maxParticipants">Новое максимальное количество участников.</param>
+    public void ChangeMaxParticipants(int maxParticipants)
+    {
+        MaxParticipants = maxParticipants;
+    }
+
+    /// <summary>
+    ///     Добавить участника.
+    /// </summary>
+    /// <param name="userId">Идентификатор участника.</param>
+    /// <exception cref="DomainException">Ошибка правил домена.</exception>
+    public void AddParticipant(Guid userId)
+    {
+        if (!NeedsRegistration)
+            throw new DomainException(EventParticipantErrors.RegistrationNotRequired);
+
+        if (_participants.Any(p => p.UserId == userId))
+            throw new DomainException(EventParticipantErrors.AlreadyRegistered(userId));
+
+        if (MaxParticipants.HasValue && _participants.Count >= MaxParticipants.Value)
+            throw new DomainException(EventParticipantErrors.MaxCountReached(MaxParticipants.Value));
+
+        _participants.Add(new Participant(Id, userId));
+    }
+
+    /// <summary>
+    ///     Удалить участника.
+    /// </summary>
+    /// <param name="userId">Идентификатор участника.</param>
+    /// <exception cref="NotFoundException">Участник не найден.</exception>
+    public void RemoveParticipant(Guid userId)
+    {
+        var participant = _participants.FirstOrDefault(p => p.UserId == userId);
+
+        if (participant == null)
+            throw new NotFoundException(EventParticipantErrors.NotFoundById(userId));
+
+        _participants.Remove(participant);
+    }
+
+    /// <summary>
+    ///     Изменить финальное количество участников.
+    /// </summary>
+    /// <param name="finalParticipantsCount">Количество пришедших.</param>
+    public void ChangeFinalParticipantsCount(int finalParticipantsCount)
+    {
+        FinalParticipantsCount = finalParticipantsCount;
+    }
+
+    /// <summary>
+    ///     Забронировать помещение.
+    /// </summary>
+    /// <param name="locationId">ID локации.</param>
+    /// <param name="placeId">ID помещения в локации.</param>
+    /// <exception cref="DomainException">Ошибка правил домена.</exception>
+    public void Book(int locationId, int placeId)
+    {
+        if (Format.Id == EventFormat.Online.Id)
+            throw new DomainException(EventBookingErrors.NotAllowedForOnline);
+
+        Booking = new Booking(locationId, placeId);
+    }
+
+    /// <summary>
+    ///     Убрать бронирование.
+    /// </summary>
+    public void Unbook()
+    {
+        Booking = null;
+    }
+
+    /// <summary>
+    ///     Добавить тэг.
+    /// </summary>
+    /// <param name="tag">Тэг.</param>
+    /// <exception cref="DomainException">Ошибка правил домена.</exception>
+    public void AddTag(Tag tag)
+    {
+        if (_tags.Any(t => t == tag))
+            throw new DomainException(TagErrors.AlreadyAssigned(tag));
+
+        _tags.Add(tag);
+    }
+
+    /// <summary>
+    ///     Убрать тэг.
+    /// </summary>
+    /// <param name="tagId">ID тэга.</param>
+    /// <exception cref="NotFoundException">Тэг не найден.</exception>
+    public void RemoveTag(int tagId)
+    {
+        var tagToRemove = _tags.FirstOrDefault(t => t.Id == tagId);
+
+        if (tagToRemove == null)
+            throw new NotFoundException(EventErrors.TagNotFoundById(tagId));
+
+        _tags.Remove(tagToRemove);
+    }
+}
+```
+
+Конструктор класса сущности принимает только обязательные параметры, что обеспечивает создание объекта в корректном минимальном состоянии.
+Параметры передаются непосредственно в виде объектов-значений, тогда как параметры,
+являющиеся частью других агрегатов (например, userId), передаются по идентификатору, а не по ссылке.
+Опциональные и взаимоисключающие параметры устанавливаются посредством методов класса.
+
+Для создания полностью инициализированного объекта сущности в рамках подхода DDD рекомендуется использование фабричного метода,
+пример которого представлен ниже.
+
+```cs
+/// <summary>
+///     Фабрика мероприятия.
+/// </summary>
+public static class EventFactory
+{
+    /// <summary>
+    ///     Создать мероприятие.
+    /// </summary>
+    /// <param name="title">Название.</param>
+    /// <param name="announcement">Анонс (краткое описание).</param>
+    /// <param name="description">Описание.</param>
+    /// <param name="startDateTime">Дата и время начала.</param>
+    /// <param name="endDateTime">Дата и время окончания.</param>
+    /// <param name="eventType">Тип мероприятия.</param>
+    /// <param name="eventFormat">Формат мероприятия.</param>
+    /// <param name="needRegistration">Необходимость регистрации.</param>
+    /// <param name="userId">ID пользователя.</param>
+    /// <param name="locationId">ID локации.</param>
+    /// <param name="placeId">ID помещения.</param>
+    /// <param name="maxParticipants">Максимальное количество участников.</param>
+    /// <param name="previewFilename">Название файла превью.</param>
+    /// <param name="placeholderFilename">Название плейсхолдера превью.</param>
+    /// <param name="tags">Тэги мероприятия.</param>
+    /// <returns>Объект сущности мероприятия.</returns>
+    public static Event Create(
+        string title,
+        string announcement,
+        string description,
+        DateTimeOffset startDateTime,
+        DateTimeOffset endDateTime,
+        EventType eventType,
+        EventFormat eventFormat,
+        Guid userId,
+        bool needRegistration,
+        int? locationId = null,
+        int? placeId = null,
+        int? maxParticipants = null,
+        string? previewFilename = null,
+        string? placeholderFilename = null,
+        IReadOnlyCollection<Tag>? tags = null)
+    {
+        ValidatePreview(previewFilename, placeholderFilename);
+        ValidateRegistration(needRegistration, maxParticipants);
+        ValidateBooking(eventFormat, locationId, placeId);
+
+        var @event = new Event(
+            Guid.NewGuid(),
+            new Title(title),
+            new Announcement(announcement),
+            new Description(description),
+            new DateTimeRange(startDateTime, endDateTime),
+            eventType,
+            eventFormat,
+            userId,
+            needRegistration);
+
+        ApplyPreview(@event, previewFilename, placeholderFilename);
+
+        if (maxParticipants.HasValue)
+            @event.ChangeMaxParticipants(maxParticipants.Value);
+
+        if (locationId.HasValue && placeId.HasValue)
+            @event.Book(locationId.Value, placeId.Value);
+
+        if (tags != null && tags.Count > 0)
+            foreach (var tag in tags)
+                @event.AddTag(tag);
+
+        return @event;
+    }
+
+    private static void ValidatePreview(string? previewFilename, string? placeholderFilename)
+    {
+        if (string.IsNullOrWhiteSpace(previewFilename) && string.IsNullOrWhiteSpace(placeholderFilename))
+            throw new DomainException(EventPreviewErrors.PlaceholderAndPreviewCannotBothBeEmpty);
+
+        if (!string.IsNullOrWhiteSpace(previewFilename) && !string.IsNullOrWhiteSpace(placeholderFilename))
+            throw new DomainException(EventPreviewErrors.PlaceholderAndPreviewCannotBothBeSet);
+    }
+
+    private static void ValidateRegistration(bool needRegistration, int? maxParticipants)
+    {
+        if (needRegistration && !maxParticipants.HasValue)
+            throw new DomainException(EventParticipantErrors.MaxCountMustBeSet);
+    }
+
+    private static void ValidateBooking(EventFormat eventFormat, int? locationId, int? placeId)
+    {
+        if (eventFormat.Id != EventFormat.Online.Id && (!locationId.HasValue || !placeId.HasValue))
+            throw new DomainException(EventBookingErrors.RequiredForOfflineAndHybrid);
+    }
+
+    private static void ApplyPreview(Event @event, string? previewFilename, string? placeholderFilename)
+    {
+        if (!string.IsNullOrWhiteSpace(previewFilename))
+            @event.ChangePreview(previewFilename);
+        else
+            @event.ChangePlaceHolder(placeholderFilename!);
+    }
+}
+```
+
+Вынесение логики создания в отдельный класс фабрики позволяет сократить объём кода классов сущностей,
+сосредоточив их на оркестрации бизнес-логики и управлении изменениями состояния,
+тогда как проверка инвариантов и валидация выносятся в отдельный класс.
+
+Отдельного внимания заслуживает реализация механизма ошибок доменного слоя.
+Для представления ошибки используется тип Error,реализованный в виде record и содержащий два поля:
+код ошибки ErrorCode и сообщение ErrorMessage.
+
+```cs
+/// <summary>
+///     Record для ошибок.
+/// </summary>
+/// <param name="ErrorCode">Код ошибки.</param>
+/// <param name="ErrorMessage">Сообщение ошибки.</param>
+public record Error(string ErrorCode, string ErrorMessage);
+```
+
+Доменный слой использует два типа исключений -- DomainException для нарушений бизнес-правил и NotFoundException
+для случаев отсутствия запрашиваемого ресурса.
+Оба класса принимают объект Error в качестве параметра.
+
+```cs
+/// <summary>
+///     Ошибка правил домена.
+/// </summary>
+public class DomainException(Error error) : Exception(error.ErrorMessage)
+{
+    public Error Error { get; } = error;
+}
+
+/// <summary>
+///     Ошибка отсутствия запрашиваемого ресурса.
+/// </summary>
+public class NotFoundException(Error error) : Exception(error.ErrorMessage)
+{
+    public Error Error { get; } = error;
+}
+```
+
+Разделение на типы исключений позволяет на уровне обработчика запросов однозначно определять HTTP-статус ответа на основе типа возникшей ошибки.
+Наличие поля ErrorCode обеспечивает стабильный идентификатор ошибки, независимый от текстового сообщения,
+что создаёт основу для последующей локализации интерфейса.
+
+Ошибки для каждого класса выносятся в отдельные статические классы, пример которого представлен ниже.
+
+```cs
+/// <summary>
+///     Базовые ошибки текстового поля.
+/// </summary>
+public static class TextFieldErrors
+{
+    public static readonly Error ValueIsNull =
+        new("TextField.ValueIsNullOrWhiteSpace", "Текстовое поле равно null или пусто.");
+
+    public static Error ValueTooShort(int min)
+    {
+        return new Error("TextField.ValueTooShort",
+            $"Длина текстового поля меньше минимальной длинны в {min} символ(-ов).");
+    }
+
+    public static Error ValueTooLong(int max)
+    {
+        return new Error("TextField.ValueTooLong",
+            $"Длина текстового поля больше максимальной длинны в {max} символ(-ов).");
+    }
+}
+```
+
+Такой подход централизует определение ошибок и исключает их дублирование.
 
 #linebreak()
 
