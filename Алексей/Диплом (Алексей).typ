@@ -1,5 +1,15 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge, shapes
 #import "@preview/itemize:0.2.0" as el
+#import "@preview/codly:1.3.0": *
+#import "@preview/codly-languages:0.1.10": *
+
+#show: codly-init.with()
+#codly(zebra-fill: none)
+#codly(languages: codly-languages)
+#codly(display-icon: false)
+#codly(breakable: true)
+
+#show raw.where(block: true): set text(size: 0.8em)
 
 // ─── Общие стилевые константы ───────────────────────────────────────────────
 #let clr-ui        = rgb("#D0E8FF")   // слой UI / клиент
@@ -76,6 +86,8 @@
     #fig.body
   ]
 }
+
+
 
 // Титульник
 #page(numbering: none)[
@@ -1298,6 +1310,7 @@ TF-IDF по всему корпусу пользователя.
 обеспечена поддержка различных типов данных для идентификаторов (например, int, Guid или пользовательский класс),
 переопределены механизмы сравнения двух сущностей.
 
+#codly(header: [*Entity.cs*])
 ```cs
 /// <summary>
 ///     Абстрактный класс сущности.
@@ -1400,6 +1413,7 @@ public abstract class Entity<TKey> : IEquatable<Entity<TKey>>
 Каждый наследующий класс обязан переопределить данный метод, указав поля, участвующие в сравнении.
 Хэш-код объекта также вычисляется на основе этих компонентов с использованием HashCode.
 
+#codly(header: [*ValueObject.cs*])
 ```cs
 /// <summary>
 ///     Абстрактный класс объекта-значения.
@@ -1484,6 +1498,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
 Поскольку объекты-значения являются составными блоками сущностей,
 в качестве примера рассмотрим реализацию класса для текстовых полей.
 
+#codly(header: [*TextField.cs*])
 ```cs
 /// <summary>
 ///     Базовый класс для текстовых полей.
@@ -1541,6 +1556,7 @@ public class TextField : ValueObject
 
 Пример использования TextField в качестве базового класса для названия мероприятия представлен ниже.
 
+#codly(header: [*Title.cs*])
 ```cs
 /// <summary>
 ///     Название мероприятия.
@@ -1564,6 +1580,7 @@ public class Title : TextField
 
 Примером реализации сущности, составленной из объектов-значений, является класс мероприятия, представленный ниже.
 
+#codly(header: [*Event.cs*])
 ```cs
 /// <summary>
 ///     Сущность мероприятия.
@@ -1899,6 +1916,7 @@ public sealed class Event : Entity<Guid>, IAuditable, IAggregateRoot
 Для создания полностью инициализированного объекта сущности в рамках подхода DDD рекомендуется использование фабричного метода,
 пример которого представлен ниже.
 
+#codly(header: [*EventFactory.cs*])
 ```cs
 /// <summary>
 ///     Фабрика мероприятия.
@@ -2007,9 +2025,10 @@ public static class EventFactory
 тогда как проверка инвариантов и валидация выносятся в отдельный класс.
 
 Отдельного внимания заслуживает реализация механизма ошибок доменного слоя.
-Для представления ошибки используется тип Error,реализованный в виде record и содержащий два поля:
+Для представления ошибки используется тип Error, реализованный в виде record и содержащий два поля:
 код ошибки ErrorCode и сообщение ErrorMessage.
 
+#codly(header: [*Error.cs*])
 ```cs
 /// <summary>
 ///     Record для ошибок.
@@ -2023,6 +2042,7 @@ public record Error(string ErrorCode, string ErrorMessage);
 для случаев отсутствия запрашиваемого ресурса.
 Оба класса принимают объект Error в качестве параметра.
 
+#codly(header: [*DomainException.cs*])
 ```cs
 /// <summary>
 ///     Ошибка правил домена.
@@ -2031,7 +2051,10 @@ public class DomainException(Error error) : Exception(error.ErrorMessage)
 {
     public Error Error { get; } = error;
 }
+```
 
+#codly(header: [*NotFoundException.cs*])
+```cs
 /// <summary>
 ///     Ошибка отсутствия запрашиваемого ресурса.
 /// </summary>
@@ -2047,6 +2070,7 @@ public class NotFoundException(Error error) : Exception(error.ErrorMessage)
 
 Ошибки для каждого класса выносятся в отдельные статические классы, пример которого представлен ниже.
 
+#codly(header: [*TextFieldErrors.cs*])
 ```cs
 /// <summary>
 ///     Базовые ошибки текстового поля.
@@ -2076,7 +2100,383 @@ public static class TextFieldErrors
 
 == Разработка инфраструктурного слоя
 
-// Текст
+Инфраструктурный слой реализует взаимодействие с базой данных и внешними сервисами.
+Контекст базы данных представлен классом EventsDbContext, наследующим DbContext из Entity Framework Core.
+При инициализации модели конфигурации сущностей применяются автоматически из текущей сборки посредством метода ApplyConfigurationsFromAssembly.
+
+#codly(header: [*EventsDbContext.cs*])
+```cs
+/// <summary>
+///     Контекст базы данных приложения.
+/// </summary>
+public class EventsDbContext : DbContext
+{
+    /// <summary>
+    ///     Конструктор контекста базы данных приложения.
+    /// </summary>
+    /// <param name="options">Опции контеста базы данных.</param>
+    public EventsDbContext(DbContextOptions options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
+}
+```
+
+Конфигурация сущностей описывается в отдельных классах, реализующих интерфейс IEntityTypeConfiguration\<T>.
+В конфигурациях сущностей определяются маппинг объектов-значений на столбцы таблицы,
+ограничения полей, связи между сущностями, а также поведение при удалении.
+Пример конфигурации для сущности мероприятия приведён ниже.
+
+#codly(header: [*EventConfiguration.cs*])
+```cs
+/// <summary>
+///     Конфигурация сущности мероприятия.
+/// </summary>
+public class EventConfiguration : IEntityTypeConfiguration<Event>
+{
+    /// <inheritdoc />
+    public void Configure(EntityTypeBuilder<Event> builder)
+    {
+        builder.ToTable("Events");
+
+        builder.HasKey(e => e.Id);
+
+        builder.OwnsOne(e => e.Title)
+            .Property(t => t.Value)
+            .HasColumnName("Title")
+            .HasMaxLength(Title.MaxLength)
+            .IsRequired();
+
+        builder
+            .OwnsOne(e => e.Announcement)
+            .Property(a => a.Value)
+            .HasColumnName("Announcement")
+            .HasMaxLength(Announcement.MaxLength)
+            .IsRequired();
+
+        builder
+            .OwnsOne(e => e.Description)
+            .Property(e => e.Value)
+            .HasColumnName("Description")
+            .HasMaxLength(Announcement.MaxLength)
+            .IsRequired();
+
+        builder.OwnsOne(e => e.DateTimeRange, rangeBuilder =>
+        {
+            rangeBuilder.Property(e => e.StartDateTime)
+                .HasColumnName("StartDateTime")
+                .IsRequired();
+
+            rangeBuilder.Property(e => e.EndDateTime)
+                .HasColumnName("EndDateTime")
+                .IsRequired();
+        });
+
+        builder.OwnsOne(e => e.Booking, bookingBuilder =>
+        {
+            bookingBuilder.Property(b => b.LocationId)
+                .HasColumnName("LocationId");
+
+            bookingBuilder.Property(b => b.PlaceId)
+                .HasColumnName("PlaceId");
+        });
+
+        builder.Property(e => e.PreviewFilename);
+
+        builder.Property(e => e.PlaceholderFilename);
+
+        builder.Property(e => e.NeedsRegistration)
+            .IsRequired();
+
+        builder.Property(e => e.MaxParticipants);
+
+        builder.Property(e => e.FinalParticipantsCount);
+
+        builder.HasOne(e => e.Type)
+            .WithMany()
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Navigation(e => e.Type).AutoInclude();
+
+        builder.HasOne(e => e.Format)
+            .WithMany()
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Navigation(e => e.Format).AutoInclude();
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(e => e.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasMany(e => e.Participants)
+            .WithOne()
+            .HasForeignKey(e => e.EventId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(e => e.Tags)
+            .WithMany()
+            .UsingEntity(e => e.ToTable("EventsTags"));
+
+        builder.Property(e => e.CreatedAt)
+            .IsRequired()
+            .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Throw);
+
+        builder.Property(e => e.UpdatedAt)
+            .IsRequired();
+    }
+}
+```
+
+Для работы с данными реализован универсальный класс репозитория Repository\<T>, основанный на библиотеке Ardalis.Specification.
+Помимо стандартных операций, предоставляемых базовым классом, репозиторий реализует метод QueryAsync,
+принимающий объект запроса QueryObject\<T, TResult> и возвращающий проекцию результата без отслеживания изменений.
+
+#codly(header: [*Repository.cs*])
+```cs
+public class Repository<T>(EventsDbContext dbContext) : RepositoryBase<T>(dbContext), IRepository<T>
+    where T : class
+{
+    public async Task<List<TResult>> QueryAsync<TResult>(QueryObject<T, TResult> query,
+        CancellationToken cancellationToken = default)
+    {
+        return await query.Build(DbContext.Set<T>().AsNoTracking()).ToListAsync(cancellationToken);
+    }
+}
+```
+
+Для хранения файлов реализован сервис RustFsFileStorageService, взаимодействующий с S3-совместимым хранилищем через IAmazonS3.
+Сервис оборачивает исключения AmazonS3Exception с HTTP-статусом 404 в доменный NotFoundException, что обеспечивает единообразную обработку ошибок на уровне приложения.
+
+#codly(header: [*RustFsFileStorageService.cs*])
+```cs
+/// <summary>
+///     RustFS сервис.
+/// </summary>
+public class RustFsFileStorageService(IAmazonS3 s3Client) : IFileStorageService
+{
+    public async Task PutObjectAsync(PutObjectRequest request, CancellationToken cancellationToken)
+    {
+        await s3Client.PutObjectAsync(request, cancellationToken);
+    }
+
+    public async Task DeleteObjectAsync(DeleteObjectRequest request, CancellationToken cancellationToken)
+    {
+        try
+        {
+            await s3Client.DeleteObjectAsync(request, cancellationToken);
+        }
+        catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
+        {
+            throw new NotFoundException(FileErrors.FileNotFoundByName(request.Key));
+        }
+    }
+
+    public async Task<DeleteObjectsResponse> DeleteObjectsAsync(DeleteObjectsRequest request,
+        CancellationToken cancellationToken)
+    {
+        return await s3Client.DeleteObjectsAsync(request, cancellationToken);
+    }
+
+    public async Task<GetObjectResponse> GetObjectAsync(GetObjectRequest request, CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await s3Client.GetObjectAsync(request, cancellationToken);
+        }
+        catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
+        {
+            throw new NotFoundException(FileErrors.FileNotFoundByName(request.Key));
+        }
+    }
+
+    public async Task<ListObjectsV2Response> ListObjectsAsync(ListObjectsV2Request request,
+        CancellationToken cancellationToken)
+    {
+        var objects = await s3Client.ListObjectsV2Async(request, cancellationToken);
+
+        if (objects.S3Objects == null || objects.S3Objects.Count == 0)
+            throw new NotFoundException(FileErrors.NotFoundAny);
+
+        return objects;
+    }
+}
+```
+
+Регистрация всех компонентов инфраструктурного слоя в контейнере внедрения зависимостей выполняется в статическом классе DataAccessExtensions.
+Метод AddDataAccess объединяет настройку подключения к базе данных, регистрацию репозиториев, сервисов и S3-клиента.
+Это позволяет слою бизнес-логики работать исключительно с интерфейсами, не имея зависимости от конкретных реализаций инфраструктурного слоя.
+
+#codly(header: [*DataAccessExtensions.cs*])
+```cs
+/// <summary>
+///     Расширение для внедрения data access в приложение.
+/// </summary>
+public static class DataAccessExtensions
+{
+    extension(IServiceCollection services)
+    {
+        /// <summary>
+        ///     Метод добавления data access в приложение.
+        /// </summary>
+        /// <param name="configuration">Конфигурация приложения.</param>
+        public void AddDataAccess(IConfiguration configuration)
+        {
+            services.ConfigureDbConnection(configuration);
+
+            services.AddS3Client(configuration);
+
+            services.RegisterRepositories();
+
+            services.RegisterDataAccessServices();
+        }
+
+        private void ConfigureDbConnection(IConfiguration configuration)
+        {
+            var connectionString = configuration.GetConnectionString("DbConnection");
+            services.AddDbContextPool<EventsDbContext>(options => options.UseNpgsql(connectionString,
+                optionBuilder =>
+                {
+                    optionBuilder.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+                    options.AddInterceptors(new AuditInterceptor());
+                }));
+        }
+
+        private void RegisterRepositories()
+        {
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IEventRepository, EventRepository>();
+        }
+
+        private void AddS3Client(IConfiguration configuration)
+        {
+            services.AddSingleton<IAmazonS3>(_ =>
+            {
+                var endpoint = configuration["S3:Endpoint"];
+                var accessKey = configuration["S3:AccessKey"];
+                var secretKey = configuration["S3:SecretKey"];
+                var proxyHost = configuration["S3:ProxyHost"];
+                var proxyPort = configuration["S3:ProxyPort"];
+
+                var config = new AmazonS3Config
+                {
+                    ServiceURL = endpoint,
+                    ForcePathStyle = true
+                };
+
+                if (proxyHost != null && proxyPort != null)
+                {
+                    config.ProxyHost = proxyHost;
+                    config.ProxyPort = int.Parse(proxyPort);
+                }
+
+                var credentials = new BasicAWSCredentials(accessKey, secretKey);
+
+                return new AmazonS3Client(credentials, config);
+            });
+        }
+
+        private void RegisterDataAccessServices()
+        {
+            services.AddScoped<IFileStorageService, RustFsFileStorageService>();
+        }
+    }
+}
+```
+
+Применение миграций базы данных вынесено в отдельный хост-сервис.
+Для этого определён класс MigrationDbContext, наследующий EventsDbContext, который используется исключительно в контексте миграций
+и не задействуется в основном приложении.
+
+#codly(header: [*MigrationDbContext.cs*])
+```cs
+/// <summary>
+///     Контекст базы данных для миграции.
+/// </summary>
+public class MigrationDbContext : EventsDbContext
+{
+    /// <summary>
+    ///     Конструктор контекста для миграции.
+    /// </summary>
+    /// <param name="options">Опции контекста базы данных.</param>
+    public MigrationDbContext(DbContextOptions options) : base(options)
+    {
+    }
+}
+```
+
+Применение миграций выполняется классом MigrationWorker, реализующим интерфейс BackgroundService.
+После успешного выполнения миграций сервис завершает работу хоста посредством IHostApplicationLifetime.
+Точка входа хоста мигратора описана в Program.cs и регистрирует необходимые сервисы и MigrationWorker в качестве фонового сервиса.
+Вынесение мигратора в отдельный хост позволяет запускать его в Docker в качестве самостоятельного контейнера,
+который завершается после применения миграций, гарантируя актуальность схемы базы данных до старта основного приложения.
+
+#codly(header: [*MigrationWorker.cs*])
+```cs
+/// <summary>
+///     Worker мигратора.
+/// </summary>
+/// <param name="serviceProvider">
+///     Проводник сервисов для создания scope.
+/// </param>
+/// <param name="applicationLifetime">
+///     Для завершения работы после миграций.
+/// </param>
+/// <param name="logger">Логгер.</param>
+public class MigrationWorker(
+    IServiceProvider serviceProvider,
+    IHostApplicationLifetime applicationLifetime,
+    ILogger<MigrationWorker> logger
+) : BackgroundService
+{
+    /// <inheritdoc />
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        if (!stoppingToken.IsCancellationRequested)
+            try
+            {
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+
+                using var scope = serviceProvider.CreateScope();
+
+                var context = scope.ServiceProvider.GetService<MigrationDbContext>();
+                await context.Database.MigrateAsync(stoppingToken);
+
+                if (logger.IsEnabled(LogLevel.Information))
+                    logger.LogInformation("Worker completed at: {time}", DateTimeOffset.Now);
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "An error occured during migration");
+                throw;
+            }
+            finally
+            {
+                applicationLifetime.StopApplication();
+            }
+    }
+}
+```
+
+#codly(header: [*Program.cs*])
+```cs
+await Host.CreateDefaultBuilder(args)
+    .ConfigureServices((hostContext, services) =>
+        {
+            services.AddServices(hostContext.Configuration);
+            services.AddHostedService<MigrationWorker>();
+        }
+    ).Build()
+    .RunAsync();
+```
 
 #linebreak()
 
