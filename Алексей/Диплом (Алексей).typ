@@ -2482,11 +2482,489 @@ await Host.CreateDefaultBuilder(args)
 
 == Разработка слоя бизнес-логики
 
-// Текст
+Слой бизнес-логики реализован на основе паттерна CQRS с использованием библиотеки MediatR.
+Все операции разделены на команды, изменяющие состояние системы, и запросы, возвращающие данные.
+Каждая операция представлена парой классов: объектом запроса или команды и соответствующим обработчиком.
+
+Пример запроса на получение мероприятия по идентификатору представлен ниже.
+
+#codly(header: [*GetEventByIdQuery.cs*])
+```cs
+public sealed record GetEventByIdQuery(Guid EventId) : IRequest<EventDto>, ITrackPageView
+{
+    public string EntityType => EntityTypes.Event;
+
+    public Guid EntityId => EventId;
+}
+```
+
+#codly(header: [*GetEventByIdHandler.cs*])
+```cs
+public sealed class GetEventByIdHandler(
+    IEventRepository eventRepository,
+    IRepository<Place> placeRepository,
+    IMapper mapper)
+    : IRequestHandler<GetEventByIdQuery, EventDto>
+{
+    public async Task<EventDto> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
+    {
+        var eventByIdSpec = new EventByIdSpec(request.EventId).IncludeTags().AsNoTracking();
+        var @event = await eventRepository.FirstOrDefaultAsync(eventByIdSpec, cancellationToken);
+
+        if (@event == null)
+            throw new NotFoundException(EventErrors.NotFoundById(request.EventId));
+
+        var dto = mapper.Map<EventDto>(@event);
+
+        if (@event.Booking != null)
+        {
+            var placeByIdSpec = new PlaceByIdSpec(@event.Booking.PlaceId).AsNoTracking();
+            var place = await placeRepository.FirstOrDefaultAsync(placeByIdSpec, cancellationToken);
+
+            if (place == null)
+                throw new NotFoundException(PlaceErrors.NotFoundById(@event.Booking.PlaceId));
+
+            dto.PlaceInfo = new BookedPlaceDto
+            {
+                PlaceId = place.Id,
+                Number = place.Number.Value
+            };
+        }
+
+        return dto;
+    }
+}
+```
+
+Запрос GetEventByIdQuery реализован в виде record и реализует интерфейс IRequest<EventDto>, что указывает MediatR на ожидаемый тип ответа.
+Обработчик GetEventByIdHandler получает мероприятие через репозиторий по спецификации, выполняет маппинг в DTO посредством AutoMapper
+и при наличии бронирования дополнительно запрашивает информацию о помещении.
+
+Пример команды на добавление тега к мероприятию представлен ниже.
+
+#codly(header: [*AddTagCommand.cs*])
+```cs
+public sealed record AddTagCommand(Guid EventId, int TagId) : IRequest;
+```
+
+#codly(header: [*AddTagHandler.cs*])
+```cs
+public sealed class AddTagHandler(IEventRepository eventRepository, IRepository<Tag> tagRepository)
+    : IRequestHandler<AddTagCommand>
+{
+    public async Task Handle(AddTagCommand request, CancellationToken ct)
+    {
+        var eventByIdSpec = new EventByIdSpec(request.EventId).IncludeTags();
+        var @event = await eventRepository.FirstOrDefaultAsync(eventByIdSpec, ct);
+        if (@event == null)
+            throw new NotFoundException(EventErrors.NotFoundById(request.EventId));
+
+        var tag = await tagRepository.GetByIdAsync(request.TagId, ct);
+        if (tag == null)
+            throw new NotFoundException(TagErrors.NotFoundById(request.TagId));
+
+        @event.AddTag(tag);
+        await eventRepository.UpdateAsync(@event, ct);
+    }
+}
+```
+
+Команда AddTagCommand не возвращает результата, что выражается реализацией интерфейса IRequest без параметра типа.
+Обработчик загружает сущности мероприятия и тега, вызывает доменный метод AddTag и сохраняет изменения через репозиторий.
+Таким образом, обработчик выступает оркестратором, делегируя бизнес-логику доменному слою.
+
+Для работы с данными в слое бизнес-логики определены интерфейс IRepository<T> и класс QueryObject\<TEntity, TResult>.
+Интерфейс расширяет IRepositoryBase<T> из библиотеки Ardalis.Specification методом QueryAsync, принимающим объект QueryObject.
+Класс QueryObject представляет собой обёртку над Func\<IQueryable<TEntity>, IQueryable<TResult>> и предназначен для описания сложных запросов с проекцией, группировкой и агрегацией,
+которые не укладываются в рамки спецификаций.
+
+#codly(header: [*IRepository.cs*])
+```cs
+public interface IRepository<T> : IRepositoryBase<T>
+    where T : class
+{
+    Task<List<TResult>> QueryAsync<TResult>(
+        QueryObject<T, TResult> query,
+        CancellationToken cancellationToken = default);
+}
+```
+
+#codly(header: [*IRepository.cs*])
+```cs
+/// <summary>
+///     Класс-обёртка над Func, позволяющая удобно описывать сложные запросы (с GroupBy, Count, Sum и т.д.).
+/// </summary>
+/// <typeparam name="TEntity">Тип сущности.</typeparam>
+/// <typeparam name="TResult">Тип результата после проекции.</typeparam>
+public sealed class QueryObject<TEntity, TResult>
+    where TEntity : class
+{
+    public QueryObject(Func<IQueryable<TEntity>, IQueryable<TResult>> build)
+    {
+        Build = build ?? throw new ArgumentNullException(nameof(build));
+    }
+
+    public Func<IQueryable<TEntity>, IQueryable<TResult>> Build { get; }
+
+    public static implicit operator Func<IQueryable<TEntity>, IQueryable<TResult>>(
+        QueryObject<TEntity, TResult> queryObject)
+    {
+        return queryObject.Build;
+    }
+}
+```
+
+Для автоматической записи просмотров страниц реализован pipeline behavior AnalyticsBehavior\<TRequest, TResponse>.
+Behavior перехватывает все запросы, проходящие через MediatR, и проверяет, реализует ли запрос маркерный интерфейс ITrackPageView.
+Если да -- после выполнения запроса создаётся объект PageView и сохраняется через репозиторий аналитики.
+Идентификатор пользователя извлекается через интерфейс ICurrentUserProvider,
+реализация которого располагается в API-слое и извлекает данные из JWT-токена входящего запроса.
+Таким образом, если запрос выполнен аутентифицированным пользователем, просмотр фиксируется с его идентификатором,
+в противном случае как анонимный.
+Ошибки при записи перехватываются и логируются, не прерывая выполнение основного запроса.
+
+#codly(header: [*ITrackPageView.cs*])
+```cs
+/// <summary>
+///     Маркер трекинга просмотра страницы.
+/// </summary>
+public interface ITrackPageView
+{
+    /// <summary>
+    ///     Тип запрашиваемой сущности.
+    /// </summary>
+    string EntityType { get; }
+
+    /// <summary>
+    ///     ID сущности.
+    /// </summary>
+    Guid EntityId { get; }
+}
+```
+
+#codly(header: [*ICurrentUserProvider.cs*])
+```cs
+public interface ICurrentUserProvider
+{
+    bool IsAuthenticated { get; }
+    Guid? UserId { get; }
+    string? Role { get; }
+}
+```
+
+#codly(header: [*AnalyticsBehavior.cs*])
+```cs
+/// <summary>
+///     Behavior для аналитики.
+/// </summary>
+/// <typeparam name="TRequest">Тип запроса.</typeparam>
+/// <typeparam name="TResponse">Тип ответа.</typeparam>
+public class AnalyticsBehavior<TRequest, TResponse>(
+    IAnalyticsRepository<PageView> pageViewRepository,
+    ICurrentUserProvider currentUserProvider,
+    ILogger<AnalyticsBehavior<TRequest, TResponse>> logger
+)
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
+{
+    /// <inheritdoc />
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
+    {
+        if (request is not ITrackPageView trackable)
+            return await next(cancellationToken);
+
+        var response = await next(cancellationToken);
+
+        try
+        {
+            var userId = currentUserProvider.UserId;
+            var pageView = new PageView(trackable.EntityType, trackable.EntityId, userId);
+
+            await pageViewRepository.AddAsync(pageView, cancellationToken);
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Ошибка при попытке записать просмотр страницы.");
+        }
+
+        return response;
+    }
+}
+```
+
+Пример реализации интерфейса ITrackPageView в запросе GetEventByIdQuery был представлен ранее:
+запрос указывает тип сущности и её идентификатор, что позволяет AnalyticsBehavior автоматически фиксировать факт просмотра
+без какого-либо дополнительного кода в обработчике.
+
+Регистрация всех компонентов слоя бизнес-логики в контейнере внедрения зависимостей выполняется в статическом классе ApplicationDiExtensions.
+Метод AddApplication регистрирует MediatR с подключённым AnalyticsBehavior, AutoMapper, валидаторы FluentValidation с автоматической валидацией входящих запросов,
+а также прочие сервисы слоя.
+
+#codly(header: [*ApplicationDiExtensions.cs*])
+```cs
+/// <summary>
+///     Расширение для внедрения application в приложение.
+/// </summary>
+public static class ApplicationDiExtensions
+{
+    extension(IServiceCollection services)
+    {
+        /// <summary>
+        ///     Метод внедрения application.
+        /// </summary>
+        public void AddApplication()
+        {
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                cfg.AddOpenBehavior(typeof(AnalyticsBehavior<,>));
+            });
+
+            services.AddAutoMapper(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddFluentValidationAutoValidation(options => { options.DisableBuiltInModelValidation = true; });
+
+            services.RegisterServices();
+        }
+
+        private void RegisterServices()
+        {
+            services.AddSingleton<IJwtTokenService, JwtTokenService>();
+        }
+    }
+}
+```
 
 #linebreak()
 
 == Разработка слоя API
+
+API-слой реализован на основе ASP.NET Core и обеспечивает приём HTTP-запросов, их передачу в слой бизнес-логики и возврат ответов клиенту.
+Точка входа приложения описана в Program.cs, где последовательно регистрируются все слои и компоненты приложения:
+инфраструктурный слой, слой аналитики, слой бизнес-логики, контроллеры, JWT-аутентификация, middleware и прочие сервисы.
+
+#codly(header: [*Programs.cs*])
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDataAccess(builder.Configuration);
+builder.Services.AddAnalytics(builder.Configuration);
+
+builder.Services.AddApplication();
+
+builder.Services.AddControllers();
+
+builder.Services.AddOpenApiWithMetadata();
+
+builder.Services.AddJwt(builder.Configuration);
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddApiServices();
+
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+});
+
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
+builder.Services.AddTransient<ExceptionMiddleware>();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.MapScalarApiReference(options => { options.WithOpenApiRoutePattern("/swagger/v1/swagger.json"); });
+}
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseMiddleware<ExceptionMiddleware>();
+
+app.MapControllers();
+
+app.Run();
+```
+
+Контроллеры принимают входящие запросы и передают их в MediatR, не содержа какой-либо бизнес-логики.
+Пример метода контроллера для получения мероприятия по идентификатору представлен ниже.
+
+#codly(header: [*EventsController.cs*])
+```cs
+[ApiController]
+[Route("api/v/1/[controller]")]
+[ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorDto))]
+public class EventsController(IMediator mediator) : ControllerBase
+{
+        /// <summary>
+    ///     Получить мероприятие по ID.
+    /// </summary>
+    /// <param name="eventId">Идентификатор мероприятия.</param>
+    /// <param name="ct">Токен отмены.</param>
+    /// <returns>Полная информация о мероприятии.</returns>
+    [HttpGet("{eventId:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EventDto))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorDto))]
+    public async Task<IActionResult> GetByIdAsync(Guid eventId, CancellationToken ct)
+    {
+        var @event = await mediator.Send(new GetEventByIdQuery(eventId), ct);
+        return Ok(@event);
+    }
+}
+```
+
+Аутентификация реализована на основе JWT.
+Настройка параметров валидации токена вынесена в расширение JwtExtensions, где конфигурируется схема аутентификации JwtBearer
+с параметрами из конфигурации приложения: валидация подписи, срока действия, издателя и аудитории.
+
+#codly(header: [*JwtExtensions.cs*])
+```cs
+/// <summary>
+///     Расширения для добавления JWT.
+/// </summary>
+public static class JwtExtensions
+{
+    extension(IServiceCollection services)
+    {
+        /// <summary>
+        ///     Метод добавления JWT аутентификации.
+        /// </summary>
+        /// <param name="configuration">Конфигурация приложения.</param>
+        public void AddJwt(IConfiguration configuration)
+        {
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        ValidateLifetime = configuration.GetValue<bool>("Jwt:ValidateLifetime"),
+                        ValidateIssuer = configuration.GetValue<bool>("Jwt:ValidateIssuer"),
+                        ValidateAudience = configuration.GetValue<bool>("Jwt:ValidateAudience"),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                    };
+
+                    options.MapInboundClaims = false;
+                });
+        }
+    }
+}
+```
+
+Извлечение данных текущего пользователя из JWT-токена реализовано в классе HttpCurrentUserProvider,
+являющемся реализацией интерфейса ICurrentUserProvider для API-слоя.
+Класс получает доступ к контексту HTTP-запроса через IHttpContextAccessor и извлекает из клеймов токена идентификатор пользователя из поля sub и его роль.
+
+#codly(header: [*HttpCurrentUserProvider.cs*])
+```cs
+public class HttpCurrentUserProvider(IHttpContextAccessor httpContextAccessor) : ICurrentUserProvider
+{
+    private ClaimsPrincipal? User => httpContextAccessor.HttpContext?.User;
+    public bool IsAuthenticated => User?.Identity?.IsAuthenticated ?? false;
+
+    public Guid? UserId => Guid.TryParse(
+        User?.FindFirst(JwtRegisteredClaimNames.Sub)?.Value, out var id)
+        ? id
+        : null;
+
+    public string? Role => User?.FindFirst("role")?.Value;
+}
+```
+
+Централизованная обработка исключений реализована в middleware ExceptionMiddleware.
+Middleware перехватывает все необработанные исключения и преобразует их в структурированный ответ формата application/problem+json.
+Тип исключения определяет HTTP-статус ответа: DomainException возвращает статус 422, NotFoundException -- 404, UnauthorizedException -- 401, HttpRequestException -- 503, прочие исключения -- 500.
+В ответ также включаются код ошибки ErrorCode, сообщение и идентификатор трассировки TraceId, что обеспечивает связь между ответом клиенту и записями в логах.
+Именно здесь реализуется упомянутое ранее преобразование типов доменных исключений в соответствующие HTTP-статусы.
+
+#codly(header: [*ExceptionMiddleware.cs*])
+```cs
+/// <summary>
+///     Middleware для обработки ошибок слоёв.
+/// </summary>
+/// <param name="logger">Логгер.</param>
+public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddleware
+{
+    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    {
+        try
+        {
+            await next(context);
+        }
+        catch (Exception e)
+        {
+            await HandleExceptionAsync(context, e);
+        }
+    }
+
+    private Task HandleExceptionAsync(HttpContext context, Exception exception)
+    {
+        logger.LogError("Ошибка: {exception.Message}", exception.Message);
+
+        var errorDto = MapError(context, exception);
+        context.Response.ContentType = "application/problem+json";
+        context.Response.StatusCode = errorDto.StatusCode;
+
+        return context.Response.WriteAsync(JsonSerializer.Serialize(errorDto));
+    }
+
+    private static ErrorDto MapError(HttpContext context, Exception exception)
+    {
+        return exception switch
+        {
+            DomainException domainException => new ErrorDto
+            {
+                StatusCode = StatusCodes.Status422UnprocessableEntity,
+                ErrorCode = domainException.Error.ErrorCode,
+                Message = domainException.Error.ErrorMessage,
+                TraceId = context.TraceIdentifier
+            },
+
+            NotFoundException notFoundException => new ErrorDto
+            {
+                StatusCode = StatusCodes.Status404NotFound,
+                ErrorCode = notFoundException.Error.ErrorCode,
+                Message = notFoundException.Error.ErrorMessage,
+                TraceId = context.TraceIdentifier
+            },
+
+            HttpRequestException => new ErrorDto
+            {
+                StatusCode = StatusCodes.Status503ServiceUnavailable,
+                Message = "Запрашиваемый сервис недоступен. Попробуйте позже.",
+                TraceId = context.TraceIdentifier
+            },
+
+            UnauthorizedException unauthorizedException => new ErrorDto
+            {
+                StatusCode = StatusCodes.Status401Unauthorized,
+                ErrorCode = unauthorizedException.Error.ErrorCode,
+                Message = unauthorizedException.Error.ErrorMessage,
+                TraceId = context.TraceIdentifier
+            },
+
+            _ => new ErrorDto
+            {
+                StatusCode = StatusCodes.Status500InternalServerError,
+                ErrorCode = "Неизвестная ошибка.",
+                Message = "Неожиданная ошибка сервера.",
+                TraceId = context.TraceIdentifier
+            }
+        };
+    }
+}
+```
+
+#codly(header: [*HttpCurrentUserProvider.cs*])
 
 #pagebreak()
 
