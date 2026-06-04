@@ -43,10 +43,10 @@
 
 #set page(
   margin: (
-    top: 2cm,
-    left: 3cm,
-    right: 1.5cm,
-    bottom: 2cm,
+	top: 2cm,
+	left: 3cm,
+	right: 1.5cm,
+	bottom: 2cm,
   ),
   numbering: "1",
 )
@@ -62,12 +62,12 @@
   #set align(center)
 
   #set text(
-    size: 14pt,
+	size: 14pt,
   )
 
   #block[
-    #it
-    #v(1em)
+	#it
+	#v(1em)
   ]
 ]
 
@@ -81,9 +81,9 @@
 
 #show figure.where(kind: table): fig => {
   block(breakable: false)[
-    #align(right)[Таблица #fig.counter.display()]
-    #align(center)[#fig.caption.body]
-    #fig.body
+	#align(right)[Таблица #fig.counter.display()]
+	#align(center)[#fig.caption.body]
+	#fig.body
   ]
 }
 
@@ -93,151 +93,151 @@
 #page(numbering: none)[
 
   #set par(
-    first-line-indent: (amount: 0cm, all: false),
-    leading: 0.65em,
-    justify: false,
+	first-line-indent: (amount: 0cm, all: false),
+	leading: 0.65em,
+	justify: false,
   )
 
   #align(center)[
 
-    #text(size: 12pt)[
-      #upper[Министерство науки и высшего образования российской федерации] \
-      #upper[Федеральное государственное бюджетное образовательное учреждение высшего образования] \
-      #upper["Алтайский государственный университет"]
-    ]
+	#text(size: 12pt)[
+	  #upper[Министерство науки и высшего образования российской федерации] \
+	  #upper[Федеральное государственное бюджетное образовательное учреждение высшего образования] \
+	  #upper["Алтайский государственный университет"]
+	]
 
-    #text(size: 13pt)[
-      Институт математики и информационных технологий
+	#text(size: 13pt)[
+	  Институт математики и информационных технологий
 
-      Кафедра информатики
-    ]
+	  Кафедра информатики
+	]
 
-    #v(1fr)
+	#v(1fr)
 
-    #text(size: 14pt)[
-      *Разработка backend-части информационной системы \ управления мероприятиями*
-    ] 
-    #linebreak()
-    #text(size: 12pt)[выпускная квалификационная работа]
+	#text(size: 14pt)[
+	  *Разработка backend-части информационной системы \ управления мероприятиями*
+	] 
+	#linebreak()
+	#text(size: 12pt)[выпускная квалификационная работа]
 
-    #v(1fr)
+	#v(1fr)
 
-    #text(size: 12pt)[
-      #grid(
-        columns: (1fr, 1fr),
-        column-gutter: 0.5fr,
-        row-gutter: 1em,
-        align: left,
+	#text(size: 12pt)[
+	  #grid(
+		columns: (1fr, 1fr),
+		column-gutter: 0.5fr,
+		row-gutter: 1em,
+		align: left,
 
-        [],
+		[],
 
-        [
-          Выполнил:
+		[
+		  Выполнил:
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          студент группы 4.205-2,
+		  студент группы 4.205-2,
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          Шацких Алексей Евгеньевич
+		  Шацких Алексей Евгеньевич
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #text("_________________________")
+		  #text("_________________________")
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
+		  #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
 
-          #v(0.5em)
-        ],
+		  #v(0.5em)
+		],
 
-        [],
+		[],
 
-        [
-          Научный руководитель:
+		[
+		  Научный руководитель:
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          к.т.н., доцент
+		  к.т.н., доцент
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          Михеева Татьяна Викторовна
+		  Михеева Татьяна Викторовна
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #text("_________________________")
+		  #text("_________________________")
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
+		  #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
 
-          #v(0.5em)
-        ],
+		  #v(0.5em)
+		],
 
-        [
-          Допустить к защите:
+		[
+		  Допустить к защите:
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          Зав. кафедрой, к.ф.-м.н., доцент
+		  Зав. кафедрой, к.ф.-м.н., доцент
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          Козлов Денис Юрьевич
+		  Козлов Денис Юрьевич
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #text("_________________________")
+		  #text("_________________________")
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
+		  #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          "#text("___")" #text("______________") 2026 г.
-        ],
+		  "#text("___")" #text("______________") 2026 г.
+		],
 
-        [
-          Работа защищена:
+		[
+		  Работа защищена:
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          "#text("___")" #text("______________") 2026 г.
+		  "#text("___")" #text("______________") 2026 г.
 
-          #v(0.5em)
+		  #v(0.5em)
 
-          Оценка: #text("__________________")
+		  Оценка: #text("__________________")
 
-          #v(0.5em)
+		  #v(0.5em)
 
-          Председатель ГЭК:
+		  Председатель ГЭК:
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          д.т.н., профессор
+		  д.т.н., профессор
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          Леонов Сергей Леонидович
+		  Леонов Сергей Леонидович
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #text("_________________________")
+		  #text("_________________________")
 
-          #v(-0.5em)
+		  #v(-0.5em)
 
-          #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
-        ],
-      )
-    ]
+		  #pad(left: 2cm)[#text(size: 10pt)[_(подпись)_]]
+		],
+	  )
+	]
 
-    #v(1fr)
+	#v(1fr)
 
-    #text(size: 13pt)[Барнаул 2026]
+	#text(size: 13pt)[Барнаул 2026]
   ]
 ]
 
@@ -250,17 +250,30 @@
 )
 
 // Реферат
-#page(
-  numbering: none,
-)[
-  #heading(
-    numbering: none,
-    outlined: false,
-  )[
-    #upper[Реферат]
-  ]
+#page(numbering: none)[
+	#heading(numbering: none, outlined: false)[#upper[Реферат]]
+	Выпускная квалификационная работа на тему "Разработка backend-части информационной системы управления мероприятиями".
+	
+	*Цель работы* -- разработка backend-части информационной системы управления мероприятиями.
 
-  // Текст
+	*Предмет исследования* -- backend-разработка с применением фреймворка ASP.NET.
+
+	*Объект исследования* -- методология и практика разработки клиент-серверных приложений.
+
+	В результате выполнения выпускной квалификационной работы решены следующие *задачи*:
+
+	+ Изучены основные методы и технологии backend-разработки.
+	+ Выбраны архитектурные принципы и паттерны проектирования.
+	+ Выбраны программные средства разработки.
+	+ Спроектирована база данных.
+	+ Разработан доменный слой.
+	+ Разработан инфраструктурный слой.
+	+ Разработан слой бизнес-логики.
+	+ Разработан слой API.
+
+	Объём работы -- 94 страниц печатного текста, количество рисунков -- 14, таблиц -- 2, приложений -- 1, использованных источников литературы -- 46.
+
+	*Ключевые слова*: backend-разработка, информационная система, управление мероприятиями, доменно-ориентированное проектирование, чистая архитектура, ASP.NET Core, Entity Framework Core, CQRS, REST API, PostgreSQL.
 ]
 
 // Содержание
@@ -343,8 +356,8 @@
 
 #figure(
   image(
-    "files/chapter-1/tdd/tdd.png",
-    width: 75%
+	"files/chapter-1/tdd/tdd.png",
+	width: 75%
   ),
   caption: "Test-Driven Development"
 )
@@ -394,7 +407,7 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-entities.svg"
+	"files/chapter-1/ddd/ddd-entities.svg"
   ),
   caption: "Пример применения сущностей и объектов-значений"
 )
@@ -406,7 +419,7 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-aggregates.svg"
+	"files/chapter-1/ddd/ddd-aggregates.svg"
   ),
   caption: "Пример агрегата Customer"
 )
@@ -416,7 +429,7 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-factories.svg"
+	"files/chapter-1/ddd/ddd-factories.svg"
   ),
   caption: "Пример фабрики Route"
 )
@@ -428,8 +441,8 @@
 
 #figure(
   image(
-    "files/chapter-1/ddd/ddd-repositories.svg",
-    width: 95%
+	"files/chapter-1/ddd/ddd-repositories.svg",
+	width: 95%
   ),
   caption: "Пример логики работы с репозиторием Customer"
 )
@@ -462,7 +475,7 @@
 
 #figure(
   image(
-    "files/chapter-1/bdd/BDD_Operation_39de9dd9ff.png",
+	"files/chapter-1/bdd/BDD_Operation_39de9dd9ff.png",
   ),
   caption: "Behavior-Driven Development"
 )
@@ -489,28 +502,28 @@
 
 #enum(
   enum.item()[
-    Ограниченность области и длительности задач:
-    языковые модели демонстрируют деградацию качества при изменениях, затрагивающих более 3-5 файлов одновременно.
-    SDD решает эту проблему посредством принудительной декомпозиции функциональности на атомарные задачи.
+	Ограниченность области и длительности задач:
+	языковые модели демонстрируют деградацию качества при изменениях, затрагивающих более 3-5 файлов одновременно.
+	SDD решает эту проблему посредством принудительной декомпозиции функциональности на атомарные задачи.
   ],
 
   enum.item()[
-    Отсутствие контекста о конкретной разрабатываемой функциональности:
-    спецификации обеспечивают ИИ-агенту полное представление о требованиях,
-    граничных случаях, критериях приёмки и точках интеграции ещё до начала генерации кода.
+	Отсутствие контекста о конкретной разрабатываемой функциональности:
+	спецификации обеспечивают ИИ-агенту полное представление о требованиях,
+	граничных случаях, критериях приёмки и точках интеграции ещё до начала генерации кода.
   ],
 
   enum.item()[
-    Незнание стандартов и соглашений конкретного проекта:
-    специальный файл конституции (constitution.md) описывается технологический стек, правила именования,
-    архитектурные решения, допустимые библиотеки и требования безопасности.
+	Незнание стандартов и соглашений конкретного проекта:
+	специальный файл конституции (constitution.md) описывается технологический стек, правила именования,
+	архитектурные решения, допустимые библиотеки и требования безопасности.
   ],
 
   enum.item()[
-    Неконтролируемая автономия ИИ-агента:
-    в рабочий процесс встраиваются обязательные контрольные точки проверки,
-    на которых человек проверяет спецификацию, архитектурный план и декомпозицию задач
-    перед запуском автоматической реализации.
+	Неконтролируемая автономия ИИ-агента:
+	в рабочий процесс встраиваются обязательные контрольные точки проверки,
+	на которых человек проверяет спецификацию, архитектурный план и декомпозицию задач
+	перед запуском автоматической реализации.
   ],
 )
 
@@ -549,32 +562,32 @@
 
 #figure(
   diagram(
-    spacing: 8mm,
-    node-outset: 1mm,
+	spacing: 8mm,
+	node-outset: 1mm,
 
-    // Клиент
-    svc-node((0,0), [Клиент], fill: clr-ui, name: <cli>),
+	// Клиент
+	svc-node((0,0), [Клиент], fill: clr-ui, name: <cli>),
 
-    // Монолит — охватывающий узел
-    node(
-      enclose: (<pres>, <biz>, <pers>),
-      corner-radius: node-r,
-      stroke: node-stroke,
-      fill: rgb("#F5F5F5"),
-      name: <mono>,
-    ),
+	// Монолит — охватывающий узел
+	node(
+	  enclose: (<pres>, <biz>, <pers>),
+	  corner-radius: node-r,
+	  stroke: node-stroke,
+	  fill: rgb("#F5F5F5"),
+	  name: <mono>,
+	),
 
-    svc-node((0,1), [Слой представления], fill: clr-ui, name: <pres>),
-    svc-node((0,2), [Бизнес-логика], fill: clr-service, name: <biz>),
-    svc-node((0,3), [Доступ к данным], fill: clr-service, name: <pers>),
+	svc-node((0,1), [Слой представления], fill: clr-ui, name: <pres>),
+	svc-node((0,2), [Бизнес-логика], fill: clr-service, name: <biz>),
+	svc-node((0,3), [Доступ к данным], fill: clr-service, name: <pers>),
 
-    // БД
-    svc-node((0,4), [База данных], fill: clr-data, name: <db>),
+	// БД
+	svc-node((0,4), [База данных], fill: clr-data, name: <db>),
 
-    arr(<cli>,  <pres>),
-    arr(<pres>, <biz>),
-    arr(<biz>,  <pers>),
-    arr(<pers>, <db>),
+	arr(<cli>,  <pres>),
+	arr(<pres>, <biz>),
+	arr(<biz>,  <pers>),
+	arr(<pers>, <db>),
   ),
   kind: image,
   caption: "Монолитная архитектура",
@@ -605,32 +618,32 @@
 
 #figure(
   diagram(
-    spacing: 8mm,
-    node-outset: 1mm,
+	spacing: 8mm,
+	node-outset: 1mm,
 
-    // Клиент
-    svc-node((1, 0), [Клиент], fill: clr-ui, name: <ms-cli>),
+	// Клиент
+	svc-node((1, 0), [Клиент], fill: clr-ui, name: <ms-cli>),
 
-    // API Gateway
-    svc-node((1, 1), [API Gateway], fill: clr-ui, name: <gw>),
+	// API Gateway
+	svc-node((1, 1), [API Gateway], fill: clr-ui, name: <gw>),
 
-    // Три сервиса
-    svc-node((0, 2), [Сервис A], fill: clr-service, name: <sA>),
-    svc-node((1, 2), [Сервис B], fill: clr-service, name: <sB>),
-    svc-node((2, 2), [Сервис C], fill: clr-service, name: <sC>),
+	// Три сервиса
+	svc-node((0, 2), [Сервис A], fill: clr-service, name: <sA>),
+	svc-node((1, 2), [Сервис B], fill: clr-service, name: <sB>),
+	svc-node((2, 2), [Сервис C], fill: clr-service, name: <sC>),
 
-    // БД каждого сервиса
-    svc-node((0, 3), [БД A], fill: clr-data, name: <dbA>),
-    svc-node((1, 3), [БД B], fill: clr-data, name: <dbB>),
-    svc-node((2, 3), [БД C], fill: clr-data, name: <dbC>),
+	// БД каждого сервиса
+	svc-node((0, 3), [БД A], fill: clr-data, name: <dbA>),
+	svc-node((1, 3), [БД B], fill: clr-data, name: <dbB>),
+	svc-node((2, 3), [БД C], fill: clr-data, name: <dbC>),
 
-    arr(<ms-cli>, <gw>),
-    arr(<gw>, <sA>),
-    arr(<gw>, <sB>),
-    arr(<gw>, <sC>),
-    arr(<sA>, <dbA>),
-    arr(<sB>, <dbB>),
-    arr(<sC>, <dbC>),
+	arr(<ms-cli>, <gw>),
+	arr(<gw>, <sA>),
+	arr(<gw>, <sB>),
+	arr(<gw>, <sC>),
+	arr(<sA>, <dbA>),
+	arr(<sB>, <dbB>),
+	arr(<sC>, <dbC>),
   ),
   caption: "Микросервисная архитектура",
 )
@@ -664,37 +677,37 @@
 
 #figure(
   diagram(
-    spacing: 8mm,
-    node-outset: 1mm,
+	spacing: 8mm,
+	node-outset: 1mm,
 
-    // Клиент
-    svc-node((1, 0), [Клиент], fill: clr-ui, name: <mm-cli>),
+	// Клиент
+	svc-node((1, 0), [Клиент], fill: clr-ui, name: <mm-cli>),
 
-    // Слой представления
-    svc-node((1, 1), [Слой представления], fill: clr-ui, name: <mm-pres>),
+	// Слой представления
+	svc-node((1, 1), [Слой представления], fill: clr-ui, name: <mm-pres>),
 
-    // Охватывающий узел — модульный монолит
-    node(
-      enclose: (<mA>, <mB>, <mC>),
-      corner-radius: node-r,
-      stroke: node-stroke,
-      fill: rgb("#F5F5F5"),
-    ),
+	// Охватывающий узел — модульный монолит
+	node(
+	  enclose: (<mA>, <mB>, <mC>),
+	  corner-radius: node-r,
+	  stroke: node-stroke,
+	  fill: rgb("#F5F5F5"),
+	),
 
-    svc-node((0, 2), [Модуль A], fill: clr-service, name: <mA>),
-    svc-node((1, 2), [Модуль B], fill: clr-service, name: <mB>),
-    svc-node((2, 2), [Модуль C], fill: clr-service, name: <mC>),
+	svc-node((0, 2), [Модуль A], fill: clr-service, name: <mA>),
+	svc-node((1, 2), [Модуль B], fill: clr-service, name: <mB>),
+	svc-node((2, 2), [Модуль C], fill: clr-service, name: <mC>),
 
-    // Общая БД
-    svc-node((1, 3.2), [Общая база данных], fill: clr-data, name: <mm-db>),
+	// Общая БД
+	svc-node((1, 3.2), [Общая база данных], fill: clr-data, name: <mm-db>),
 
-    arr(<mm-cli>,  <mm-pres>),
-    arr(<mm-pres>, <mA>),
-    arr(<mm-pres>, <mB>),
-    arr(<mm-pres>, <mC>),
-    arr(<mA>, <mm-db>),
-    arr(<mB>, <mm-db>),
-    arr(<mC>, <mm-db>),
+	arr(<mm-cli>,  <mm-pres>),
+	arr(<mm-pres>, <mA>),
+	arr(<mm-pres>, <mB>),
+	arr(<mm-pres>, <mC>),
+	arr(<mA>, <mm-db>),
+	arr(<mB>, <mm-db>),
+	arr(<mC>, <mm-db>),
   ),
   caption: "Модульно-монолитная архитектура",
 )
@@ -733,8 +746,8 @@
 
 #figure(
   image(
-    "files/chapter-1/layered-architecture/Software_Architecture_Patterns.pdf-image-009.png",
-    width: 70%
+	"files/chapter-1/layered-architecture/Software_Architecture_Patterns.pdf-image-009.png",
+	width: 70%
   ),
   kind: image,
   caption: "Слоистая архитектура"
@@ -747,8 +760,8 @@
 
 #figure(
   image(
-    "files/chapter-1/layered-architecture/Software_Architecture_Patterns.pdf-image-010.png",
-    width: 70%
+	"files/chapter-1/layered-architecture/Software_Architecture_Patterns.pdf-image-010.png",
+	width: 70%
   ),
   kind: image,
   caption: "Концепция закрытых слоёв в слоистой архитектуре"
@@ -769,7 +782,7 @@
 
 #figure(
   image(
-    "files/chapter-1/onion/onion-architecture.png"
+	"files/chapter-1/onion/onion-architecture.png"
   ),
   caption: "Луковая архитектура"
 )
@@ -821,8 +834,8 @@ REST API, подписку на очередь сообщений и т.п.
 
 #figure(
   image(
-    "files/chapter-1/clean-architecture/CleanArchitecture.jpg",
-    width: 95%
+	"files/chapter-1/clean-architecture/CleanArchitecture.jpg",
+	width: 95%
   ),
   caption: "Чистая архитектура"
 )
@@ -935,18 +948,18 @@ backend-разработки являются Python, Java, C\# и Go, кажд�
 
 #enum(
   enum.item()[
-    Платформа .NET обеспечивает встроенную поддержку механизмов,
-    необходимых для реализации чистой архитектуры и подхода DDD: 
-    интерфейсов, внедрения зависимостей (Dependency Injection) и строгой типизации.
-    В сравнении с Python, где перечисленные механизмы либо отсутствуют на уровне языка,
-    либо реализуются через сторонние решения, платформа .NET предоставляет их в составе стандартной библиотеки.
+	Платформа .NET обеспечивает встроенную поддержку механизмов,
+	необходимых для реализации чистой архитектуры и подхода DDD: 
+	интерфейсов, внедрения зависимостей (Dependency Injection) и строгой типизации.
+	В сравнении с Python, где перечисленные механизмы либо отсутствуют на уровне языка,
+	либо реализуются через сторонние решения, платформа .NET предоставляет их в составе стандартной библиотеки.
   ],
 
   enum.item()[
-    Экосистема C\# включает ORM-библиотеку Entity Framework Core @EFCore,
-    предоставляющую развитые средства работы с базой данных и снижающую объём шаблонного кода.
-    В сравнении с Java и Go, где аналогичные инструменты требуют привлечения сторонних зависимостей с менее однородной документацией,
-    данное решение обеспечивает более высокую согласованность технологического стека.
+	Экосистема C\# включает ORM-библиотеку Entity Framework Core @EFCore,
+	предоставляющую развитые средства работы с базой данных и снижающую объём шаблонного кода.
+	В сравнении с Java и Go, где аналогичные инструменты требуют привлечения сторонних зависимостей с менее однородной документацией,
+	данное решение обеспечивает более высокую согласованность технологического стека.
   ]
 )
 
@@ -1085,22 +1098,22 @@ RustFS позиционируется как альтернатива MinIO: а�
 Количество мероприятий в год: \~250.
 
 #figure(
-    table(
-      columns: (auto, 1fr, auto, auto, auto, auto),
-      align: (left, left, center, center, center, right),
-      table.header(
-        [*№*], [*Наименование операции*], [*$T_1$,\ мин*], [*$T_2$,\ мин*], [*ΔT,\ мин*], [*Экономия,\ руб.*],
-      ),
-      [1], [Регистрация заявки в 1С], [30], [5], [25], [50 000],
-      [2], [Согласование текста анонса], [15], [2], [13], [26 000],
-      [3], [Публикация анонса\ на сайт ВУЗа], [45], [3], [42], [84 000],
-      [4], [Публикация анонса\ на сайт института], [40], [3], [37], [74 000],
-      [5], [Создание анонса\ в мессенджерах], [20], [5], [15], [30 000],
-      [6], [Создание анонса\ в соц. сетях], [25], [5], [20], [40 000],
-      [7], [Рассылка уведомлений\ участникам], [10], [1], [9], [18 000],
-      [8], [Сбор обратной связи], [12], [2], [10], [20 000],
-      table.cell(colspan: 5, align: right)[*Итого годовая экономия ФЗП:*], [*342 000 руб.*],
-    ),
+	table(
+	  columns: (auto, 1fr, auto, auto, auto, auto),
+	  align: (left, left, center, center, center, right),
+	  table.header(
+		[*№*], [*Наименование операции*], [*$T_1$,\ мин*], [*$T_2$,\ мин*], [*ΔT,\ мин*], [*Экономия,\ руб.*],
+	  ),
+	  [1], [Регистрация заявки в 1С], [30], [5], [25], [50 000],
+	  [2], [Согласование текста анонса], [15], [2], [13], [26 000],
+	  [3], [Публикация анонса\ на сайт ВУЗа], [45], [3], [42], [84 000],
+	  [4], [Публикация анонса\ на сайт института], [40], [3], [37], [74 000],
+	  [5], [Создание анонса\ в мессенджерах], [20], [5], [15], [30 000],
+	  [6], [Создание анонса\ в соц. сетях], [25], [5], [20], [40 000],
+	  [7], [Рассылка уведомлений\ участникам], [10], [1], [9], [18 000],
+	  [8], [Сбор обратной связи], [12], [2], [10], [20 000],
+	  table.cell(colspan: 5, align: right)[*Итого годовая экономия ФЗП:*], [*342 000 руб.*],
+	),
   caption: [Расчёт годовой экономии фонда заработной платы]
 )
 
@@ -1108,15 +1121,15 @@ RustFS позиционируется как альтернатива MinIO: а�
 
 #figure(
   table(
-    columns: (1fr, auto),
-    align: (left, right),
-    table.header([*Показатель*], [*Значение*]),
-    [ЗП администратора в час, руб.], [1 300],
-    [Количество часов обслуживания в год, ч.], [20],
-    [Рост нагрузки на администратора, руб.], [26 000],
+	columns: (1fr, auto),
+	align: (left, right),
+	table.header([*Показатель*], [*Значение*]),
+	[ЗП администратора в час, руб.], [1 300],
+	[Количество часов обслуживания в год, ч.], [20],
+	[Рост нагрузки на администратора, руб.], [26 000],
   ),
   caption: [Расходы на администрирование]
-  )
+)
 
 
 Итоговый годовой экономический эффект определяется как разность между совокупной экономией фонда заработной платы,
@@ -1292,8 +1305,8 @@ TF-IDF по всему корпусу пользователя.
 #figure(
   rotate(-90deg, reflow: true)[
   #image(
-    "files/chapter-2/DB.png",
-    width: 95%,
+	"files/chapter-2/DB.png",
+	width: 95%,
   )],
   caption: "Модель базы данных."
 )
@@ -1317,95 +1330,95 @@ TF-IDF по всему корпусу пользователя.
 /// </summary>
 /// <typeparam name="TKey">Тип первичного ключа.</typeparam>
 public abstract class Entity<TKey> : IEquatable<Entity<TKey>>
-    where TKey : IEquatable<TKey>
+	where TKey : IEquatable<TKey>
 {
-    /// <summary>
-    ///     Для EF Core.
-    /// </summary>
-    protected Entity()
-    {
-    }
+	/// <summary>
+	///     Для EF Core.
+	/// </summary>
+	protected Entity()
+	{
+	}
 
-    /// <summary>
-    ///     Конструктор сущности.
-    /// </summary>
-    /// <param name="id">Идентификатор сущности.</param>
-    protected Entity(TKey id)
-    {
-        Id = id;
-    }
+	/// <summary>
+	///     Конструктор сущности.
+	/// </summary>
+	/// <param name="id">Идентификатор сущности.</param>
+	protected Entity(TKey id)
+	{
+		Id = id;
+	}
 
-    /// <summary>
-    ///     Идентификатор сущности.
-    /// </summary>
-    public TKey Id { get; }
+	/// <summary>
+	///     Идентификатор сущности.
+	/// </summary>
+	public TKey Id { get; }
 
-    public bool Equals(Entity<TKey>? other)
-    {
-        if (other is null)
-            return false;
+	public bool Equals(Entity<TKey>? other)
+	{
+		if (other is null)
+			return false;
 
-        if (ReferenceEquals(this, other))
-            return true;
+		if (ReferenceEquals(this, other))
+			return true;
 
-        if (GetType() != other.GetType())
-            return false;
+		if (GetType() != other.GetType())
+			return false;
 
-        if (IsTransient() || other.IsTransient())
-            return false;
+		if (IsTransient() || other.IsTransient())
+			return false;
 
-        return Id.Equals(other.Id);
-    }
+		return Id.Equals(other.Id);
+	}
 
-    /// <inheritdoc />
-    public override bool Equals(object? obj)
-    {
-        return obj is Entity<TKey> entity && Equals(entity);
-    }
+	/// <inheritdoc />
+	public override bool Equals(object? obj)
+	{
+		return obj is Entity<TKey> entity && Equals(entity);
+	}
 
-    /// <inheritdoc />
-    public override int GetHashCode()
-    {
-        if (IsTransient())
-            return base.GetHashCode();
+	/// <inheritdoc />
+	public override int GetHashCode()
+	{
+		if (IsTransient())
+			return base.GetHashCode();
 
-        return Id.GetHashCode();
-    }
+		return Id.GetHashCode();
+	}
 
-    /// <summary>
-    ///     Оператор проверки равенства сущностей.
-    /// </summary>
-    /// <param name="left">Левый операнд.</param>
-    /// <param name="right">Правый операнд.</param>
-    /// <returns>
-    ///     True, если сущности равны, false иначе.
-    /// </returns>
-    public static bool operator ==(Entity<TKey>? left, Entity<TKey>? right)
-    {
-        return left?.Equals(right) ?? right is null;
-    }
+	/// <summary>
+	///     Оператор проверки равенства сущностей.
+	/// </summary>
+	/// <param name="left">Левый операнд.</param>
+	/// <param name="right">Правый операнд.</param>
+	/// <returns>
+	///     True, если сущности равны, false иначе.
+	/// </returns>
+	public static bool operator ==(Entity<TKey>? left, Entity<TKey>? right)
+	{
+		return left?.Equals(right) ?? right is null;
+	}
 
-    /// <summary>
-    ///     Оператор проверки неравенства сущностей.
-    /// </summary>
-    /// <param name="left">Левый операнд.</param>
-    /// <param name="right">Правый операнд.</param>
-    /// <returns>
-    ///     True, если сущности неравны, false иначе.
-    /// </returns>
-    public static bool operator !=(Entity<TKey>? left, Entity<TKey>? right)
-    {
-        return !(left == right);
-    }
+	/// <summary>
+	///     Оператор проверки неравенства сущностей.
+	/// </summary>
+	/// <param name="left">Левый операнд.</param>
+	/// <param name="right">Правый операнд.</param>
+	/// <returns>
+	///     True, если сущности неравны, false иначе.
+	/// </returns>
+	public static bool operator !=(Entity<TKey>? left, Entity<TKey>? right)
+	{
+		return !(left == right);
+	}
 
-    /// <summary>
-    ///     Проверка на присвоение ID.
-    /// </summary>
-    /// <returns>True, если ID не присвоен (равен значению по умолчанию), false если ID присвоен.</returns>
-    public bool IsTransient()
-    {
-        return EqualityComparer<TKey>.Default.Equals(Id, default);
-    }
+	/// <summary>
+	///     Проверка на присвоение ID.
+	/// </summary>
+	/// <returns>True, если ID не присвоен (равен значению по умолчанию), false если ID присвоен.</returns>
+	public bool IsTransient()
+	{
+		return EqualityComparer<TKey>.Default.Equals(Id, default);
+	}
 }
 ```
 
@@ -1420,71 +1433,71 @@ public abstract class Entity<TKey> : IEquatable<Entity<TKey>>
 /// </summary>
 public abstract class ValueObject : IEquatable<ValueObject>
 {
-    /// <inheritdoc />
-    public bool Equals(ValueObject? other)
-    {
-        if (other is null)
-            return false;
+	/// <inheritdoc />
+	public bool Equals(ValueObject? other)
+	{
+		if (other is null)
+			return false;
 
-        if (ReferenceEquals(this, other))
-            return true;
+		if (ReferenceEquals(this, other))
+			return true;
 
-        if (GetType() != other.GetType())
-            return false;
+		if (GetType() != other.GetType())
+			return false;
 
-        return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
-    }
+		return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+	}
 
-    /// <summary>
-    ///     Метод получения параметров для сравнения.
-    /// </summary>
-    /// <returns>
-    ///     Объекты для сравнения через yield.
-    /// </returns>
-    protected abstract IEnumerable<object?> GetEqualityComponents();
+	/// <summary>
+	///     Метод получения параметров для сравнения.
+	/// </summary>
+	/// <returns>
+	///     Объекты для сравнения через yield.
+	/// </returns>
+	protected abstract IEnumerable<object?> GetEqualityComponents();
 
-    /// <inheritdoc />
-    public override bool Equals(object? obj)
-    {
-        return obj is ValueObject valueObject && Equals(valueObject);
-    }
+	/// <inheritdoc />
+	public override bool Equals(object? obj)
+	{
+		return obj is ValueObject valueObject && Equals(valueObject);
+	}
 
-    /// <inheritdoc />
-    public override int GetHashCode()
-    {
-        var hash = new HashCode();
+	/// <inheritdoc />
+	public override int GetHashCode()
+	{
+		var hash = new HashCode();
 
-        foreach (var component in GetEqualityComponents())
-            hash.Add(component);
+		foreach (var component in GetEqualityComponents())
+			hash.Add(component);
 
-        return hash.ToHashCode();
-    }
+		return hash.ToHashCode();
+	}
 
-    /// <summary>
-    ///     Оператор проверки равенства объектов.
-    /// </summary>
-    /// <param name="left">Левый операнд.</param>
-    /// <param name="right">Правый операнд.</param>
-    /// <returns>
-    ///     True, если объекты равны, false иначе.
-    /// </returns>
-    public static bool operator ==(ValueObject? left, ValueObject? right)
-    {
-        return left?.Equals(right) ?? right is null;
-    }
+	/// <summary>
+	///     Оператор проверки равенства объектов.
+	/// </summary>
+	/// <param name="left">Левый операнд.</param>
+	/// <param name="right">Правый операнд.</param>
+	/// <returns>
+	///     True, если объекты равны, false иначе.
+	/// </returns>
+	public static bool operator ==(ValueObject? left, ValueObject? right)
+	{
+		return left?.Equals(right) ?? right is null;
+	}
 
-    /// <summary>
-    ///     Оператор проверки неравенства объектов.
-    /// </summary>
-    /// <param name="left">Левый операнд.</param>
-    /// <param name="right">Правый операнд.</param>
-    /// <returns>
-    ///     True, если объекты неравны, false иначе.
-    /// </returns>
-    public static bool operator !=(ValueObject? left, ValueObject? right)
-    {
-        return !(left == right);
-    }
+	/// <summary>
+	///     Оператор проверки неравенства объектов.
+	/// </summary>
+	/// <param name="left">Левый операнд.</param>
+	/// <param name="right">Правый операнд.</param>
+	/// <returns>
+	///     True, если объекты неравны, false иначе.
+	/// </returns>
+	public static bool operator !=(ValueObject? left, ValueObject? right)
+	{
+		return !(left == right);
+	}
 }
 ```
 
@@ -1505,44 +1518,44 @@ public abstract class ValueObject : IEquatable<ValueObject>
 /// </summary>
 public class TextField : ValueObject
 {
-    /// <summary>
-    ///     Для EF Core.
-    /// </summary>
-    private TextField()
-    {
-    }
+	/// <summary>
+	///     Для EF Core.
+	/// </summary>
+	private TextField()
+	{
+	}
 
-    public TextField(
-        string value,
-        int maxLength,
-        int minLength = 1,
-        Error? nullError = null,
-        Error? tooShortError = null,
-        Error? tooLongError = null)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            throw new DomainException(nullError ?? TextFieldErrors.ValueIsNull);
+	public TextField(
+		string value,
+		int maxLength,
+		int minLength = 1,
+		Error? nullError = null,
+		Error? tooShortError = null,
+		Error? tooLongError = null)
+	{
+		if (string.IsNullOrWhiteSpace(value))
+			throw new DomainException(nullError ?? TextFieldErrors.ValueIsNull);
 
-        var trimmed = value.Trim();
+		var trimmed = value.Trim();
 
-        if (trimmed.Length < minLength)
-            throw new DomainException(tooShortError ?? TextFieldErrors.ValueTooShort(minLength));
+		if (trimmed.Length < minLength)
+			throw new DomainException(tooShortError ?? TextFieldErrors.ValueTooShort(minLength));
 
-        if (trimmed.Length > maxLength)
-            throw new DomainException(tooLongError ?? TextFieldErrors.ValueTooLong(maxLength));
+		if (trimmed.Length > maxLength)
+			throw new DomainException(tooLongError ?? TextFieldErrors.ValueTooLong(maxLength));
 
-        Value = trimmed;
-    }
+		Value = trimmed;
+	}
 
-    /// <summary>
-    ///     Значение текстового поля.
-    /// </summary>
-    public string Value { get; } = null!;
+	/// <summary>
+	///     Значение текстового поля.
+	/// </summary>
+	public string Value { get; } = null!;
 
-    protected override IEnumerable<object?> GetEqualityComponents()
-    {
-        yield return Value;
-    }
+	protected override IEnumerable<object?> GetEqualityComponents()
+	{
+		yield return Value;
+	}
 }
 ```
 
@@ -1563,15 +1576,15 @@ public class TextField : ValueObject
 /// </summary>
 public class Title : TextField
 {
-    public const int MaxLength = 128;
+	public const int MaxLength = 128;
 
-    public Title(string value) : base(
-        value,
-        MaxLength,
-        nullError: EventTitleErrors.NullOrWhitespace,
-        tooLongError: EventTitleErrors.GreaterThanMaxLength)
-    {
-    }
+	public Title(string value) : base(
+		value,
+		MaxLength,
+		nullError: EventTitleErrors.NullOrWhitespace,
+		tooLongError: EventTitleErrors.GreaterThanMaxLength)
+	{
+	}
 }
 ```
 
@@ -1587,324 +1600,324 @@ public class Title : TextField
 /// </summary>
 public sealed class Event : Entity<Guid>, IAuditable, IAggregateRoot
 {
-    /// <summary>
-    ///     Участники.
-    /// </summary>
-    private readonly List<Participant> _participants = [];
+	/// <summary>
+	///     Участники.
+	/// </summary>
+	private readonly List<Participant> _participants = [];
 
-    /// <summary>
-    ///     Тэги.
-    /// </summary>
-    private readonly List<Tag> _tags = [];
+	/// <summary>
+	///     Тэги.
+	/// </summary>
+	private readonly List<Tag> _tags = [];
 
-    /// <summary>
-    ///     Для EF Core.
-    /// </summary>
-    private Event()
-    {
-    }
+	/// <summary>
+	///     Для EF Core.
+	/// </summary>
+	private Event()
+	{
+	}
 
-    /// <summary>
-    ///     Конструктор мероприятия.
-    /// </summary>
-    /// <param name="id">Идентификатор мероприятия.</param>
-    /// <param name="title">Название мероприятия.</param>
-    /// <param name="announcement">Анонс (краткое описание) мероприятия.</param>
-    /// <param name="description">Описание мероприятия.</param>
-    /// <param name="dateTimeRange">Диапазон дат проведения мероприятия.</param>
-    /// <param name="eventType">Тип мероприятия.</param>
-    /// <param name="eventFormat">Формат мероприятия.</param>
-    /// <param name="userId">ID пользователя.</param>
-    /// <param name="needsRegistration">Флаг необходимости регистрации.</param>
-    public Event(Guid id, Title title, Announcement announcement, Description description,
-        DateTimeRange dateTimeRange, EventType eventType, EventFormat eventFormat,
-        Guid userId, bool needsRegistration) : base(id)
-    {
-        Title = title;
-        Announcement = announcement;
-        Description = description;
-        DateTimeRange = dateTimeRange;
-        Type = eventType;
-        Format = eventFormat;
-        NeedsRegistration = needsRegistration;
-        UserId = userId;
-        CreatedAt = DateTimeOffset.UtcNow;
-        UpdatedAt = DateTimeOffset.UtcNow;
-    }
+	/// <summary>
+	///     Конструктор мероприятия.
+	/// </summary>
+	/// <param name="id">Идентификатор мероприятия.</param>
+	/// <param name="title">Название мероприятия.</param>
+	/// <param name="announcement">Анонс (краткое описание) мероприятия.</param>
+	/// <param name="description">Описание мероприятия.</param>
+	/// <param name="dateTimeRange">Диапазон дат проведения мероприятия.</param>
+	/// <param name="eventType">Тип мероприятия.</param>
+	/// <param name="eventFormat">Формат мероприятия.</param>
+	/// <param name="userId">ID пользователя.</param>
+	/// <param name="needsRegistration">Флаг необходимости регистрации.</param>
+	public Event(Guid id, Title title, Announcement announcement, Description description,
+		DateTimeRange dateTimeRange, EventType eventType, EventFormat eventFormat,
+		Guid userId, bool needsRegistration) : base(id)
+	{
+		Title = title;
+		Announcement = announcement;
+		Description = description;
+		DateTimeRange = dateTimeRange;
+		Type = eventType;
+		Format = eventFormat;
+		NeedsRegistration = needsRegistration;
+		UserId = userId;
+		CreatedAt = DateTimeOffset.UtcNow;
+		UpdatedAt = DateTimeOffset.UtcNow;
+	}
 
-    /// <summary>
-    ///     Название мероприятия.
-    /// </summary>
-    public Title Title { get; private set; } = null!;
+	/// <summary>
+	///     Название мероприятия.
+	/// </summary>
+	public Title Title { get; private set; } = null!;
 
-    /// <summary>
-    ///     Анонс (краткое описание) мероприятия.
-    /// </summary>
-    public Announcement Announcement { get; private set; } = null!;
+	/// <summary>
+	///     Анонс (краткое описание) мероприятия.
+	/// </summary>
+	public Announcement Announcement { get; private set; } = null!;
 
-    /// <summary>
-    ///     Описание мероприятия.
-    /// </summary>
-    public Description Description { get; private set; } = null!;
+	/// <summary>
+	///     Описание мероприятия.
+	/// </summary>
+	public Description Description { get; private set; } = null!;
 
-    /// <summary>
-    ///     Диапазон дат проведения мероприятия.
-    /// </summary>
-    public DateTimeRange DateTimeRange { get; private set; } = null!;
+	/// <summary>
+	///     Диапазон дат проведения мероприятия.
+	/// </summary>
+	public DateTimeRange DateTimeRange { get; private set; } = null!;
 
-    /// <summary>
-    ///     Тип мероприятия.
-    /// </summary>
-    public EventType Type { get; private set; } = null!;
+	/// <summary>
+	///     Тип мероприятия.
+	/// </summary>
+	public EventType Type { get; private set; } = null!;
 
-    /// <summary>
-    ///     Формат мероприятия.
-    /// </summary>
-    public EventFormat Format { get; } = null!;
+	/// <summary>
+	///     Формат мероприятия.
+	/// </summary>
+	public EventFormat Format { get; } = null!;
 
-    /// <summary>
-    ///     ID пользователя, создавшего мероприятие.
-    /// </summary>
-    public Guid UserId { get; }
+	/// <summary>
+	///     ID пользователя, создавшего мероприятие.
+	/// </summary>
+	public Guid UserId { get; }
 
-    /// <summary>
-    ///     Флаг необходимости регистрации на мероприятие.
-    /// </summary>
-    public bool NeedsRegistration { get; private set; }
+	/// <summary>
+	///     Флаг необходимости регистрации на мероприятие.
+	/// </summary>
+	public bool NeedsRegistration { get; private set; }
 
-    /// <summary>
-    ///     Максимальное число участников.
-    /// </summary>
-    public int? MaxParticipants { get; private set; }
+	/// <summary>
+	///     Максимальное число участников.
+	/// </summary>
+	public int? MaxParticipants { get; private set; }
 
-    /// <summary>
-    ///     Пришедшее количество участников.
-    /// </summary>
-    public int? FinalParticipantsCount { get; private set; }
+	/// <summary>
+	///     Пришедшее количество участников.
+	/// </summary>
+	public int? FinalParticipantsCount { get; private set; }
 
-    /// <summary>
-    ///     Информация о бронировании.
-    /// </summary>
-    public Booking? Booking { get; private set; }
+	/// <summary>
+	///     Информация о бронировании.
+	/// </summary>
+	public Booking? Booking { get; private set; }
 
-    /// <summary>
-    ///     Название файла превью.
-    /// </summary>
-    public string? PreviewFilename { get; private set; }
+	/// <summary>
+	///     Название файла превью.
+	/// </summary>
+	public string? PreviewFilename { get; private set; }
 
-    /// <summary>
-    ///     Название файла плейсхолдера превью.
-    /// </summary>
-    public string? PlaceholderFilename { get; private set; }
+	/// <summary>
+	///     Название файла плейсхолдера превью.
+	/// </summary>
+	public string? PlaceholderFilename { get; private set; }
 
-    /// <summary>
-    ///     Участники мероприятия.
-    /// </summary>
-    public IReadOnlyCollection<Participant> Participants => _participants.AsReadOnly();
+	/// <summary>
+	///     Участники мероприятия.
+	/// </summary>
+	public IReadOnlyCollection<Participant> Participants => _participants.AsReadOnly();
 
-    /// <summary>
-    ///     Тэги.
-    /// </summary>
-    public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();
+	/// <summary>
+	///     Тэги.
+	/// </summary>
+	public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();
 
-    /// <inheritdoc />
-    public DateTimeOffset CreatedAt { get; }
+	/// <inheritdoc />
+	public DateTimeOffset CreatedAt { get; }
 
-    /// <inheritdoc />
-    public DateTimeOffset UpdatedAt { get; }
+	/// <inheritdoc />
+	public DateTimeOffset UpdatedAt { get; }
 
-    /// <summary>
-    ///     Метод изменения названия мероприятия.
-    /// </summary>
-    /// <param name="title">Новое название.</param>
-    public void ChangeTitle(string title)
-    {
-        Title = new Title(title);
-    }
+	/// <summary>
+	///     Метод изменения названия мероприятия.
+	/// </summary>
+	/// <param name="title">Новое название.</param>
+	public void ChangeTitle(string title)
+	{
+		Title = new Title(title);
+	}
 
-    /// <summary>
-    ///     Метод изменения анонса мероприятия.
-    /// </summary>
-    /// <param name="announcement">Новый анонс.</param>
-    public void ChangeAnnouncement(string announcement)
-    {
-        Announcement = new Announcement(announcement);
-    }
+	/// <summary>
+	///     Метод изменения анонса мероприятия.
+	/// </summary>
+	/// <param name="announcement">Новый анонс.</param>
+	public void ChangeAnnouncement(string announcement)
+	{
+		Announcement = new Announcement(announcement);
+	}
 
-    /// <summary>
-    ///     Метод изменения описания мероприятия.
-    /// </summary>
-    /// <param name="description">Новое описание.</param>
-    public void ChangeDescription(string description)
-    {
-        Description = new Description(description);
-    }
+	/// <summary>
+	///     Метод изменения описания мероприятия.
+	/// </summary>
+	/// <param name="description">Новое описание.</param>
+	public void ChangeDescription(string description)
+	{
+		Description = new Description(description);
+	}
 
-    /// <summary>
-    ///     Изменить диапазон дат мероприятия.
-    /// </summary>
-    /// <param name="newStart">Новая дата и время начала.</param>
-    /// <param name="newEnd">Новая дата и время окончания.</param>
-    public void ChangeDateTimeRange(DateTimeOffset newStart, DateTimeOffset newEnd)
-    {
-        DateTimeRange = new DateTimeRange(newStart, newEnd);
-    }
+	/// <summary>
+	///     Изменить диапазон дат мероприятия.
+	/// </summary>
+	/// <param name="newStart">Новая дата и время начала.</param>
+	/// <param name="newEnd">Новая дата и время окончания.</param>
+	public void ChangeDateTimeRange(DateTimeOffset newStart, DateTimeOffset newEnd)
+	{
+		DateTimeRange = new DateTimeRange(newStart, newEnd);
+	}
 
-    /// <summary>
-    ///     Изменить дату начала мероприятия.
-    /// </summary>
-    /// <param name="newStart">Новая дата и время начала.</param>
-    public void ChangeStartDateTime(DateTimeOffset newStart)
-    {
-        DateTimeRange = DateTimeRange.WithStart(newStart);
-    }
+	/// <summary>
+	///     Изменить дату начала мероприятия.
+	/// </summary>
+	/// <param name="newStart">Новая дата и время начала.</param>
+	public void ChangeStartDateTime(DateTimeOffset newStart)
+	{
+		DateTimeRange = DateTimeRange.WithStart(newStart);
+	}
 
-    /// <summary>
-    ///     Изменить дату окончания мероприятия.
-    /// </summary>
-    /// <param name="newEnd">Новая дата и время окончания.</param>
-    public void ChangeEndDateTime(DateTimeOffset newEnd)
-    {
-        DateTimeRange = DateTimeRange.WithEnd(newEnd);
-    }
+	/// <summary>
+	///     Изменить дату окончания мероприятия.
+	/// </summary>
+	/// <param name="newEnd">Новая дата и время окончания.</param>
+	public void ChangeEndDateTime(DateTimeOffset newEnd)
+	{
+		DateTimeRange = DateTimeRange.WithEnd(newEnd);
+	}
 
-    /// <summary>
-    ///     Изменить тип мероприятия.
-    /// </summary>
-    /// <param name="eventType">Новый тип мероприятия.</param>
-    public void ChangeEventType(EventType eventType)
-    {
-        Type = eventType;
-    }
+	/// <summary>
+	///     Изменить тип мероприятия.
+	/// </summary>
+	/// <param name="eventType">Новый тип мероприятия.</param>
+	public void ChangeEventType(EventType eventType)
+	{
+		Type = eventType;
+	}
 
-    /// <summary>
-    ///     Изменить флаг необходимости регистрации.
-    /// </summary>
-    /// <param name="needsRegistration">Флаг необходимости регистрации.</param>
-    public void ChangeNeedsRegistration(bool needsRegistration)
-    {
-        NeedsRegistration = needsRegistration;
-    }
+	/// <summary>
+	///     Изменить флаг необходимости регистрации.
+	/// </summary>
+	/// <param name="needsRegistration">Флаг необходимости регистрации.</param>
+	public void ChangeNeedsRegistration(bool needsRegistration)
+	{
+		NeedsRegistration = needsRegistration;
+	}
 
-    /// <summary>
-    ///     Изменить название файла превью.
-    /// </summary>
-    /// <param name="previewFileName">Название нового файла.</param>
-    public void ChangePreview(string previewFileName)
-    {
-        PreviewFilename = previewFileName;
-    }
+	/// <summary>
+	///     Изменить название файла превью.
+	/// </summary>
+	/// <param name="previewFileName">Название нового файла.</param>
+	public void ChangePreview(string previewFileName)
+	{
+		PreviewFilename = previewFileName;
+	}
 
-    /// <summary>
-    ///     Изменить плейсхолдер.
-    /// </summary>
-    /// <param name="placeholderFilename">Название файла плейсхолдера.</param>
-    public void ChangePlaceHolder(string placeholderFilename)
-    {
-        PlaceholderFilename = placeholderFilename;
-    }
+	/// <summary>
+	///     Изменить плейсхолдер.
+	/// </summary>
+	/// <param name="placeholderFilename">Название файла плейсхолдера.</param>
+	public void ChangePlaceHolder(string placeholderFilename)
+	{
+		PlaceholderFilename = placeholderFilename;
+	}
 
-    /// <summary>
-    ///     Изменить максимальное количество участников.
-    /// </summary>
-    /// <param name="maxParticipants">Новое максимальное количество участников.</param>
-    public void ChangeMaxParticipants(int maxParticipants)
-    {
-        MaxParticipants = maxParticipants;
-    }
+	/// <summary>
+	///     Изменить максимальное количество участников.
+	/// </summary>
+	/// <param name="maxParticipants">Новое максимальное количество участников.</param>
+	public void ChangeMaxParticipants(int maxParticipants)
+	{
+		MaxParticipants = maxParticipants;
+	}
 
-    /// <summary>
-    ///     Добавить участника.
-    /// </summary>
-    /// <param name="userId">Идентификатор участника.</param>
-    /// <exception cref="DomainException">Ошибка правил домена.</exception>
-    public void AddParticipant(Guid userId)
-    {
-        if (!NeedsRegistration)
-            throw new DomainException(EventParticipantErrors.RegistrationNotRequired);
+	/// <summary>
+	///     Добавить участника.
+	/// </summary>
+	/// <param name="userId">Идентификатор участника.</param>
+	/// <exception cref="DomainException">Ошибка правил домена.</exception>
+	public void AddParticipant(Guid userId)
+	{
+		if (!NeedsRegistration)
+			throw new DomainException(EventParticipantErrors.RegistrationNotRequired);
 
-        if (_participants.Any(p => p.UserId == userId))
-            throw new DomainException(EventParticipantErrors.AlreadyRegistered(userId));
+		if (_participants.Any(p => p.UserId == userId))
+			throw new DomainException(EventParticipantErrors.AlreadyRegistered(userId));
 
-        if (MaxParticipants.HasValue && _participants.Count >= MaxParticipants.Value)
-            throw new DomainException(EventParticipantErrors.MaxCountReached(MaxParticipants.Value));
+		if (MaxParticipants.HasValue && _participants.Count >= MaxParticipants.Value)
+			throw new DomainException(EventParticipantErrors.MaxCountReached(MaxParticipants.Value));
 
-        _participants.Add(new Participant(Id, userId));
-    }
+		_participants.Add(new Participant(Id, userId));
+	}
 
-    /// <summary>
-    ///     Удалить участника.
-    /// </summary>
-    /// <param name="userId">Идентификатор участника.</param>
-    /// <exception cref="NotFoundException">Участник не найден.</exception>
-    public void RemoveParticipant(Guid userId)
-    {
-        var participant = _participants.FirstOrDefault(p => p.UserId == userId);
+	/// <summary>
+	///     Удалить участника.
+	/// </summary>
+	/// <param name="userId">Идентификатор участника.</param>
+	/// <exception cref="NotFoundException">Участник не найден.</exception>
+	public void RemoveParticipant(Guid userId)
+	{
+		var participant = _participants.FirstOrDefault(p => p.UserId == userId);
 
-        if (participant == null)
-            throw new NotFoundException(EventParticipantErrors.NotFoundById(userId));
+		if (participant == null)
+			throw new NotFoundException(EventParticipantErrors.NotFoundById(userId));
 
-        _participants.Remove(participant);
-    }
+		_participants.Remove(participant);
+	}
 
-    /// <summary>
-    ///     Изменить финальное количество участников.
-    /// </summary>
-    /// <param name="finalParticipantsCount">Количество пришедших.</param>
-    public void ChangeFinalParticipantsCount(int finalParticipantsCount)
-    {
-        FinalParticipantsCount = finalParticipantsCount;
-    }
+	/// <summary>
+	///     Изменить финальное количество участников.
+	/// </summary>
+	/// <param name="finalParticipantsCount">Количество пришедших.</param>
+	public void ChangeFinalParticipantsCount(int finalParticipantsCount)
+	{
+		FinalParticipantsCount = finalParticipantsCount;
+	}
 
-    /// <summary>
-    ///     Забронировать помещение.
-    /// </summary>
-    /// <param name="locationId">ID локации.</param>
-    /// <param name="placeId">ID помещения в локации.</param>
-    /// <exception cref="DomainException">Ошибка правил домена.</exception>
-    public void Book(int locationId, int placeId)
-    {
-        if (Format.Id == EventFormat.Online.Id)
-            throw new DomainException(EventBookingErrors.NotAllowedForOnline);
+	/// <summary>
+	///     Забронировать помещение.
+	/// </summary>
+	/// <param name="locationId">ID локации.</param>
+	/// <param name="placeId">ID помещения в локации.</param>
+	/// <exception cref="DomainException">Ошибка правил домена.</exception>
+	public void Book(int locationId, int placeId)
+	{
+		if (Format.Id == EventFormat.Online.Id)
+			throw new DomainException(EventBookingErrors.NotAllowedForOnline);
 
-        Booking = new Booking(locationId, placeId);
-    }
+		Booking = new Booking(locationId, placeId);
+	}
 
-    /// <summary>
-    ///     Убрать бронирование.
-    /// </summary>
-    public void Unbook()
-    {
-        Booking = null;
-    }
+	/// <summary>
+	///     Убрать бронирование.
+	/// </summary>
+	public void Unbook()
+	{
+		Booking = null;
+	}
 
-    /// <summary>
-    ///     Добавить тэг.
-    /// </summary>
-    /// <param name="tag">Тэг.</param>
-    /// <exception cref="DomainException">Ошибка правил домена.</exception>
-    public void AddTag(Tag tag)
-    {
-        if (_tags.Any(t => t == tag))
-            throw new DomainException(TagErrors.AlreadyAssigned(tag));
+	/// <summary>
+	///     Добавить тэг.
+	/// </summary>
+	/// <param name="tag">Тэг.</param>
+	/// <exception cref="DomainException">Ошибка правил домена.</exception>
+	public void AddTag(Tag tag)
+	{
+		if (_tags.Any(t => t == tag))
+			throw new DomainException(TagErrors.AlreadyAssigned(tag));
 
-        _tags.Add(tag);
-    }
+		_tags.Add(tag);
+	}
 
-    /// <summary>
-    ///     Убрать тэг.
-    /// </summary>
-    /// <param name="tagId">ID тэга.</param>
-    /// <exception cref="NotFoundException">Тэг не найден.</exception>
-    public void RemoveTag(int tagId)
-    {
-        var tagToRemove = _tags.FirstOrDefault(t => t.Id == tagId);
+	/// <summary>
+	///     Убрать тэг.
+	/// </summary>
+	/// <param name="tagId">ID тэга.</param>
+	/// <exception cref="NotFoundException">Тэг не найден.</exception>
+	public void RemoveTag(int tagId)
+	{
+		var tagToRemove = _tags.FirstOrDefault(t => t.Id == tagId);
 
-        if (tagToRemove == null)
-            throw new NotFoundException(EventErrors.TagNotFoundById(tagId));
+		if (tagToRemove == null)
+			throw new NotFoundException(EventErrors.TagNotFoundById(tagId));
 
-        _tags.Remove(tagToRemove);
-    }
+		_tags.Remove(tagToRemove);
+	}
 }
 ```
 
@@ -1923,100 +1936,100 @@ public sealed class Event : Entity<Guid>, IAuditable, IAggregateRoot
 /// </summary>
 public static class EventFactory
 {
-    /// <summary>
-    ///     Создать мероприятие.
-    /// </summary>
-    /// <param name="title">Название.</param>
-    /// <param name="announcement">Анонс (краткое описание).</param>
-    /// <param name="description">Описание.</param>
-    /// <param name="startDateTime">Дата и время начала.</param>
-    /// <param name="endDateTime">Дата и время окончания.</param>
-    /// <param name="eventType">Тип мероприятия.</param>
-    /// <param name="eventFormat">Формат мероприятия.</param>
-    /// <param name="needRegistration">Необходимость регистрации.</param>
-    /// <param name="userId">ID пользователя.</param>
-    /// <param name="locationId">ID локации.</param>
-    /// <param name="placeId">ID помещения.</param>
-    /// <param name="maxParticipants">Максимальное количество участников.</param>
-    /// <param name="previewFilename">Название файла превью.</param>
-    /// <param name="placeholderFilename">Название плейсхолдера превью.</param>
-    /// <param name="tags">Тэги мероприятия.</param>
-    /// <returns>Объект сущности мероприятия.</returns>
-    public static Event Create(
-        string title,
-        string announcement,
-        string description,
-        DateTimeOffset startDateTime,
-        DateTimeOffset endDateTime,
-        EventType eventType,
-        EventFormat eventFormat,
-        Guid userId,
-        bool needRegistration,
-        int? locationId = null,
-        int? placeId = null,
-        int? maxParticipants = null,
-        string? previewFilename = null,
-        string? placeholderFilename = null,
-        IReadOnlyCollection<Tag>? tags = null)
-    {
-        ValidatePreview(previewFilename, placeholderFilename);
-        ValidateRegistration(needRegistration, maxParticipants);
-        ValidateBooking(eventFormat, locationId, placeId);
+	/// <summary>
+	///     Создать мероприятие.
+	/// </summary>
+	/// <param name="title">Название.</param>
+	/// <param name="announcement">Анонс (краткое описание).</param>
+	/// <param name="description">Описание.</param>
+	/// <param name="startDateTime">Дата и время начала.</param>
+	/// <param name="endDateTime">Дата и время окончания.</param>
+	/// <param name="eventType">Тип мероприятия.</param>
+	/// <param name="eventFormat">Формат мероприятия.</param>
+	/// <param name="needRegistration">Необходимость регистрации.</param>
+	/// <param name="userId">ID пользователя.</param>
+	/// <param name="locationId">ID локации.</param>
+	/// <param name="placeId">ID помещения.</param>
+	/// <param name="maxParticipants">Максимальное количество участников.</param>
+	/// <param name="previewFilename">Название файла превью.</param>
+	/// <param name="placeholderFilename">Название плейсхолдера превью.</param>
+	/// <param name="tags">Тэги мероприятия.</param>
+	/// <returns>Объект сущности мероприятия.</returns>
+	public static Event Create(
+		string title,
+		string announcement,
+		string description,
+		DateTimeOffset startDateTime,
+		DateTimeOffset endDateTime,
+		EventType eventType,
+		EventFormat eventFormat,
+		Guid userId,
+		bool needRegistration,
+		int? locationId = null,
+		int? placeId = null,
+		int? maxParticipants = null,
+		string? previewFilename = null,
+		string? placeholderFilename = null,
+		IReadOnlyCollection<Tag>? tags = null)
+	{
+		ValidatePreview(previewFilename, placeholderFilename);
+		ValidateRegistration(needRegistration, maxParticipants);
+		ValidateBooking(eventFormat, locationId, placeId);
 
-        var @event = new Event(
-            Guid.NewGuid(),
-            new Title(title),
-            new Announcement(announcement),
-            new Description(description),
-            new DateTimeRange(startDateTime, endDateTime),
-            eventType,
-            eventFormat,
-            userId,
-            needRegistration);
+		var @event = new Event(
+			Guid.NewGuid(),
+			new Title(title),
+			new Announcement(announcement),
+			new Description(description),
+			new DateTimeRange(startDateTime, endDateTime),
+			eventType,
+			eventFormat,
+			userId,
+			needRegistration);
 
-        ApplyPreview(@event, previewFilename, placeholderFilename);
+		ApplyPreview(@event, previewFilename, placeholderFilename);
 
-        if (maxParticipants.HasValue)
-            @event.ChangeMaxParticipants(maxParticipants.Value);
+		if (maxParticipants.HasValue)
+			@event.ChangeMaxParticipants(maxParticipants.Value);
 
-        if (locationId.HasValue && placeId.HasValue)
-            @event.Book(locationId.Value, placeId.Value);
+		if (locationId.HasValue && placeId.HasValue)
+			@event.Book(locationId.Value, placeId.Value);
 
-        if (tags != null && tags.Count > 0)
-            foreach (var tag in tags)
-                @event.AddTag(tag);
+		if (tags != null && tags.Count > 0)
+			foreach (var tag in tags)
+				@event.AddTag(tag);
 
-        return @event;
-    }
+		return @event;
+	}
 
-    private static void ValidatePreview(string? previewFilename, string? placeholderFilename)
-    {
-        if (string.IsNullOrWhiteSpace(previewFilename) && string.IsNullOrWhiteSpace(placeholderFilename))
-            throw new DomainException(EventPreviewErrors.PlaceholderAndPreviewCannotBothBeEmpty);
+	private static void ValidatePreview(string? previewFilename, string? placeholderFilename)
+	{
+		if (string.IsNullOrWhiteSpace(previewFilename) && string.IsNullOrWhiteSpace(placeholderFilename))
+			throw new DomainException(EventPreviewErrors.PlaceholderAndPreviewCannotBothBeEmpty);
 
-        if (!string.IsNullOrWhiteSpace(previewFilename) && !string.IsNullOrWhiteSpace(placeholderFilename))
-            throw new DomainException(EventPreviewErrors.PlaceholderAndPreviewCannotBothBeSet);
-    }
+		if (!string.IsNullOrWhiteSpace(previewFilename) && !string.IsNullOrWhiteSpace(placeholderFilename))
+			throw new DomainException(EventPreviewErrors.PlaceholderAndPreviewCannotBothBeSet);
+	}
 
-    private static void ValidateRegistration(bool needRegistration, int? maxParticipants)
-    {
-        if (needRegistration && !maxParticipants.HasValue)
-            throw new DomainException(EventParticipantErrors.MaxCountMustBeSet);
-    }
+	private static void ValidateRegistration(bool needRegistration, int? maxParticipants)
+	{
+		if (needRegistration && !maxParticipants.HasValue)
+			throw new DomainException(EventParticipantErrors.MaxCountMustBeSet);
+	}
 
-    private static void ValidateBooking(EventFormat eventFormat, int? locationId, int? placeId)
-    {
-        if (eventFormat.Id != EventFormat.Online.Id && (!locationId.HasValue || !placeId.HasValue))
-            throw new DomainException(EventBookingErrors.RequiredForOfflineAndHybrid);
-    }
+	private static void ValidateBooking(EventFormat eventFormat, int? locationId, int? placeId)
+	{
+		if (eventFormat.Id != EventFormat.Online.Id && (!locationId.HasValue || !placeId.HasValue))
+			throw new DomainException(EventBookingErrors.RequiredForOfflineAndHybrid);
+	}
 
-    private static void ApplyPreview(Event @event, string? previewFilename, string? placeholderFilename)
-    {
-        if (!string.IsNullOrWhiteSpace(previewFilename))
-            @event.ChangePreview(previewFilename);
-        else
-            @event.ChangePlaceHolder(placeholderFilename!);
-    }
+	private static void ApplyPreview(Event @event, string? previewFilename, string? placeholderFilename)
+	{
+		if (!string.IsNullOrWhiteSpace(previewFilename))
+			@event.ChangePreview(previewFilename);
+		else
+			@event.ChangePlaceHolder(placeholderFilename!);
+	}
 }
 ```
 
@@ -2049,7 +2062,7 @@ public record Error(string ErrorCode, string ErrorMessage);
 /// </summary>
 public class DomainException(Error error) : Exception(error.ErrorMessage)
 {
-    public Error Error { get; } = error;
+	public Error Error { get; } = error;
 }
 ```
 
@@ -2060,7 +2073,7 @@ public class DomainException(Error error) : Exception(error.ErrorMessage)
 /// </summary>
 public class NotFoundException(Error error) : Exception(error.ErrorMessage)
 {
-    public Error Error { get; } = error;
+	public Error Error { get; } = error;
 }
 ```
 
@@ -2077,20 +2090,20 @@ public class NotFoundException(Error error) : Exception(error.ErrorMessage)
 /// </summary>
 public static class TextFieldErrors
 {
-    public static readonly Error ValueIsNull =
-        new("TextField.ValueIsNullOrWhiteSpace", "Текстовое поле равно null или пусто.");
+	public static readonly Error ValueIsNull =
+		new("TextField.ValueIsNullOrWhiteSpace", "Текстовое поле равно null или пусто.");
 
-    public static Error ValueTooShort(int min)
-    {
-        return new Error("TextField.ValueTooShort",
-            $"Длина текстового поля меньше минимальной длинны в {min} символ(-ов).");
-    }
+	public static Error ValueTooShort(int min)
+	{
+		return new Error("TextField.ValueTooShort",
+			$"Длина текстового поля меньше минимальной длинны в {min} символ(-ов).");
+	}
 
-    public static Error ValueTooLong(int max)
-    {
-        return new Error("TextField.ValueTooLong",
-            $"Длина текстового поля больше максимальной длинны в {max} символ(-ов).");
-    }
+	public static Error ValueTooLong(int max)
+	{
+		return new Error("TextField.ValueTooLong",
+			$"Длина текстового поля больше максимальной длинны в {max} символ(-ов).");
+	}
 }
 ```
 
@@ -2111,19 +2124,19 @@ public static class TextFieldErrors
 /// </summary>
 public class EventsDbContext : DbContext
 {
-    /// <summary>
-    ///     Конструктор контекста базы данных приложения.
-    /// </summary>
-    /// <param name="options">Опции контеста базы данных.</param>
-    public EventsDbContext(DbContextOptions options) : base(options)
-    {
-    }
+	/// <summary>
+	///     Конструктор контекста базы данных приложения.
+	/// </summary>
+	/// <param name="options">Опции контеста базы данных.</param>
+	public EventsDbContext(DbContextOptions options) : base(options)
+	{
+	}
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		base.OnModelCreating(modelBuilder);
+		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+	}
 }
 ```
 
@@ -2139,99 +2152,99 @@ public class EventsDbContext : DbContext
 /// </summary>
 public class EventConfiguration : IEntityTypeConfiguration<Event>
 {
-    /// <inheritdoc />
-    public void Configure(EntityTypeBuilder<Event> builder)
-    {
-        builder.ToTable("Events");
+	/// <inheritdoc />
+	public void Configure(EntityTypeBuilder<Event> builder)
+	{
+		builder.ToTable("Events");
 
-        builder.HasKey(e => e.Id);
+		builder.HasKey(e => e.Id);
 
-        builder.OwnsOne(e => e.Title)
-            .Property(t => t.Value)
-            .HasColumnName("Title")
-            .HasMaxLength(Title.MaxLength)
-            .IsRequired();
+		builder.OwnsOne(e => e.Title)
+			.Property(t => t.Value)
+			.HasColumnName("Title")
+			.HasMaxLength(Title.MaxLength)
+			.IsRequired();
 
-        builder
-            .OwnsOne(e => e.Announcement)
-            .Property(a => a.Value)
-            .HasColumnName("Announcement")
-            .HasMaxLength(Announcement.MaxLength)
-            .IsRequired();
+		builder
+			.OwnsOne(e => e.Announcement)
+			.Property(a => a.Value)
+			.HasColumnName("Announcement")
+			.HasMaxLength(Announcement.MaxLength)
+			.IsRequired();
 
-        builder
-            .OwnsOne(e => e.Description)
-            .Property(e => e.Value)
-            .HasColumnName("Description")
-            .HasMaxLength(Announcement.MaxLength)
-            .IsRequired();
+		builder
+			.OwnsOne(e => e.Description)
+			.Property(e => e.Value)
+			.HasColumnName("Description")
+			.HasMaxLength(Announcement.MaxLength)
+			.IsRequired();
 
-        builder.OwnsOne(e => e.DateTimeRange, rangeBuilder =>
-        {
-            rangeBuilder.Property(e => e.StartDateTime)
-                .HasColumnName("StartDateTime")
-                .IsRequired();
+		builder.OwnsOne(e => e.DateTimeRange, rangeBuilder =>
+		{
+			rangeBuilder.Property(e => e.StartDateTime)
+				.HasColumnName("StartDateTime")
+				.IsRequired();
 
-            rangeBuilder.Property(e => e.EndDateTime)
-                .HasColumnName("EndDateTime")
-                .IsRequired();
-        });
+			rangeBuilder.Property(e => e.EndDateTime)
+				.HasColumnName("EndDateTime")
+				.IsRequired();
+		});
 
-        builder.OwnsOne(e => e.Booking, bookingBuilder =>
-        {
-            bookingBuilder.Property(b => b.LocationId)
-                .HasColumnName("LocationId");
+		builder.OwnsOne(e => e.Booking, bookingBuilder =>
+		{
+			bookingBuilder.Property(b => b.LocationId)
+				.HasColumnName("LocationId");
 
-            bookingBuilder.Property(b => b.PlaceId)
-                .HasColumnName("PlaceId");
-        });
+			bookingBuilder.Property(b => b.PlaceId)
+				.HasColumnName("PlaceId");
+		});
 
-        builder.Property(e => e.PreviewFilename);
+		builder.Property(e => e.PreviewFilename);
 
-        builder.Property(e => e.PlaceholderFilename);
+		builder.Property(e => e.PlaceholderFilename);
 
-        builder.Property(e => e.NeedsRegistration)
-            .IsRequired();
+		builder.Property(e => e.NeedsRegistration)
+			.IsRequired();
 
-        builder.Property(e => e.MaxParticipants);
+		builder.Property(e => e.MaxParticipants);
 
-        builder.Property(e => e.FinalParticipantsCount);
+		builder.Property(e => e.FinalParticipantsCount);
 
-        builder.HasOne(e => e.Type)
-            .WithMany()
-            .IsRequired()
-            .OnDelete(DeleteBehavior.Restrict);
+		builder.HasOne(e => e.Type)
+			.WithMany()
+			.IsRequired()
+			.OnDelete(DeleteBehavior.Restrict);
 
-        builder.Navigation(e => e.Type).AutoInclude();
+		builder.Navigation(e => e.Type).AutoInclude();
 
-        builder.HasOne(e => e.Format)
-            .WithMany()
-            .IsRequired()
-            .OnDelete(DeleteBehavior.Restrict);
+		builder.HasOne(e => e.Format)
+			.WithMany()
+			.IsRequired()
+			.OnDelete(DeleteBehavior.Restrict);
 
-        builder.Navigation(e => e.Format).AutoInclude();
+		builder.Navigation(e => e.Format).AutoInclude();
 
-        builder.HasOne<User>()
-            .WithMany()
-            .HasForeignKey(e => e.UserId)
-            .OnDelete(DeleteBehavior.Restrict);
+		builder.HasOne<User>()
+			.WithMany()
+			.HasForeignKey(e => e.UserId)
+			.OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasMany(e => e.Participants)
-            .WithOne()
-            .HasForeignKey(e => e.EventId)
-            .OnDelete(DeleteBehavior.Cascade);
+		builder.HasMany(e => e.Participants)
+			.WithOne()
+			.HasForeignKey(e => e.EventId)
+			.OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(e => e.Tags)
-            .WithMany()
-            .UsingEntity(e => e.ToTable("EventsTags"));
+		builder.HasMany(e => e.Tags)
+			.WithMany()
+			.UsingEntity(e => e.ToTable("EventsTags"));
 
-        builder.Property(e => e.CreatedAt)
-            .IsRequired()
-            .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Throw);
+		builder.Property(e => e.CreatedAt)
+			.IsRequired()
+			.Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Throw);
 
-        builder.Property(e => e.UpdatedAt)
-            .IsRequired();
-    }
+		builder.Property(e => e.UpdatedAt)
+			.IsRequired();
+	}
 }
 ```
 
@@ -2242,13 +2255,13 @@ public class EventConfiguration : IEntityTypeConfiguration<Event>
 #codly(header: [*Repository.cs*])
 ```cs
 public class Repository<T>(EventsDbContext dbContext) : RepositoryBase<T>(dbContext), IRepository<T>
-    where T : class
+	where T : class
 {
-    public async Task<List<TResult>> QueryAsync<TResult>(QueryObject<T, TResult> query,
-        CancellationToken cancellationToken = default)
-    {
-        return await query.Build(DbContext.Set<T>().AsNoTracking()).ToListAsync(cancellationToken);
-    }
+	public async Task<List<TResult>> QueryAsync<TResult>(QueryObject<T, TResult> query,
+		CancellationToken cancellationToken = default)
+	{
+		return await query.Build(DbContext.Set<T>().AsNoTracking()).ToListAsync(cancellationToken);
+	}
 }
 ```
 
@@ -2262,51 +2275,51 @@ public class Repository<T>(EventsDbContext dbContext) : RepositoryBase<T>(dbCont
 /// </summary>
 public class RustFsFileStorageService(IAmazonS3 s3Client) : IFileStorageService
 {
-    public async Task PutObjectAsync(PutObjectRequest request, CancellationToken cancellationToken)
-    {
-        await s3Client.PutObjectAsync(request, cancellationToken);
-    }
+	public async Task PutObjectAsync(PutObjectRequest request, CancellationToken cancellationToken)
+	{
+		await s3Client.PutObjectAsync(request, cancellationToken);
+	}
 
-    public async Task DeleteObjectAsync(DeleteObjectRequest request, CancellationToken cancellationToken)
-    {
-        try
-        {
-            await s3Client.DeleteObjectAsync(request, cancellationToken);
-        }
-        catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
-        {
-            throw new NotFoundException(FileErrors.FileNotFoundByName(request.Key));
-        }
-    }
+	public async Task DeleteObjectAsync(DeleteObjectRequest request, CancellationToken cancellationToken)
+	{
+		try
+		{
+			await s3Client.DeleteObjectAsync(request, cancellationToken);
+		}
+		catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new NotFoundException(FileErrors.FileNotFoundByName(request.Key));
+		}
+	}
 
-    public async Task<DeleteObjectsResponse> DeleteObjectsAsync(DeleteObjectsRequest request,
-        CancellationToken cancellationToken)
-    {
-        return await s3Client.DeleteObjectsAsync(request, cancellationToken);
-    }
+	public async Task<DeleteObjectsResponse> DeleteObjectsAsync(DeleteObjectsRequest request,
+		CancellationToken cancellationToken)
+	{
+		return await s3Client.DeleteObjectsAsync(request, cancellationToken);
+	}
 
-    public async Task<GetObjectResponse> GetObjectAsync(GetObjectRequest request, CancellationToken cancellationToken)
-    {
-        try
-        {
-            return await s3Client.GetObjectAsync(request, cancellationToken);
-        }
-        catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
-        {
-            throw new NotFoundException(FileErrors.FileNotFoundByName(request.Key));
-        }
-    }
+	public async Task<GetObjectResponse> GetObjectAsync(GetObjectRequest request, CancellationToken cancellationToken)
+	{
+		try
+		{
+			return await s3Client.GetObjectAsync(request, cancellationToken);
+		}
+		catch (AmazonS3Exception e) when (e.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new NotFoundException(FileErrors.FileNotFoundByName(request.Key));
+		}
+	}
 
-    public async Task<ListObjectsV2Response> ListObjectsAsync(ListObjectsV2Request request,
-        CancellationToken cancellationToken)
-    {
-        var objects = await s3Client.ListObjectsV2Async(request, cancellationToken);
+	public async Task<ListObjectsV2Response> ListObjectsAsync(ListObjectsV2Request request,
+		CancellationToken cancellationToken)
+	{
+		var objects = await s3Client.ListObjectsV2Async(request, cancellationToken);
 
-        if (objects.S3Objects == null || objects.S3Objects.Count == 0)
-            throw new NotFoundException(FileErrors.NotFoundAny);
+		if (objects.S3Objects == null || objects.S3Objects.Count == 0)
+			throw new NotFoundException(FileErrors.NotFoundAny);
 
-        return objects;
-    }
+		return objects;
+	}
 }
 ```
 
@@ -2321,73 +2334,73 @@ public class RustFsFileStorageService(IAmazonS3 s3Client) : IFileStorageService
 /// </summary>
 public static class DataAccessExtensions
 {
-    extension(IServiceCollection services)
-    {
-        /// <summary>
-        ///     Метод добавления data access в приложение.
-        /// </summary>
-        /// <param name="configuration">Конфигурация приложения.</param>
-        public void AddDataAccess(IConfiguration configuration)
-        {
-            services.ConfigureDbConnection(configuration);
+	extension(IServiceCollection services)
+	{
+		/// <summary>
+		///     Метод добавления data access в приложение.
+		/// </summary>
+		/// <param name="configuration">Конфигурация приложения.</param>
+		public void AddDataAccess(IConfiguration configuration)
+		{
+			services.ConfigureDbConnection(configuration);
 
-            services.AddS3Client(configuration);
+			services.AddS3Client(configuration);
 
-            services.RegisterRepositories();
+			services.RegisterRepositories();
 
-            services.RegisterDataAccessServices();
-        }
+			services.RegisterDataAccessServices();
+		}
 
-        private void ConfigureDbConnection(IConfiguration configuration)
-        {
-            var connectionString = configuration.GetConnectionString("DbConnection");
-            services.AddDbContextPool<EventsDbContext>(options => options.UseNpgsql(connectionString,
-                optionBuilder =>
-                {
-                    optionBuilder.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
-                    options.AddInterceptors(new AuditInterceptor());
-                }));
-        }
+		private void ConfigureDbConnection(IConfiguration configuration)
+		{
+			var connectionString = configuration.GetConnectionString("DbConnection");
+			services.AddDbContextPool<EventsDbContext>(options => options.UseNpgsql(connectionString,
+				optionBuilder =>
+				{
+					optionBuilder.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+					options.AddInterceptors(new AuditInterceptor());
+				}));
+		}
 
-        private void RegisterRepositories()
-        {
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IEventRepository, EventRepository>();
-        }
+		private void RegisterRepositories()
+		{
+			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+			services.AddScoped<IEventRepository, EventRepository>();
+		}
 
-        private void AddS3Client(IConfiguration configuration)
-        {
-            services.AddSingleton<IAmazonS3>(_ =>
-            {
-                var endpoint = configuration["S3:Endpoint"];
-                var accessKey = configuration["S3:AccessKey"];
-                var secretKey = configuration["S3:SecretKey"];
-                var proxyHost = configuration["S3:ProxyHost"];
-                var proxyPort = configuration["S3:ProxyPort"];
+		private void AddS3Client(IConfiguration configuration)
+		{
+			services.AddSingleton<IAmazonS3>(_ =>
+			{
+				var endpoint = configuration["S3:Endpoint"];
+				var accessKey = configuration["S3:AccessKey"];
+				var secretKey = configuration["S3:SecretKey"];
+				var proxyHost = configuration["S3:ProxyHost"];
+				var proxyPort = configuration["S3:ProxyPort"];
 
-                var config = new AmazonS3Config
-                {
-                    ServiceURL = endpoint,
-                    ForcePathStyle = true
-                };
+				var config = new AmazonS3Config
+				{
+					ServiceURL = endpoint,
+					ForcePathStyle = true
+				};
 
-                if (proxyHost != null && proxyPort != null)
-                {
-                    config.ProxyHost = proxyHost;
-                    config.ProxyPort = int.Parse(proxyPort);
-                }
+				if (proxyHost != null && proxyPort != null)
+				{
+					config.ProxyHost = proxyHost;
+					config.ProxyPort = int.Parse(proxyPort);
+				}
 
-                var credentials = new BasicAWSCredentials(accessKey, secretKey);
+				var credentials = new BasicAWSCredentials(accessKey, secretKey);
 
-                return new AmazonS3Client(credentials, config);
-            });
-        }
+				return new AmazonS3Client(credentials, config);
+			});
+		}
 
-        private void RegisterDataAccessServices()
-        {
-            services.AddScoped<IFileStorageService, RustFsFileStorageService>();
-        }
-    }
+		private void RegisterDataAccessServices()
+		{
+			services.AddScoped<IFileStorageService, RustFsFileStorageService>();
+		}
+	}
 }
 ```
 
@@ -2402,13 +2415,13 @@ public static class DataAccessExtensions
 /// </summary>
 public class MigrationDbContext : EventsDbContext
 {
-    /// <summary>
-    ///     Конструктор контекста для миграции.
-    /// </summary>
-    /// <param name="options">Опции контекста базы данных.</param>
-    public MigrationDbContext(DbContextOptions options) : base(options)
-    {
-    }
+	/// <summary>
+	///     Конструктор контекста для миграции.
+	/// </summary>
+	/// <param name="options">Опции контекста базы данных.</param>
+	public MigrationDbContext(DbContextOptions options) : base(options)
+	{
+	}
 }
 ```
 
@@ -2431,51 +2444,51 @@ public class MigrationDbContext : EventsDbContext
 /// </param>
 /// <param name="logger">Логгер.</param>
 public class MigrationWorker(
-    IServiceProvider serviceProvider,
-    IHostApplicationLifetime applicationLifetime,
-    ILogger<MigrationWorker> logger
+	IServiceProvider serviceProvider,
+	IHostApplicationLifetime applicationLifetime,
+	ILogger<MigrationWorker> logger
 ) : BackgroundService
 {
-    /// <inheritdoc />
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        if (!stoppingToken.IsCancellationRequested)
-            try
-            {
-                if (logger.IsEnabled(LogLevel.Information))
-                    logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+	/// <inheritdoc />
+	protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+	{
+		if (!stoppingToken.IsCancellationRequested)
+			try
+			{
+				if (logger.IsEnabled(LogLevel.Information))
+					logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
-                using var scope = serviceProvider.CreateScope();
+				using var scope = serviceProvider.CreateScope();
 
-                var context = scope.ServiceProvider.GetService<MigrationDbContext>();
-                await context.Database.MigrateAsync(stoppingToken);
+				var context = scope.ServiceProvider.GetService<MigrationDbContext>();
+				await context.Database.MigrateAsync(stoppingToken);
 
-                if (logger.IsEnabled(LogLevel.Information))
-                    logger.LogInformation("Worker completed at: {time}", DateTimeOffset.Now);
-            }
-            catch (Exception e)
-            {
-                logger.LogError(e, "An error occured during migration");
-                throw;
-            }
-            finally
-            {
-                applicationLifetime.StopApplication();
-            }
-    }
+				if (logger.IsEnabled(LogLevel.Information))
+					logger.LogInformation("Worker completed at: {time}", DateTimeOffset.Now);
+			}
+			catch (Exception e)
+			{
+				logger.LogError(e, "An error occured during migration");
+				throw;
+			}
+			finally
+			{
+				applicationLifetime.StopApplication();
+			}
+	}
 }
 ```
 
 #codly(header: [*Program.cs*])
 ```cs
 await Host.CreateDefaultBuilder(args)
-    .ConfigureServices((hostContext, services) =>
-        {
-            services.AddServices(hostContext.Configuration);
-            services.AddHostedService<MigrationWorker>();
-        }
-    ).Build()
-    .RunAsync();
+	.ConfigureServices((hostContext, services) =>
+		{
+			services.AddServices(hostContext.Configuration);
+			services.AddHostedService<MigrationWorker>();
+		}
+	).Build()
+	.RunAsync();
 ```
 
 #linebreak()
@@ -2492,47 +2505,47 @@ await Host.CreateDefaultBuilder(args)
 ```cs
 public sealed record GetEventByIdQuery(Guid EventId) : IRequest<EventDto>, ITrackPageView
 {
-    public string EntityType => EntityTypes.Event;
+	public string EntityType => EntityTypes.Event;
 
-    public Guid EntityId => EventId;
+	public Guid EntityId => EventId;
 }
 ```
 
 #codly(header: [*GetEventByIdHandler.cs*])
 ```cs
 public sealed class GetEventByIdHandler(
-    IEventRepository eventRepository,
-    IRepository<Place> placeRepository,
-    IMapper mapper)
-    : IRequestHandler<GetEventByIdQuery, EventDto>
+	IEventRepository eventRepository,
+	IRepository<Place> placeRepository,
+	IMapper mapper)
+	: IRequestHandler<GetEventByIdQuery, EventDto>
 {
-    public async Task<EventDto> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
-    {
-        var eventByIdSpec = new EventByIdSpec(request.EventId).IncludeTags().AsNoTracking();
-        var @event = await eventRepository.FirstOrDefaultAsync(eventByIdSpec, cancellationToken);
+	public async Task<EventDto> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
+	{
+		var eventByIdSpec = new EventByIdSpec(request.EventId).IncludeTags().AsNoTracking();
+		var @event = await eventRepository.FirstOrDefaultAsync(eventByIdSpec, cancellationToken);
 
-        if (@event == null)
-            throw new NotFoundException(EventErrors.NotFoundById(request.EventId));
+		if (@event == null)
+			throw new NotFoundException(EventErrors.NotFoundById(request.EventId));
 
-        var dto = mapper.Map<EventDto>(@event);
+		var dto = mapper.Map<EventDto>(@event);
 
-        if (@event.Booking != null)
-        {
-            var placeByIdSpec = new PlaceByIdSpec(@event.Booking.PlaceId).AsNoTracking();
-            var place = await placeRepository.FirstOrDefaultAsync(placeByIdSpec, cancellationToken);
+		if (@event.Booking != null)
+		{
+			var placeByIdSpec = new PlaceByIdSpec(@event.Booking.PlaceId).AsNoTracking();
+			var place = await placeRepository.FirstOrDefaultAsync(placeByIdSpec, cancellationToken);
 
-            if (place == null)
-                throw new NotFoundException(PlaceErrors.NotFoundById(@event.Booking.PlaceId));
+			if (place == null)
+				throw new NotFoundException(PlaceErrors.NotFoundById(@event.Booking.PlaceId));
 
-            dto.PlaceInfo = new BookedPlaceDto
-            {
-                PlaceId = place.Id,
-                Number = place.Number.Value
-            };
-        }
+			dto.PlaceInfo = new BookedPlaceDto
+			{
+				PlaceId = place.Id,
+				Number = place.Number.Value
+			};
+		}
 
-        return dto;
-    }
+		return dto;
+	}
 }
 ```
 
@@ -2550,22 +2563,22 @@ public sealed record AddTagCommand(Guid EventId, int TagId) : IRequest;
 #codly(header: [*AddTagHandler.cs*])
 ```cs
 public sealed class AddTagHandler(IEventRepository eventRepository, IRepository<Tag> tagRepository)
-    : IRequestHandler<AddTagCommand>
+	: IRequestHandler<AddTagCommand>
 {
-    public async Task Handle(AddTagCommand request, CancellationToken ct)
-    {
-        var eventByIdSpec = new EventByIdSpec(request.EventId).IncludeTags();
-        var @event = await eventRepository.FirstOrDefaultAsync(eventByIdSpec, ct);
-        if (@event == null)
-            throw new NotFoundException(EventErrors.NotFoundById(request.EventId));
+	public async Task Handle(AddTagCommand request, CancellationToken ct)
+	{
+		var eventByIdSpec = new EventByIdSpec(request.EventId).IncludeTags();
+		var @event = await eventRepository.FirstOrDefaultAsync(eventByIdSpec, ct);
+		if (@event == null)
+			throw new NotFoundException(EventErrors.NotFoundById(request.EventId));
 
-        var tag = await tagRepository.GetByIdAsync(request.TagId, ct);
-        if (tag == null)
-            throw new NotFoundException(TagErrors.NotFoundById(request.TagId));
+		var tag = await tagRepository.GetByIdAsync(request.TagId, ct);
+		if (tag == null)
+			throw new NotFoundException(TagErrors.NotFoundById(request.TagId));
 
-        @event.AddTag(tag);
-        await eventRepository.UpdateAsync(@event, ct);
-    }
+		@event.AddTag(tag);
+		await eventRepository.UpdateAsync(@event, ct);
+	}
 }
 ```
 
@@ -2581,11 +2594,11 @@ public sealed class AddTagHandler(IEventRepository eventRepository, IRepository<
 #codly(header: [*IRepository.cs*])
 ```cs
 public interface IRepository<T> : IRepositoryBase<T>
-    where T : class
+	where T : class
 {
-    Task<List<TResult>> QueryAsync<TResult>(
-        QueryObject<T, TResult> query,
-        CancellationToken cancellationToken = default);
+	Task<List<TResult>> QueryAsync<TResult>(
+		QueryObject<T, TResult> query,
+		CancellationToken cancellationToken = default);
 }
 ```
 
@@ -2597,20 +2610,20 @@ public interface IRepository<T> : IRepositoryBase<T>
 /// <typeparam name="TEntity">Тип сущности.</typeparam>
 /// <typeparam name="TResult">Тип результата после проекции.</typeparam>
 public sealed class QueryObject<TEntity, TResult>
-    where TEntity : class
+	where TEntity : class
 {
-    public QueryObject(Func<IQueryable<TEntity>, IQueryable<TResult>> build)
-    {
-        Build = build ?? throw new ArgumentNullException(nameof(build));
-    }
+	public QueryObject(Func<IQueryable<TEntity>, IQueryable<TResult>> build)
+	{
+		Build = build ?? throw new ArgumentNullException(nameof(build));
+	}
 
-    public Func<IQueryable<TEntity>, IQueryable<TResult>> Build { get; }
+	public Func<IQueryable<TEntity>, IQueryable<TResult>> Build { get; }
 
-    public static implicit operator Func<IQueryable<TEntity>, IQueryable<TResult>>(
-        QueryObject<TEntity, TResult> queryObject)
-    {
-        return queryObject.Build;
-    }
+	public static implicit operator Func<IQueryable<TEntity>, IQueryable<TResult>>(
+		QueryObject<TEntity, TResult> queryObject)
+	{
+		return queryObject.Build;
+	}
 }
 ```
 
@@ -2630,15 +2643,15 @@ Behavior перехватывает все запросы, проходящие 
 /// </summary>
 public interface ITrackPageView
 {
-    /// <summary>
-    ///     Тип запрашиваемой сущности.
-    /// </summary>
-    string EntityType { get; }
+	/// <summary>
+	///     Тип запрашиваемой сущности.
+	/// </summary>
+	string EntityType { get; }
 
-    /// <summary>
-    ///     ID сущности.
-    /// </summary>
-    Guid EntityId { get; }
+	/// <summary>
+	///     ID сущности.
+	/// </summary>
+	Guid EntityId { get; }
 }
 ```
 
@@ -2646,9 +2659,9 @@ public interface ITrackPageView
 ```cs
 public interface ICurrentUserProvider
 {
-    bool IsAuthenticated { get; }
-    Guid? UserId { get; }
-    string? Role { get; }
+	bool IsAuthenticated { get; }
+	Guid? UserId { get; }
+	string? Role { get; }
 }
 ```
 
@@ -2660,36 +2673,36 @@ public interface ICurrentUserProvider
 /// <typeparam name="TRequest">Тип запроса.</typeparam>
 /// <typeparam name="TResponse">Тип ответа.</typeparam>
 public class AnalyticsBehavior<TRequest, TResponse>(
-    IAnalyticsRepository<PageView> pageViewRepository,
-    ICurrentUserProvider currentUserProvider,
-    ILogger<AnalyticsBehavior<TRequest, TResponse>> logger
+	IAnalyticsRepository<PageView> pageViewRepository,
+	ICurrentUserProvider currentUserProvider,
+	ILogger<AnalyticsBehavior<TRequest, TResponse>> logger
 )
-    : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : IRequest<TResponse>
+	: IPipelineBehavior<TRequest, TResponse>
+	where TRequest : IRequest<TResponse>
 {
-    /// <inheritdoc />
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
-        CancellationToken cancellationToken)
-    {
-        if (request is not ITrackPageView trackable)
-            return await next(cancellationToken);
+	/// <inheritdoc />
+	public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+		CancellationToken cancellationToken)
+	{
+		if (request is not ITrackPageView trackable)
+			return await next(cancellationToken);
 
-        var response = await next(cancellationToken);
+		var response = await next(cancellationToken);
 
-        try
-        {
-            var userId = currentUserProvider.UserId;
-            var pageView = new PageView(trackable.EntityType, trackable.EntityId, userId);
+		try
+		{
+			var userId = currentUserProvider.UserId;
+			var pageView = new PageView(trackable.EntityType, trackable.EntityId, userId);
 
-            await pageViewRepository.AddAsync(pageView, cancellationToken);
-        }
-        catch (Exception e)
-        {
-            logger.LogError(e, "Ошибка при попытке записать просмотр страницы.");
-        }
+			await pageViewRepository.AddAsync(pageView, cancellationToken);
+		}
+		catch (Exception e)
+		{
+			logger.LogError(e, "Ошибка при попытке записать просмотр страницы.");
+		}
 
-        return response;
-    }
+		return response;
+	}
 }
 ```
 
@@ -2708,33 +2721,33 @@ public class AnalyticsBehavior<TRequest, TResponse>(
 /// </summary>
 public static class ApplicationDiExtensions
 {
-    extension(IServiceCollection services)
-    {
-        /// <summary>
-        ///     Метод внедрения application.
-        /// </summary>
-        public void AddApplication()
-        {
-            services.AddMediatR(cfg =>
-            {
-                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                cfg.AddOpenBehavior(typeof(AnalyticsBehavior<,>));
-            });
+	extension(IServiceCollection services)
+	{
+		/// <summary>
+		///     Метод внедрения application.
+		/// </summary>
+		public void AddApplication()
+		{
+			services.AddMediatR(cfg =>
+			{
+				cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+				cfg.AddOpenBehavior(typeof(AnalyticsBehavior<,>));
+			});
 
-            services.AddAutoMapper(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
+			services.AddAutoMapper(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
 
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-            services.AddFluentValidationAutoValidation(options => { options.DisableBuiltInModelValidation = true; });
+			services.AddFluentValidationAutoValidation(options => { options.DisableBuiltInModelValidation = true; });
 
-            services.RegisterServices();
-        }
+			services.RegisterServices();
+		}
 
-        private void RegisterServices()
-        {
-            services.AddSingleton<IJwtTokenService, JwtTokenService>();
-        }
-    }
+		private void RegisterServices()
+		{
+			services.AddSingleton<IJwtTokenService, JwtTokenService>();
+		}
+	}
 }
 ```
 
@@ -2767,12 +2780,12 @@ builder.Services.AddApiServices();
 
 builder.Services.AddRouting(options =>
 {
-    options.LowercaseUrls = true;
-    options.LowercaseQueryStrings = true;
+	options.LowercaseUrls = true;
+	options.LowercaseQueryStrings = true;
 });
 
 builder.Services.AddCors(options =>
-    options.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+	options.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
 builder.Services.AddTransient<ExceptionMiddleware>();
 
@@ -2780,8 +2793,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.MapScalarApiReference(options => { options.WithOpenApiRoutePattern("/swagger/v1/swagger.json"); });
+	app.UseSwagger();
+	app.MapScalarApiReference(options => { options.WithOpenApiRoutePattern("/swagger/v1/swagger.json"); });
 }
 
 app.UseAuthentication();
@@ -2804,20 +2817,20 @@ app.Run();
 [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorDto))]
 public class EventsController(IMediator mediator) : ControllerBase
 {
-        /// <summary>
-    ///     Получить мероприятие по ID.
-    /// </summary>
-    /// <param name="eventId">Идентификатор мероприятия.</param>
-    /// <param name="ct">Токен отмены.</param>
-    /// <returns>Полная информация о мероприятии.</returns>
-    [HttpGet("{eventId:guid}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EventDto))]
-    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorDto))]
-    public async Task<IActionResult> GetByIdAsync(Guid eventId, CancellationToken ct)
-    {
-        var @event = await mediator.Send(new GetEventByIdQuery(eventId), ct);
-        return Ok(@event);
-    }
+		/// <summary>
+	///     Получить мероприятие по ID.
+	/// </summary>
+	/// <param name="eventId">Идентификатор мероприятия.</param>
+	/// <param name="ct">Токен отмены.</param>
+	/// <returns>Полная информация о мероприятии.</returns>
+	[HttpGet("{eventId:guid}")]
+	[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EventDto))]
+	[ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorDto))]
+	public async Task<IActionResult> GetByIdAsync(Guid eventId, CancellationToken ct)
+	{
+		var @event = await mediator.Send(new GetEventByIdQuery(eventId), ct);
+		return Ok(@event);
+	}
 }
 ```
 
@@ -2832,31 +2845,31 @@ public class EventsController(IMediator mediator) : ControllerBase
 /// </summary>
 public static class JwtExtensions
 {
-    extension(IServiceCollection services)
-    {
-        /// <summary>
-        ///     Метод добавления JWT аутентификации.
-        /// </summary>
-        /// <param name="configuration">Конфигурация приложения.</param>
-        public void AddJwt(IConfiguration configuration)
-        {
-            services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        ValidateLifetime = configuration.GetValue<bool>("Jwt:ValidateLifetime"),
-                        ValidateIssuer = configuration.GetValue<bool>("Jwt:ValidateIssuer"),
-                        ValidateAudience = configuration.GetValue<bool>("Jwt:ValidateAudience"),
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
-                    };
+	extension(IServiceCollection services)
+	{
+		/// <summary>
+		///     Метод добавления JWT аутентификации.
+		/// </summary>
+		/// <param name="configuration">Конфигурация приложения.</param>
+		public void AddJwt(IConfiguration configuration)
+		{
+			services
+				.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+				.AddJwtBearer(options =>
+				{
+					options.TokenValidationParameters = new TokenValidationParameters
+					{
+						ValidateIssuerSigningKey = true,
+						ValidateLifetime = configuration.GetValue<bool>("Jwt:ValidateLifetime"),
+						ValidateIssuer = configuration.GetValue<bool>("Jwt:ValidateIssuer"),
+						ValidateAudience = configuration.GetValue<bool>("Jwt:ValidateAudience"),
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+					};
 
-                    options.MapInboundClaims = false;
-                });
-        }
-    }
+					options.MapInboundClaims = false;
+				});
+		}
+	}
 }
 ```
 
@@ -2868,15 +2881,15 @@ public static class JwtExtensions
 ```cs
 public class HttpCurrentUserProvider(IHttpContextAccessor httpContextAccessor) : ICurrentUserProvider
 {
-    private ClaimsPrincipal? User => httpContextAccessor.HttpContext?.User;
-    public bool IsAuthenticated => User?.Identity?.IsAuthenticated ?? false;
+	private ClaimsPrincipal? User => httpContextAccessor.HttpContext?.User;
+	public bool IsAuthenticated => User?.Identity?.IsAuthenticated ?? false;
 
-    public Guid? UserId => Guid.TryParse(
-        User?.FindFirst(JwtRegisteredClaimNames.Sub)?.Value, out var id)
-        ? id
-        : null;
+	public Guid? UserId => Guid.TryParse(
+		User?.FindFirst(JwtRegisteredClaimNames.Sub)?.Value, out var id)
+		? id
+		: null;
 
-    public string? Role => User?.FindFirst("role")?.Value;
+	public string? Role => User?.FindFirst("role")?.Value;
 }
 ```
 
@@ -2894,73 +2907,73 @@ Middleware перехватывает все необработанные иск
 /// <param name="logger">Логгер.</param>
 public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddleware
 {
-    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
-    {
-        try
-        {
-            await next(context);
-        }
-        catch (Exception e)
-        {
-            await HandleExceptionAsync(context, e);
-        }
-    }
+	public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+	{
+		try
+		{
+			await next(context);
+		}
+		catch (Exception e)
+		{
+			await HandleExceptionAsync(context, e);
+		}
+	}
 
-    private Task HandleExceptionAsync(HttpContext context, Exception exception)
-    {
-        logger.LogError("Ошибка: {exception.Message}", exception.Message);
+	private Task HandleExceptionAsync(HttpContext context, Exception exception)
+	{
+		logger.LogError("Ошибка: {exception.Message}", exception.Message);
 
-        var errorDto = MapError(context, exception);
-        context.Response.ContentType = "application/problem+json";
-        context.Response.StatusCode = errorDto.StatusCode;
+		var errorDto = MapError(context, exception);
+		context.Response.ContentType = "application/problem+json";
+		context.Response.StatusCode = errorDto.StatusCode;
 
-        return context.Response.WriteAsync(JsonSerializer.Serialize(errorDto));
-    }
+		return context.Response.WriteAsync(JsonSerializer.Serialize(errorDto));
+	}
 
-    private static ErrorDto MapError(HttpContext context, Exception exception)
-    {
-        return exception switch
-        {
-            DomainException domainException => new ErrorDto
-            {
-                StatusCode = StatusCodes.Status422UnprocessableEntity,
-                ErrorCode = domainException.Error.ErrorCode,
-                Message = domainException.Error.ErrorMessage,
-                TraceId = context.TraceIdentifier
-            },
+	private static ErrorDto MapError(HttpContext context, Exception exception)
+	{
+		return exception switch
+		{
+			DomainException domainException => new ErrorDto
+			{
+				StatusCode = StatusCodes.Status422UnprocessableEntity,
+				ErrorCode = domainException.Error.ErrorCode,
+				Message = domainException.Error.ErrorMessage,
+				TraceId = context.TraceIdentifier
+			},
 
-            NotFoundException notFoundException => new ErrorDto
-            {
-                StatusCode = StatusCodes.Status404NotFound,
-                ErrorCode = notFoundException.Error.ErrorCode,
-                Message = notFoundException.Error.ErrorMessage,
-                TraceId = context.TraceIdentifier
-            },
+			NotFoundException notFoundException => new ErrorDto
+			{
+				StatusCode = StatusCodes.Status404NotFound,
+				ErrorCode = notFoundException.Error.ErrorCode,
+				Message = notFoundException.Error.ErrorMessage,
+				TraceId = context.TraceIdentifier
+			},
 
-            HttpRequestException => new ErrorDto
-            {
-                StatusCode = StatusCodes.Status503ServiceUnavailable,
-                Message = "Запрашиваемый сервис недоступен. Попробуйте позже.",
-                TraceId = context.TraceIdentifier
-            },
+			HttpRequestException => new ErrorDto
+			{
+				StatusCode = StatusCodes.Status503ServiceUnavailable,
+				Message = "Запрашиваемый сервис недоступен. Попробуйте позже.",
+				TraceId = context.TraceIdentifier
+			},
 
-            UnauthorizedException unauthorizedException => new ErrorDto
-            {
-                StatusCode = StatusCodes.Status401Unauthorized,
-                ErrorCode = unauthorizedException.Error.ErrorCode,
-                Message = unauthorizedException.Error.ErrorMessage,
-                TraceId = context.TraceIdentifier
-            },
+			UnauthorizedException unauthorizedException => new ErrorDto
+			{
+				StatusCode = StatusCodes.Status401Unauthorized,
+				ErrorCode = unauthorizedException.Error.ErrorCode,
+				Message = unauthorizedException.Error.ErrorMessage,
+				TraceId = context.TraceIdentifier
+			},
 
-            _ => new ErrorDto
-            {
-                StatusCode = StatusCodes.Status500InternalServerError,
-                ErrorCode = "Неизвестная ошибка.",
-                Message = "Неожиданная ошибка сервера.",
-                TraceId = context.TraceIdentifier
-            }
-        };
-    }
+			_ => new ErrorDto
+			{
+				StatusCode = StatusCodes.Status500InternalServerError,
+				ErrorCode = "Неизвестная ошибка.",
+				Message = "Неожиданная ошибка сервера.",
+				TraceId = context.TraceIdentifier
+			}
+		};
+	}
 }
 ```
 
@@ -2968,30 +2981,82 @@ public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddlew
 
 #pagebreak()
 
-#heading(
-  numbering: none,
-)[
-  #upper[Заключение]
-]
+#heading(numbering: none)[#upper[Заключение]]
 
-// Текст
+В рамках выпускной квалификационной работы разработана backend-часть информационной системы управления мероприятиями,
+обеспечивающая централизованную обработку бизнес-логики, хранение данных и интеграцию с внешними сервисами.
+Разработанная система позволяет упростить информационную поддержку процессов подготовки и проведения мероприятий,
+что способствует повышению вовлечённости участников и сокращению трудозатрат организаторов.
+
+В ходе работы решены все поставленные задачи.
+
+#enum(
+	enum.item[
+		Изучены основные методы и технологии backend-разработки:
+		рассмотрены методологии TDD, BDD, SDD и DDD, архитектурные подходы -- монолитная, микросервисная и модульно-монолитная архитектуры,
+		а также подходы к организации программного кода -- слоистая, луковая и чистая архитектуры.
+	],
+
+	enum.item[
+		Выбраны архитектурные принципы и паттерны проектирования:
+		в качестве подхода к проектированию предметной области принят DDD, в качестве архитектуры приложения -- модульный монолит с внутренней организацией по принципам чистой архитектуры,
+		в качестве паттерна организации слоя бизнес-логики -- CQRS.
+	],
+
+	enum.item[
+		Выбраны программные средства разработки: язык программирования C\# с фреймворком ASP.NET Core, СУБД PostgreSQL,
+		S3-совместимое объектное хранилище RustFS,платформа контейнеризации Docker и инструмент оркестрации Docker Compose.
+	],
+
+	enum.item[
+		Спроектирована база данных: разработана модель данных в виде диаграммы «сущность -- связь»,
+		отражающая предметную область системы управления мероприятиями.
+	],
+
+	enum.item[
+		Разработан доменный слой: реализованы абстрактные классы сущностей и объектов-значений,
+		механизм ошибок на основе типа Error и специализированных классов исключений,
+		а также доменная модель агрегата мероприятия с фабричным методом создания.
+	],
+
+	enum.item[
+		Разработан инфраструктурный слой: реализованы контекст базы данных, конфигурации сущностей для Entity Framework Core,
+		универсальный репозиторий на основе библиотеки Ardalis.Specification,
+		сервис работы с файловым хранилищем, а также отдельный хост-сервис для автоматического применения миграций в Docker.
+	],
+
+	enum.item[
+		Разработан слой бизнес-логики: реализованы команды и запросы по паттерну CQRS с использованием библиотеки MediatR,
+		pipeline behavior для автоматической записи аналитики просмотров, валидация входящих запросов посредством FluentValidation.
+	],
+
+	enum.item[
+		Разработан слой API: реализованы контроллеры на основе ASP.NET Core, JWT-аутентификация,
+		централизованная обработка исключений посредством middleware с преобразованием доменных ошибок в HTTP-статусы.
+	]
+)
+
+Разработан слой API: реализованы контроллеры на основе ASP.NET Core, JWT-аутентификация, централизованная обработка исключений посредством middleware с преобразованием доменных ошибок в HTTP-статусы.
+
+Практическая значимость работы подтверждается расчётом годового экономического эффекта от внедрения системы, составившего 316 000 рублей,
+а также апробацией основных результатов на секции «Информационные системы и технологии» в рамках XIII региональной молодёжной конференции «Мой выбор -- наука!».
+
+Направлениями дальнейшего развития системы являются: внедрение кэширования на основе Redis для снижения нагрузки на базу данных,
+расширение покрытия кода модульными и интеграционными тестами,
+а также декомпозиция отдельных модулей в самостоятельные микросервисы по мере роста нагрузки.
 
 #pagebreak()
 
 #bibliography(
-  "bibliography.yaml",
-  full: false,
-  style: "../gost-r-7-0-5-2008-numeric-alphabetical.csl",
-  title: upper[Библиографический список]
+	"bibliography.yaml",
+	full: false,
+	style: "../gost-r-7-0-5-2008-numeric-alphabetical.csl",
+	title: upper[Библиографический список]
 )
 
 #pagebreak()
 
-#heading(
-  numbering: none,
-)[
-  #upper[Приложение]
-]
+#heading(numbering: none)[#upper[Приложение]]
 
 Репозиторий -- #link("https://github.com/Shtskkh/Events.Backend")
 
@@ -3002,9 +3067,9 @@ public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddlew
   Все использованные в работе материалы и концепции из опубликованной научной литературы и других источников имеют ссылки на них.
 
   #set par(
-    first-line-indent: (amount: 0cm, all: false),
-    leading: 0.65em,
-    justify: false,
+	first-line-indent: (amount: 0cm, all: false),
+	leading: 0.65em,
+	justify: false,
   )
 
   #linebreak()
@@ -3015,18 +3080,18 @@ public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddlew
   #linebreak()
   
   #grid(
-    columns: (auto, auto),
-    column-gutter: 1em,
-    align: (center, center),
-    [
-      #text("_______________________")
-      #v(-0.5em)
-      #pad(left: 0.5cm)[#text(size: 12pt)[_(подпись)_]]
-    ],
-    [
-      #text("(_______________________)")
-      #v(-0.5em)
-      #pad(left: 0.25cm)[#text(size: 12pt)[_(Ф.И.О)_]]
-    ],
+	columns: (auto, auto),
+	column-gutter: 1em,
+	align: (center, center),
+	[
+	  #text("_______________________")
+	  #v(-0.5em)
+	  #pad(left: 0.5cm)[#text(size: 12pt)[_(подпись)_]]
+	],
+	[
+	  #text("(_______________________)")
+	  #v(-0.5em)
+	  #pad(left: 0.25cm)[#text(size: 12pt)[_(Ф.И.О)_]]
+	],
   )
 ]

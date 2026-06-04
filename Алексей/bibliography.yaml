@@ -146,9 +146,9 @@ T-Bank:
 ModuleMonolith:
     type: web
     author: Цветцих Д.
-    title: Модульный монолит вместо микросервисов
+    title: "Модульный монолит вместо микросервисов: Как, когда и зачем"
     url:
-        value: https://www.youtube.com/watch?v=4UKjtzeQ_uc
+        value: https://rutube.ru/video/e623ab9778fac46c733dc8d7516d45fb/?r=wd
         date: 2026-2-27
 
 Layered-Architecture:
