@@ -3036,11 +3036,6 @@ public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddlew
 	]
 )
 
-Разработан слой API: реализованы контроллеры на основе ASP.NET Core, JWT-аутентификация, централизованная обработка исключений посредством middleware с преобразованием доменных ошибок в HTTP-статусы.
-
-Практическая значимость работы подтверждается расчётом годового экономического эффекта от внедрения системы, составившего 316 000 рублей,
-а также апробацией основных результатов на секции «Информационные системы и технологии» в рамках XIII региональной молодёжной конференции «Мой выбор -- наука!».
-
 Направлениями дальнейшего развития системы являются: внедрение кэширования на основе Redis для снижения нагрузки на базу данных,
 расширение покрытия кода модульными и интеграционными тестами,
 а также декомпозиция отдельных модулей в самостоятельные микросервисы по мере роста нагрузки.
@@ -3056,9 +3051,37 @@ public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddlew
 
 #pagebreak()
 
+#show heading: it => [
+  #set align(right)
+
+  #set text(
+	size: 14pt,
+  )
+
+  #block[
+	#it
+	#v(1em)
+  ]
+]
+
 #heading(numbering: none)[#upper[Приложение]]
 
-Репозиторий -- #link("https://github.com/Shtskkh/Events.Backend")
+#show heading: it => [
+  #set align(center)
+
+  #set text(
+	size: 14pt,
+  )
+
+  #block[
+	#it
+	#v(1em)
+  ]
+]
+
+#heading(numbering: none)[Листинг программы]
+
+Ссылка: #link("https://github.com/Shtskkh/Events.Backend")
 
 #pagebreak()
 
